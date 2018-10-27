@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDegreesTable extends Migration
+class CreateJobProfile extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,16 @@ class CreateDegreesTable extends Migration
      */
     public function up()
     {
-        Schema::create('degrees', function (Blueprint $table) {
+        Schema::create('job_profile', function (Blueprint $table) {
+            $table->unsignedInteger('job_id');
             $table->unsignedInteger('profile_id');
-            $table->string('name', 191);
-            $table->text('degree_img');
-            $table->primary(['profile_id', 'name']);
+            $table->primary(['job_id', 'profile_id']);
+            $table->foreign('job_id')
+                  ->references('employer_id')->on('jobs')
+                  ->onDelete('cascade');
             $table->foreign('profile_id')
                   ->references('employee_id')->on('profiles')
                   ->onDelete('cascade');
-            $table->timestamps();
         });
     }
 
@@ -32,6 +33,6 @@ class CreateDegreesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('degrees');
+        Schema::dropIfExists('job_profile');
     }
 }

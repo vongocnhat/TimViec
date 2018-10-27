@@ -14,7 +14,16 @@ class CreateLanguageProfile extends Migration
     public function up()
     {
         Schema::create('language_profile', function (Blueprint $table) {
-            $table->increments('id');
+            $table->unsignedInteger('language_id');
+            $table->unsignedInteger('profile_id');
+            $table->tinyInteger('listenning');
+            $table->tinyInteger('speaking');
+            $table->tinyInteger('reading');
+            $table->tinyInteger('writing');
+            $table->primary(['language_id', 'profile_id']);
+            $table->foreign('profile_id')
+                  ->references('employee_id')->on('profiles')
+                  ->onDelete('cascade');
             $table->timestamps();
         });
     }

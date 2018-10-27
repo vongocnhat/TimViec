@@ -14,7 +14,21 @@ class CreateExperiencesTable extends Migration
     public function up()
     {
         Schema::create('experiences', function (Blueprint $table) {
-            $table->increments('id');
+            $table->unsignedInteger('profile_id');
+            $table->string('company_name', 191);
+            $table->unsignedInteger('office_id');
+            $table->date('start_at');
+            $table->date('ended_at');
+            $table->string('wage')->nullable()->default(0);
+            $table->text('job_description');
+            $table->text('achievement');
+            $table->primary(['profile_id', 'company_name']);
+            $table->foreign('profile_id')
+                  ->references('employee_id')->on('profiles')
+                  ->onDelete('cascade');
+            $table->foreign('office_id')
+                  ->references('id')->on('offices')
+                  ->onDelete('cascade');
             $table->timestamps();
         });
     }

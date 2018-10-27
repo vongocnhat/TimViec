@@ -25,7 +25,8 @@ class CreateEmployeesTable extends Migration
             $table->text('ward');
             $table->text('address');
             $table->string('gender', 10);
-            $table->string('marital_status');
+            $table->string('marital_status')->nullable();
+            $table->string('forget_password')->nullable();
             $table->timestamps();
         });
     }

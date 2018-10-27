@@ -28,6 +28,7 @@ class CreateEmployersTable extends Migration
             $table->text('ward');
             $table->text('address');
             $table->string('website')->nullable();
+            $table->string('forget_password')->nullable();
             $table->timestamps();
         });
     }
