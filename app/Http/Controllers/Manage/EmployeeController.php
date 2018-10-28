@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Manage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Common\DestroyRequest;
+use App\Http\Requests\Employer\EmployeeStoreRequest;
+use App\Http\Requests\Employer\EmployeeUpdateRequest;
 use App\Repositories\Contracts\EmployeeRepositoryInterface;
 
 class EmployeeController extends Controller
@@ -43,7 +45,7 @@ class EmployeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EmployeeStoreRequest $request)
     {
         $this->re->store($request);
         $request->session()->flash('notify_success', __('common.create_success'));
@@ -80,7 +82,7 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EmployeeUpdateRequest $request, $id)
     {
         $this->re->update($request, $id);
         $request->session()->flash('notify_success', __('common.update_success'));
