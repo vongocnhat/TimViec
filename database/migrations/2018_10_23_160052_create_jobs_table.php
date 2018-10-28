@@ -19,7 +19,7 @@ class CreateJobsTable extends Migration
             $table->unsignedInteger('type_of_work_id');
             $table->text('career_ids');
             $table->text('language_ids')->nullable();
-            $table->string('job_name');
+            $table->string('name');
             $table->string('company_name', 191);
             $table->date('deadline');
             $table->unsignedInteger('viewed')->nullable()->default(0);

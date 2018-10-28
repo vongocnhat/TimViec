@@ -1,0 +1,21 @@
+<?php
+return [
+    'employee' => 'Employee',
+    'title' => 'Manage Employee',
+    'first_name' => 'First Name',
+    'last_name' => 'Last Name',
+    'email' => 'Email',
+    'phone' => 'Phone',
+    'password' => 'Password',
+    'birthday' => 'Birthday',
+    'province' => 'Province',
+    'district' => 'District',
+    'ward' => 'Ward',
+    'address' => 'Address',
+    'gender' => 'Gender',
+    'married' => 'Marital Status',
+    'married_true' => 'Married',
+    'married_false' => 'Not Married',
+    'male' => 'Male',
+    'female' => 'Female',
+];

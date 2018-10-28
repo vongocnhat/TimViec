@@ -1,0 +1,22 @@
+.width-42 {
+    width: 42px;
+    text-align: center;
+}
+
+.parent-checkbox-delete,
+.checkbox-delete {
+    vertical-align: middle;
+}
+
+.text-danger-hover:focus,
+.text-danger-hover:hover {
+    color: #bd2130 !important
+}
+
+.no-spin::-webkit-calendar-picker-indicator,
+.no-spin::-webkit-inner-spin-button,
+.no-spin::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    display: none;
+    -moz-appearance: none;
+}

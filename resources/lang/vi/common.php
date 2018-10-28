@@ -1,0 +1,20 @@
+<?php
+return [
+    'deletes' => ' Xóa Các Mục Đã Chọn',
+    'deletes_message' => 'Xóa tất cả :name đã được chọn?',
+    'delete' => 'Xóa',
+    'delete_message' => 'Xóa :table_name: :name?',
+    'save' => 'Lưu',
+    'cancel' => 'Hủy Bỏ',
+    'create' => 'Thêm Mới',
+    'edit' => 'Sửa',
+    'update' => 'Cập Nhật',
+    'edit_title' => 'Chỉnh Sửa: :name',
+    'update_success' => 'Cập nhật thành công!',
+    'delete_success' => 'Xóa thành công!',
+    'deletes_fail' => 'Một vài mục không được xóa!',
+    'delete_fail' => 'Xóa thất bại!',
+    'delete_required' => 'Xóa Không Thành Công: Vui lòng chọn ít nhất 1 checkbox (hộp kiểm)!',
+    'cancel_message' => 'Hủy bỏ việc thêm mới?',
+    'create_success' => 'Thêm thành công!',
+];

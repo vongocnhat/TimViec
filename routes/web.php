@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,4 +12,10 @@
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::prefix('manage')->middleware(['AdminMiddleware'])->namespace('Manage')->group(function () {
+    Route::resource('admin', 'AdminController');
+    Route::resource('employer', 'EmployerController');
+    Route::resource('employee', 'EmployeeController');
 });

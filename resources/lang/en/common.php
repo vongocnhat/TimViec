@@ -1,0 +1,20 @@
+<?php
+return [
+    'deletes' => ' Delete Selected Items',
+    'deletes_message' => 'Delete All :name Checked?',
+    'delete' => 'Delete',
+    'delete_message' => 'Delete :table_name: :name?',
+    'save' => 'Save',
+    'cancel' => 'Cancel',
+    'create' => 'Create',
+    'edit' => 'Edit',
+    'update' => 'Update',
+    'edit_title' => 'Edit: :name',
+    'update_success' => 'Update success!',
+    'delete_success' => 'Delete success!',
+    'deletes_fail' => 'Some items can not be deleted!',
+    'delete_fail' => 'Delete failed!',
+    'delete_required' => 'Delete Error: Please select at least one checkbox!',
+    'cancel_message' => 'Cancel create?',
+    'create_success' => 'Create Success!',
+];
