@@ -42,9 +42,9 @@
                         <td>{{ $employee->email }}</td>
                         <td>{{ $employee->phone }}</td>
                         <td>{{ $employee->birthday }}</td>
-                        <td>{{ $employee->province }}</td>
-                        <td>{{ $employee->district }}</td>
-                        <td>{{ $employee->ward }}</td>
+                        <td>{{ $employee->province->name }}</td>
+                        <td>{{ $employee->district->name }}</td>
+                        <td>{{ $employee->ward->name }}</td>
                         <td>{{ $employee->address }}</td>
                         <td>{{ $employee->gender }}</td>
                         <td>{{ $employee->married === 0 ? __('employee.married_false') : __('employee.married_true') }}</td>

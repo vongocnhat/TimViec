@@ -27,7 +27,6 @@ class CreateJobsTable extends Migration
             $table->tinyInteger('experience');
             $table->string('literacy');
             $table->unsignedInteger('quantity');
-            $table->string('work_location');
             $table->string('probationary_period')->nullable();
             $table->string('gender')->nullable();
             $table->tinyInteger('age_from');
@@ -39,9 +38,9 @@ class CreateJobsTable extends Migration
             $table->string('contact_person');
             $table->string('email', 191);
             $table->string('phone', 191);
-            $table->text('province');
-            $table->text('district');
-            $table->text('ward');
+            $table->unsignedInteger('province_id');
+            $table->unsignedInteger('district_id');
+            $table->unsignedInteger('ward_id');
             $table->text('address');
             $table->foreign('employer_id')
                   ->references('id')->on('employers')
@@ -51,6 +50,15 @@ class CreateJobsTable extends Migration
                   ->onDelete('cascade');
             $table->foreign('type_of_work_id')
                   ->references('id')->on('type_of_works')
+                  ->onDelete('cascade');
+            $table->foreign('province_id')
+                  ->references('id')->on('provinces')
+                  ->onDelete('cascade');
+            $table->foreign('district_id')
+                  ->references('id')->on('districts')
+                  ->onDelete('cascade');
+            $table->foreign('ward_id')
+                  ->references('id')->on('wards')
                   ->onDelete('cascade');
             $table->timestamps();
         });

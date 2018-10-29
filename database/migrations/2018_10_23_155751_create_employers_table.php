@@ -24,12 +24,21 @@ class CreateEmployersTable extends Migration
             $table->string('company_size')->nullable();
             $table->string('landline_phone')->nullable();
             $table->string('about_company');
-            $table->text('province');
-            $table->text('district');
-            $table->text('ward');
+            $table->unsignedInteger('province_id');
+            $table->unsignedInteger('district_id');
+            $table->unsignedInteger('ward_id');
             $table->text('address');
             $table->string('website')->nullable();
             $table->string('forget_password')->nullable();
+            $table->foreign('province_id')
+                  ->references('id')->on('provinces')
+                  ->onDelete('cascade');
+            $table->foreign('district_id')
+                  ->references('id')->on('districts')
+                  ->onDelete('cascade');
+            $table->foreign('ward_id')
+                  ->references('id')->on('wards')
+                  ->onDelete('cascade');
             $table->timestamps();
         });
     }

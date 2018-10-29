@@ -1,4 +1,4 @@
-INSERT INTO `project` (`id`, `_name`, `_province_id`, `_district_id`, `_lat`, `_lng`) VALUES
+INSERT INTO `projects` (`id`, `name`, `province_id`, `district_id`, `lat`, `lng`) VALUES
 (783, 'Star Hill', 1, 19, 10.73091506958, 106.7262802124),
 (784, 'Sunrise City', 1, 19, 10.73862361908, 106.70059967041),
 (785, 'Sunrise City View', 1, 19, 10.745357513428, 106.70084381103),

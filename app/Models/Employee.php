@@ -14,9 +14,9 @@ class Employee extends Authenticatable
 		'phone',
 		'password',
 		'birthday',
-		'province',
-		'district',
-		'ward',
+		'province_id',
+		'district_id',
+		'ward_id',
 		'address',
 		'gender',
 		'married',
@@ -25,5 +25,20 @@ class Employee extends Authenticatable
 
     protected $hidden = [
         'password', 'forget_password',
-    ];
+	];
+
+	public function province()
+	{
+		return $this->belongsTo('App\Models\Province');
+	}
+
+	public function district()
+	{
+		return $this->belongsTo('App\Models\District');
+	}
+
+	public function ward()
+	{
+		return $this->belongsTo('App\Models\Ward');
+	}
 }

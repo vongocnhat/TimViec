@@ -21,13 +21,22 @@ class CreateEmployeesTable extends Migration
             $table->string('phone', 191)->unique();
             $table->string('password');
             $table->date('birthday');
-            $table->text('province');
-            $table->text('district');
-            $table->text('ward');
+            $table->unsignedInteger('province_id');
+            $table->unsignedInteger('district_id');
+            $table->unsignedInteger('ward_id');
             $table->text('address');
             $table->string('gender', 10);
             $table->boolean('married');
             $table->string('forget_password')->nullable();
+            $table->foreign('province_id')
+                  ->references('id')->on('provinces')
+                  ->onDelete('cascade');
+            $table->foreign('district_id')
+                  ->references('id')->on('districts')
+                  ->onDelete('cascade');
+            $table->foreign('ward_id')
+                  ->references('id')->on('wards')
+                  ->onDelete('cascade');
             $table->timestamps();
         });
     }

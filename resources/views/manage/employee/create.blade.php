@@ -38,16 +38,16 @@
                         {{ Form::date('birthday', null, ['class' => 'form-control no-spin']) }}
                     </div>
                     <div class="form-group">
-                        {{ Form::label('province', __('employee.province'), ['class' => 'mb-1']) }}
-                        {{ Form::text('province', null, ['class' => 'form-control']) }}
+                        {{ Form::label('province_id', __('employee.province'), ['class' => 'mb-1']) }}
+                        {{ Form::text('province_id', null, ['class' => 'form-control']) }}
                     </div>
                     <div class="form-group">
-                        {{ Form::label('district', __('employee.district'), ['class' => 'mb-1']) }}
-                        {{ Form::text('district', null, ['class' => 'form-control']) }}
+                        {{ Form::label('district_id', __('employee.district'), ['class' => 'mb-1']) }}
+                        {{ Form::text('district_id', null, ['class' => 'form-control']) }}
                     </div>
                     <div class="form-group">
-                        {{ Form::label('ward', __('employee.ward'), ['class' => 'mb-1']) }}
-                        {{ Form::text('ward', null, ['class' => 'form-control']) }}
+                        {{ Form::label('ward_id', __('employee.ward'), ['class' => 'mb-1']) }}
+                        {{ Form::text('ward_id', null, ['class' => 'form-control']) }}
                     </div>
                     <div class="form-group">
                         {{ Form::label('address', __('employee.address'), ['class' => 'mb-1']) }}
@@ -56,10 +56,6 @@
                     <div class="form-group">
                         {{ Form::label('gender', __('employee.gender'), ['class' => 'mb-1']) }}
                         {{ Form::text('gender', null, ['class' => 'form-control']) }}
-                        {{-- {{ Form::label(null, __('employee.male')) }}
-                        <label for="radio1" class="form-check-label ">
-                            <input type="radio" id="radio1" name="radios" value="option1" class="form-check-input">Option 1
-                        </label> --}}
                     </div>
                     <div class="form-group">
                         {{ Form::label('married', __('employee.married'), ['class' => 'mb-1']) }}

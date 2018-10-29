@@ -38,16 +38,16 @@
                         {{ Form::date('birthday', null, ['class' => 'form-control no-spin']) }}
                     </div>
                     <div class="form-group">
-                        {{ Form::label('province', __('employee.province'), ['class' => 'mb-1']) }}
-                        {{ Form::text('province', null, ['class' => 'form-control']) }}
+                        {{ Form::label('province_id', __('employee.province'), ['class' => 'mb-1']) }}
+                        {{ Form::text('province_id', null, ['class' => 'form-control']) }}
                     </div>
                     <div class="form-group">
-                        {{ Form::label('district', __('employee.district'), ['class' => 'mb-1']) }}
-                        {{ Form::text('district', null, ['class' => 'form-control']) }}
+                        {{ Form::label('district_id', __('employee.district'), ['class' => 'mb-1']) }}
+                        {{ Form::text('district_id', null, ['class' => 'form-control']) }}
                     </div>
                     <div class="form-group">
-                        {{ Form::label('ward', __('employee.ward'), ['class' => 'mb-1']) }}
-                        {{ Form::text('ward', null, ['class' => 'form-control']) }}
+                        {{ Form::label('ward_id', __('employee.ward'), ['class' => 'mb-1']) }}
+                        {{ Form::text('ward_id', null, ['class' => 'form-control']) }}
                     </div>
                     <div class="form-group">
                         {{ Form::label('address', __('employee.address'), ['class' => 'mb-1']) }}

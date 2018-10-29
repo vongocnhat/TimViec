@@ -25,21 +25,21 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `district`
+-- Table structure for table `districts`
 --
 
-CREATE TABLE `district` (
+CREATE TABLE `districts` (
   `id` int(10) UNSIGNED NOT NULL,
-  `_name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `_prefix` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `_province_id` int(10) UNSIGNED DEFAULT NULL
+  `name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `prefix` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `province_id` int(10) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `district`
+-- Dumping data for table `districts`
 --
 
-INSERT INTO `district` (`id`, `_name`, `_prefix`, `_province_id`) VALUES
+INSERT INTO `districts` (`id`, `name`, `prefix`, `province_id`) VALUES
 (1, 'Bình Chánh', 'Huyện', 1),
 (2, 'Bình Tân', 'Quận', 1),
 (3, 'Bình Thạnh', 'Quận', 1),
@@ -753,23 +753,23 @@ INSERT INTO `district` (`id`, `_name`, `_prefix`, `_province_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `project`
+-- Table structure for table `projects`
 --
 
-CREATE TABLE `project` (
+CREATE TABLE `projects` (
   `id` int(10) UNSIGNED NOT NULL,
-  `_name` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `_province_id` int(10) UNSIGNED DEFAULT NULL,
-  `_district_id` int(10) UNSIGNED DEFAULT NULL,
-  `_lat` double UNSIGNED DEFAULT NULL,
-  `_lng` double UNSIGNED DEFAULT NULL
+  `name` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `province_id` int(10) UNSIGNED DEFAULT NULL,
+  `district_id` int(10) UNSIGNED DEFAULT NULL,
+  `lat` double UNSIGNED DEFAULT NULL,
+  `lng` double UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `project`
+-- Dumping data for table `projects`
 --
 
-INSERT INTO `project` (`id`, `_name`, `_province_id`, `_district_id`, `_lat`, `_lng`) VALUES
+INSERT INTO `projects` (`id`, `name`, `province_id`, `district_id`, `lat`, `lng`) VALUES
 (1, '13B Conic Phong Phú', 1, 1, 10.71240234375, 106.64177703857),
 (2, '13D Asia Phú Mỹ', 1, 1, 10.705533027649, 106.64806365967),
 (3, '13E Phong Phú', 1, 1, 10.704967498779, 106.64633178711),
@@ -1552,7 +1552,7 @@ INSERT INTO `project` (`id`, `_name`, `_province_id`, `_district_id`, `_lat`, `_
 (780, 'Sky Garden I', 1, 19, 10.730993270874, 106.70673370361),
 (781, 'Sky Garden II', 1, 19, 10.729200363159, 106.70616912842),
 (782, 'Southern Palace', 1, 19, 10.734457015991, 106.72267913818);
-INSERT INTO `project` (`id`, `_name`, `_province_id`, `_district_id`, `_lat`, `_lng`) VALUES
+INSERT INTO `projects` (`id`, `name`, `province_id`, `district_id`, `lat`, `lng`) VALUES
 (1540, 'Chung cư 122 Vĩnh Tuy', 2, 35, 20.999267578125, 105.87572479248),
 (1541, 'Chung cư 536A Minh Khai', 2, 35, 20.998477935791, 105.86943054199),
 (1542, 'Chung cư 622 Minh Khai', 2, 35, 20.998010635376, 105.86836242676),
@@ -2301,7 +2301,7 @@ INSERT INTO `project` (`id`, `_name`, `_province_id`, `_district_id`, `_lat`, `_
 (2285, 'KDC Phước Tân', 5, 71, 10.874729156494, 106.91583251953),
 (2286, 'KDC thương mại Phước Thái', 5, 71, 10.863906860352, 106.92353820801),
 (2287, 'Phú Thịnh City', 5, 71, 10.908442497253, 106.85398101807);
-INSERT INTO `project` (`id`, `_name`, `_province_id`, `_district_id`, `_lat`, `_lng`) VALUES
+INSERT INTO `projects` (`id`, `name`, `province_id`, `district_id`, `lat`, `lng`) VALUES
 (2288, 'Phú Thuận Lợi', 5, 71, 10.923607826233, 106.94709014893),
 (2289, 'Phú Tín', 5, 71, 10.859975814819, 106.94240570068),
 (2290, 'Quang Vinh', 5, 71, 10.956379890442, 106.81196594238),
@@ -3030,7 +3030,7 @@ INSERT INTO `project` (`id`, `_name`, `_province_id`, `_district_id`, `_lat`, `_
 (3013, 'Nam Định Tower', 35, 438, 20.429702758789, 106.16554260254),
 (3014, 'KDC Đông Nam', 36, 446, 15.300809860229, 108.75873565674),
 (3015, 'An Phú Sinh', 36, 452, 15.118951797485, 108.8205871582);
-INSERT INTO `project` (`id`, `_name`, `_province_id`, `_district_id`, `_lat`, `_lng`) VALUES
+INSERT INTO `projects` (`id`, `name`, `province_id`, `district_id`, `lat`, `lng`) VALUES
 (3016, 'KDC Phan Đình Phùng-Nam Lê Lợi', 36, 452, 15.101881980896, 108.80637359619),
 (3017, 'KĐT Ngọc Bảo Viên', 36, 452, 15.113254547119, 108.80112457275),
 (3018, 'KĐT Thiên Mỹ Lộc', 36, 452, 15.15065574646, 108.79703521729),
@@ -3088,20 +3088,20 @@ INSERT INTO `project` (`id`, `_name`, `_province_id`, `_district_id`, `_lat`, `_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `province`
+-- Table structure for table `provinces`
 --
 
-CREATE TABLE `province` (
+CREATE TABLE `provinces` (
   `id` int(10) UNSIGNED NOT NULL,
-  `_name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `_code` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL
+  `name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `code` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `province`
+-- Dumping data for table `provinces`
 --
 
-INSERT INTO `province` (`id`, `_name`, `_code`) VALUES
+INSERT INTO `provinces` (`id`, `name`, `code`) VALUES
 (1, 'Hồ Chí Minh', 'SG'),
 (2, 'Hà Nội', 'HN'),
 (3, 'Đà Nẵng', 'DDN'),
@@ -3169,22 +3169,22 @@ INSERT INTO `province` (`id`, `_name`, `_code`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `street`
+-- Table structure for table `streets`
 --
 
-CREATE TABLE `street` (
+CREATE TABLE `streets` (
   `id` int(10) UNSIGNED NOT NULL,
-  `_name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `_prefix` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `_province_id` int(10) UNSIGNED DEFAULT NULL,
-  `_district_id` int(10) UNSIGNED DEFAULT NULL
+  `name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `prefix` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `province_id` int(10) UNSIGNED DEFAULT NULL,
+  `district_id` int(10) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `street`
+-- Dumping data for table `streets`
 --
 
-INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VALUES
+INSERT INTO `streets` (`id`, `name`, `prefix`, `province_id`, `district_id`) VALUES
 (1, '1', 'Đường', 1, 1),
 (2, '10', 'Đường', 1, 1),
 (3, '10A', 'Đường', 1, 1),
@@ -4779,7 +4779,7 @@ INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) 
 (1592, 'Nguyễn Phong Sắc', 'Đường', 1, 5),
 (1593, 'Nguyễn Phú Trú', 'Đường', 1, 5),
 (1594, 'Nguyễn Thị Chì', 'Đường', 1, 5);
-INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VALUES
+INSERT INTO `streets` (`id`, `name`, `prefix`, `province_id`, `district_id`) VALUES
 (1595, 'Nguyễn Thị Dạng', 'Đường', 1, 5),
 (1596, 'Nguyễn Thị Hai', 'Đường', 1, 5),
 (1597, 'Nguyễn Thị Hẹ', 'Đường', 1, 5),
@@ -6220,7 +6220,7 @@ INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) 
 (3032, 'Vạn Kiếp', 'Phố', 1, 9),
 (3033, 'Vũ Huy Tấn', 'Đường', 1, 9),
 (3034, '15B', 'Đường', 1, 10);
-INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VALUES
+INSERT INTO `streets` (`id`, `name`, `prefix`, `province_id`, `district_id`) VALUES
 (3035, '3A', 'Đường', 1, 10),
 (3036, 'Alexandre', 'Đường', 1, 10),
 (3037, 'Bà Huyện Thanh Quan', 'Phố', 1, 10),
@@ -7625,7 +7625,7 @@ INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) 
 (4436, 'Trịnh Khắc Lập', 'Đường', 1, 14),
 (4437, 'Trúc Đường', 'Đường', 1, 14),
 (4438, 'Trương Gia Mô', 'Đường', 1, 14);
-INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VALUES
+INSERT INTO `streets` (`id`, `name`, `prefix`, `province_id`, `district_id`) VALUES
 (4439, 'Trương Văn Bang', 'Đường', 1, 14),
 (4440, 'Trương Văn Đa', 'Đường', 1, 14),
 (4441, 'Vạn Kiếp', 'Phố', 1, 14),
@@ -9162,7 +9162,7 @@ INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) 
 (5972, 'Lạc Thiên', 'Đường', 1, 21),
 (5973, 'Lâm Viên', 'Đường', 1, 21),
 (5974, 'Làng Tăng Phú', 'Đường', 1, 21);
-INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VALUES
+INSERT INTO `streets` (`id`, `name`, `prefix`, `province_id`, `district_id`) VALUES
 (5975, 'Lê Duẩn', 'Đường', 1, 21),
 (5976, 'Lê Lợi', 'Đường', 1, 21),
 (5977, 'Lê Thánh Tôn', 'Đường', 1, 21),
@@ -10610,7 +10610,7 @@ INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) 
 (7419, 'Trung Tựu', 'Đường', 2, 27),
 (7420, 'Văn Tiến Dũng', 'Đường', 2, 27),
 (7421, 'Vân Trì', 'Đường', 2, 27);
-INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VALUES
+INSERT INTO `streets` (`id`, `name`, `prefix`, `province_id`, `district_id`) VALUES
 (7422, 'Văn Trì', 'Đường', 2, 27),
 (7423, 'Văn Trì 2', 'Đường', 2, 27),
 (7424, 'Võ Qúy Huân', 'Đường', 2, 27),
@@ -12023,7 +12023,7 @@ INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) 
 (8831, 'Nguyễn Văn Cừ', 'Đường', 2, 39),
 (8832, 'Nguyễn Văn Hưởng', 'Đường', 2, 39),
 (8833, 'Nguyễn Văn Linh', 'Đường', 2, 39);
-INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VALUES
+INSERT INTO `streets` (`id`, `name`, `prefix`, `province_id`, `district_id`) VALUES
 (8834, 'Nguyệt Quế', 'Đường', 2, 39),
 (8835, 'Nguyệt Quế 1', 'Đường', 2, 39),
 (8836, 'Nguyệt Quế 10', 'Đường', 2, 39),
@@ -13396,7 +13396,7 @@ INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) 
 (10203, 'Hàn Thuyên', 'Đường', 3, 56),
 (10204, 'Hồ Biểu Chánh', 'Đường', 3, 56),
 (10205, 'Hồ Nghinh', 'Đường', 3, 56);
-INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VALUES
+INSERT INTO `streets` (`id`, `name`, `prefix`, `province_id`, `district_id`) VALUES
 (10206, 'Hồ Nguyên Trừng', 'Đường', 3, 56),
 (10207, 'Hồ Tông Thốc', 'Đường', 3, 56),
 (10208, 'Hồ Xuân Hương', 'Đường', 3, 56),
@@ -14716,7 +14716,7 @@ INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) 
 (11522, 'An Hải Bắc 2', 'Đường', 3, 61),
 (11523, 'An Hải Bắc 3', 'Đường', 3, 61),
 (11524, 'An Hải Bắc 4', 'Đường', 3, 61);
-INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VALUES
+INSERT INTO `streets` (`id`, `name`, `prefix`, `province_id`, `district_id`) VALUES
 (11525, 'An Hải Bắc 5', 'Đường', 3, 61),
 (11526, 'An Hải Bắc 6', 'Đường', 3, 61),
 (11527, 'An Hải Bắc 7', 'Đường', 3, 61),
@@ -16132,7 +16132,7 @@ INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) 
 (12937, 'ĐT 843B', 'Đường', 4, 66),
 (12938, 'Dương Đình Cúc', 'Đường', 4, 66),
 (12939, 'Đường L', 'Đường', 4, 66);
-INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VALUES
+INSERT INTO `streets` (`id`, `name`, `prefix`, `province_id`, `district_id`) VALUES
 (12940, 'E', 'Đường', 4, 66),
 (12941, 'F', 'Đường', 4, 66),
 (12942, 'G', 'Đường', 4, 66),
@@ -17584,7 +17584,7 @@ INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) 
 (14388, 'Bình Hòa 23', 'Đường', 4, 70),
 (14389, 'Bình Hòa 24', 'Đường', 4, 70),
 (14390, 'Bình Hoà 25', 'Đường', 4, 70);
-INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VALUES
+INSERT INTO `streets` (`id`, `name`, `prefix`, `province_id`, `district_id`) VALUES
 (14391, 'Bình Hòa 26', 'Đường', 4, 70),
 (14392, 'Bình Hòa 3', 'Đường', 4, 70),
 (14393, 'Bình Hòa 4', 'Đường', 4, 70),
@@ -18968,7 +18968,7 @@ INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) 
 (15771, 'Kim Đồng', 'Đường', 6, 85),
 (15772, 'Tỉnh lộ 654', 'Đường', 6, 85),
 (15773, '2', 'Đường', 6, 86);
-INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VALUES
+INSERT INTO `streets` (`id`, `name`, `prefix`, `province_id`, `district_id`) VALUES
 (15774, '2/8', 'Đường', 6, 86),
 (15775, '8', 'Đường', 6, 86),
 (15776, 'Đà Lạt', 'Đường', 6, 86),
@@ -20372,7 +20372,7 @@ INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) 
 (17174, 'Nguyễn Công Hòa', 'Phố', 7, 101),
 (17175, 'Nguyễn Công Trứ', 'Đường', 7, 101),
 (17176, 'Nguyễn Đức Cảnh', 'Đường', 7, 101);
-INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VALUES
+INSERT INTO `streets` (`id`, `name`, `prefix`, `province_id`, `district_id`) VALUES
 (17177, 'Nguyên Hồng', 'Đường', 7, 101),
 (17178, 'Nguyễn Sơn Hà', 'Đường', 7, 101),
 (17179, 'Nguyễn Tất Tố', 'Phố', 7, 101),
@@ -21716,7 +21716,7 @@ INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) 
 (18517, 'Lê Đình Dương', 'Đường', 9, 135),
 (18518, 'Lê Đình Thám', 'Đường', 9, 135),
 (18519, 'Lê Lợi', 'Đường', 9, 135);
-INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VALUES
+INSERT INTO `streets` (`id`, `name`, `prefix`, `province_id`, `district_id`) VALUES
 (18520, 'Lê Ngọc Hân', 'Đường', 9, 135),
 (18521, 'Lê Phụng Hiểu', 'Phố', 9, 135),
 (18522, 'Lê Quý Đôn', 'Đường', 9, 135),
@@ -22996,7 +22996,7 @@ INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) 
 (19796, 'Xô Viết Nghệ Tĩnh', 'Đường', 11, 149),
 (19797, 'Xuân Diệu', 'Đường', 11, 149),
 (19798, 'Y Bhin', 'Đường', 11, 149);
-INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VALUES
+INSERT INTO `streets` (`id`, `name`, `prefix`, `province_id`, `district_id`) VALUES
 (19799, 'Y Bih Aleo', 'Đường', 11, 149),
 (19800, 'Y Jut', 'Đường', 11, 149),
 (19801, 'Y Khu', 'Đường', 11, 149),
@@ -24306,7 +24306,7 @@ INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) 
 (21105, 'Trần Quang Khải', 'Đường', 14, 185),
 (21106, 'Trần Quốc Toản', 'Đường', 14, 185),
 (21107, 'Trần Quý Cáp', 'Đường', 14, 185);
-INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VALUES
+INSERT INTO `streets` (`id`, `name`, `prefix`, `province_id`, `district_id`) VALUES
 (21108, 'Trần Thái Tông', 'Đường', 14, 185),
 (21109, 'Trần Văn Côi', 'Đường', 14, 185),
 (21110, 'Trạng Trình', 'Đường', 14, 185),
@@ -25560,7 +25560,7 @@ INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) 
 (22358, 'Nguyễn Gia Thiều', 'Đường', 17, 217),
 (22359, 'Nguyễn Giản Thanh', 'Đường', 17, 217),
 (22360, 'Nguyễn Hữu Huân', 'Đường', 17, 217);
-INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VALUES
+INSERT INTO `streets` (`id`, `name`, `prefix`, `province_id`, `district_id`) VALUES
 (22361, 'Nguyễn Hữu Nghiêm', 'Đường', 17, 217),
 (22362, 'Nguyễn Huy Tưởng', 'Đường', 17, 217),
 (22363, 'Nguyễn Nhân Kính', 'Đường', 17, 217),
@@ -26857,7 +26857,7 @@ INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) 
 (23654, 'Cao Xuân Huy', 'Đường', 20, 285),
 (23655, 'Chu Văn An', 'Đường', 20, 285),
 (23656, 'Cù Chính Lan', 'Đường', 20, 285);
-INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VALUES
+INSERT INTO `streets` (`id`, `name`, `prefix`, `province_id`, `district_id`) VALUES
 (23657, 'Cửa Hội', 'Đường', 20, 285),
 (23658, 'Đại lộ Thăng Long', 'Đường', 20, 285),
 (23659, 'Đặng Nguyên Cẩn', 'Đường', 20, 285),
@@ -28125,7 +28125,7 @@ INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) 
 (24921, 'Nguyễn Lương Bằng', 'Đường', 24, 328),
 (24922, 'Nguyễn Phong Sắc', 'Đường', 24, 328),
 (24923, 'Nguyễn Thiện Thuật', 'Phố', 24, 328);
-INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VALUES
+INSERT INTO `streets` (`id`, `name`, `prefix`, `province_id`, `district_id`) VALUES
 (24924, 'Nguyễn Trãi', 'Đường', 24, 328),
 (24925, 'Nguyễn Trung Ngạn', 'Đường', 24, 328),
 (24926, 'Nguyễn Văn Côn', 'Đường', 24, 328),
@@ -29409,7 +29409,7 @@ INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) 
 (26204, 'Chi Lăng', 'Đường', 29, 379),
 (26205, 'Cù Chính Lan', 'Đường', 29, 379),
 (26206, 'Điện Biên Phủ', 'Đường', 29, 379);
-INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VALUES
+INSERT INTO `streets` (`id`, `name`, `prefix`, `province_id`, `district_id`) VALUES
 (26207, 'Đinh Tiên Hoàng', 'Đường', 29, 379),
 (26208, 'Đoàn Thị Điểm', 'Đường', 29, 379),
 (26209, 'Hai Bà Trưng', 'Phố', 29, 379),
@@ -30669,7 +30669,7 @@ INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) 
 (27463, 'Tỉnh lộ 287', 'Đường', 33, 421),
 (27464, '263', 'Đường', 33, 422),
 (27465, '3', 'Đường', 33, 422);
-INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VALUES
+INSERT INTO `streets` (`id`, `name`, `prefix`, `province_id`, `district_id`) VALUES
 (27466, '37', 'Phố', 33, 422),
 (27467, 'Quốc lộ 1B', 'Đường', 33, 422),
 (27468, 'Quốc lộ 3', 'Đường', 33, 422),
@@ -31950,7 +31950,7 @@ INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) 
 (28743, 'Lê Văn Tâm', 'Đường', 40, 491),
 (28744, 'Lưu Văn Liệt', 'Đường', 40, 491),
 (28745, 'Lý Thường Kiệt', 'Phố', 40, 491);
-INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VALUES
+INSERT INTO `streets` (`id`, `name`, `prefix`, `province_id`, `district_id`) VALUES
 (28746, 'Mậu Thân', 'Đường', 40, 491),
 (28747, 'Ngô Quyền', 'Đường', 40, 491),
 (28748, 'Nguyễn Chí Thanh', 'Đường', 40, 491),
@@ -33220,7 +33220,7 @@ INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) 
 (30012, 'Võ Thị Sáu', 'Đường', 48, 566),
 (30013, 'Xẻo Cạy', 'Đường', 48, 566),
 (30014, '3/2', 'Đường', 48, 567);
-INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VALUES
+INSERT INTO `streets` (`id`, `name`, `prefix`, `province_id`, `district_id`) VALUES
 (30015, '30/4', 'Đường', 48, 567),
 (30016, 'An Dương Vương', 'Đường', 48, 567),
 (30017, 'Bà Triệu', 'Phố', 48, 567),
@@ -34485,7 +34485,7 @@ INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) 
 (31276, 'Trần Bình Trọng', 'Đường', 56, 640),
 (31277, 'Trần Đức Sắc', 'Đường', 56, 640),
 (31278, 'Trần Hưng Đạo', 'Đường', 56, 640);
-INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VALUES
+INSERT INTO `streets` (`id`, `name`, `prefix`, `province_id`, `district_id`) VALUES
 (31279, 'Trần Nguyên Hãn', 'Phố', 56, 640),
 (31280, 'Trần Phú', 'Đường', 56, 640),
 (31281, 'Trần Quang Khải', 'Đường', 56, 640),
@@ -34856,22 +34856,22 @@ INSERT INTO `street` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ward`
+-- Table structure for table `wards`
 --
 
-CREATE TABLE `ward` (
+CREATE TABLE `wards` (
   `id` int(10) UNSIGNED NOT NULL,
-  `_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `_prefix` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `_province_id` int(10) UNSIGNED DEFAULT NULL,
-  `_district_id` int(10) UNSIGNED DEFAULT NULL
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `prefix` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `province_id` int(10) UNSIGNED DEFAULT NULL,
+  `district_id` int(10) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `ward`
+-- Dumping data for table `wards`
 --
 
-INSERT INTO `ward` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VALUES
+INSERT INTO `wards` (`id`, `name`, `prefix`, `province_id`, `district_id`) VALUES
 (1, 'An Phú Tây', 'Xã', 1, 1),
 (2, 'Bình Chánh', 'Xã', 1, 1),
 (3, 'Bình Hưng', 'Xã', 1, 1),
@@ -36426,7 +36426,7 @@ INSERT INTO `ward` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VA
 (1552, 'Phù Ninh', 'Xã', 7, 103),
 (1553, 'Quảng Thanh', 'Xã', 7, 103),
 (1554, 'Tân Dương', 'Xã', 7, 103);
-INSERT INTO `ward` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VALUES
+INSERT INTO `wards` (`id`, `name`, `prefix`, `province_id`, `district_id`) VALUES
 (1555, 'Thiên Hương', 'Xã', 7, 103),
 (1556, 'Thủy Sơn', 'Xã', 7, 103),
 (1557, 'Thủy Triều', 'Xã', 7, 103),
@@ -37898,7 +37898,7 @@ INSERT INTO `ward` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VA
 (3023, 'Xuân Lai', 'Xã', 17, 218),
 (3024, 'An Thịnh', 'Xã', 17, 219),
 (3025, 'Bình Định', 'Xã', 17, 219);
-INSERT INTO `ward` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VALUES
+INSERT INTO `wards` (`id`, `name`, `prefix`, `province_id`, `district_id`) VALUES
 (3026, 'Lai Hạ', 'Xã', 17, 219),
 (3027, 'Lâm Thao', 'Xã', 17, 219),
 (3028, 'Minh Tân', 'Xã', 17, 219),
@@ -39350,7 +39350,7 @@ INSERT INTO `ward` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VA
 (4474, 'Đồng Lạc', 'Xã', 21, 289),
 (4475, 'Hoàng Hoa Thám', 'Phường', 21, 289),
 (4476, 'Hoàng Tân', 'Phường', 21, 289);
-INSERT INTO `ward` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VALUES
+INSERT INTO `wards` (`id`, `name`, `prefix`, `province_id`, `district_id`) VALUES
 (4477, 'Hoàng Tiến', 'Xã', 21, 289),
 (4478, 'Hưng Đạo', 'Xã', 21, 289),
 (4479, 'Kênh Giang', 'Xã', 21, 289),
@@ -40825,7 +40825,7 @@ INSERT INTO `ward` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VA
 (5948, 'An Châu', 'Thị trấn', 28, 372),
 (5949, 'An Châu', 'Xã', 28, 372),
 (5950, 'An Lạc', 'Xã', 28, 372);
-INSERT INTO `ward` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VALUES
+INSERT INTO `wards` (`id`, `name`, `prefix`, `province_id`, `district_id`) VALUES
 (5951, 'An Lập', 'Xã', 28, 372),
 (5952, 'Bồng Am', 'Xã', 28, 372),
 (5953, 'Cẩm Đàn', 'Xã', 28, 372),
@@ -42290,7 +42290,7 @@ INSERT INTO `ward` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VA
 (7412, 'Nghĩa Phương', 'Xã', 36, 458),
 (7413, 'Nghĩa Sơn', 'Xã', 36, 458),
 (7414, 'Nghĩa Thắng', 'Xã', 36, 458);
-INSERT INTO `ward` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VALUES
+INSERT INTO `wards` (`id`, `name`, `prefix`, `province_id`, `district_id`) VALUES
 (7415, 'Nghĩa Thọ', 'Xã', 36, 458),
 (7416, 'Nghĩa Thuận', 'Xã', 36, 458),
 (7417, 'Nghĩa Thương', 'Xã', 36, 458),
@@ -43755,7 +43755,7 @@ INSERT INTO `ward` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VA
 (8876, 'Tân Nhuận Đông', 'Xã', 47, 549),
 (8877, 'Tân Phú', 'Xã', 47, 549),
 (8878, 'Tân Phú Trung', 'Xã', 47, 549);
-INSERT INTO `ward` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VALUES
+INSERT INTO `wards` (`id`, `name`, `prefix`, `province_id`, `district_id`) VALUES
 (8879, 'An Bình A', 'Xã', 47, 550),
 (8880, 'An Bình B', 'Xã', 47, 550),
 (8881, 'An Lạc', 'Phường', 47, 550),
@@ -45208,7 +45208,7 @@ INSERT INTO `ward` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VA
 (10328, 'Phì Nhừ', 'Xã', 58, 650),
 (10329, 'Phình Giàng', 'Xã', 58, 650),
 (10330, 'Pú Hồng', 'Xã', 58, 650);
-INSERT INTO `ward` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VALUES
+INSERT INTO `wards` (`id`, `name`, `prefix`, `province_id`, `district_id`) VALUES
 (10331, 'Pú Nhi', 'Xã', 58, 650),
 (10332, 'Tìa Dình', 'Xã', 58, 650),
 (10333, 'Xa Dung', 'Xã', 58, 650),
@@ -46168,71 +46168,71 @@ INSERT INTO `ward` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VA
 --
 
 --
--- Indexes for table `district`
+-- Indexes for table `districts`
 --
-ALTER TABLE `district`
+ALTER TABLE `districts`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `_province_id` (`_province_id`);
+  ADD KEY `province_id` (`province_id`);
 
 --
--- Indexes for table `project`
+-- Indexes for table `projects`
 --
-ALTER TABLE `project`
+ALTER TABLE `projects`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `_province_id` (`_province_id`,`_district_id`);
+  ADD KEY `province_id` (`province_id`,`district_id`);
 
 --
--- Indexes for table `province`
+-- Indexes for table `provinces`
 --
-ALTER TABLE `province`
+ALTER TABLE `provinces`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `street`
+-- Indexes for table `streets`
 --
-ALTER TABLE `street`
+ALTER TABLE `streets`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `_province_id` (`_province_id`,`_district_id`);
+  ADD KEY `province_id` (`province_id`,`district_id`);
 
 --
--- Indexes for table `ward`
+-- Indexes for table `wards`
 --
-ALTER TABLE `ward`
+ALTER TABLE `wards`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `_province_id` (`_province_id`,`_district_id`);
+  ADD KEY `province_id` (`province_id`,`district_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `district`
+-- AUTO_INCREMENT for table `districts`
 --
-ALTER TABLE `district`
+ALTER TABLE `districts`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=710;
 
 --
--- AUTO_INCREMENT for table `project`
+-- AUTO_INCREMENT for table `projects`
 --
-ALTER TABLE `project`
+ALTER TABLE `projects`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3069;
 
 --
--- AUTO_INCREMENT for table `province`
+-- AUTO_INCREMENT for table `provinces`
 --
-ALTER TABLE `province`
+ALTER TABLE `provinces`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
--- AUTO_INCREMENT for table `street`
+-- AUTO_INCREMENT for table `streets`
 --
-ALTER TABLE `street`
+ALTER TABLE `streets`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31645;
 
 --
--- AUTO_INCREMENT for table `ward`
+-- AUTO_INCREMENT for table `wards`
 --
-ALTER TABLE `ward`
+ALTER TABLE `wards`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11284;
 COMMIT;
 
