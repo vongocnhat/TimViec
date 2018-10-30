@@ -15,46 +15,46 @@
 <body class="format_index1">
     <!-- header include -->
     <header class="tmp_header index1">
-            <div class="container clearfix">
-                <div class="box_logo">
-                    <a class="logo" href="#"></a>
-                </div>
-                <ul class="box_menu">
-                    <li class="menu_list">
-                        <a class="list_manager active" href="#index1" title="@lang('job_list.text2')">@lang('job_list.text3')</a>
-                    </li>
-                    <li class="menu_list">
-                        <a class="list_specialize" href="#index1" title="@lang('job_list.text4')">@lang('job_list.text5')</a>
-                    </li>
-                    <li class="menu_list">
-                        <a class="list_labor" href="#index1" title="@lang('job_list.text6')">@lang('job_list.text7')</a>
-                    </li>
-                    <li class="menu_list">
-                        <a class="list_student" href="#index1" title="@lang('job_list.text8')">@lang('job_list.text9')</a>
-                    </li>
-                    <li class="menu_list">
-                        <a class="list_employer" href="#index1" title="@lang('job_list.text10')">@lang('job_list.text11')</a>
-                    </li>
-                    <li class="menu_list">
-                        <a class="list_home" href="#index1" title="@lang('job_list.text12')"></a>
-                    </li>
-                    <li class="menu_list">
-                        <a class="list_save" href="#index1" title="@lang('job_list.text13')"></a>
-                    </li>
-                    <li class="menu_list">
-                        <a class="list_seach" href="#index1" title="@lang('job_list.text14')"></a>
-                    </li>
-                    <li class="menu_list">
-                        <a class="list_notification" href="#index1" title="@lang('job_list.text15')"></a>
-                    </li>
-                    <li class="menu_list">
-                        <a class="list_user" href="#index1" title="@lang('job_list.text16')"> Nguyễn Hoài Sơn</a>
-                    </li>
-                </ul>
-                <ul>
-    
-                </ul>
+        <div class="container clearfix">
+            <div class="box_logo">
+                <a class="logo" href="#"></a>
             </div>
+            <ul class="box_menu">
+                <li class="menu_list">
+                    <a class="list_manager active" href="#index1" title="@lang('job_list.text2')">@lang('job_list.text3')</a>
+                </li>
+                <li class="menu_list">
+                    <a class="list_specialize" href="#index1" title="@lang('job_list.text4')">@lang('job_list.text5')</a>
+                </li>
+                <li class="menu_list">
+                    <a class="list_labor" href="#index1" title="@lang('job_list.text6')">@lang('job_list.text7')</a>
+                </li>
+                <li class="menu_list">
+                    <a class="list_student" href="#index1" title="@lang('job_list.text8')">@lang('job_list.text9')</a>
+                </li>
+                <li class="menu_list">
+                    <a class="list_employer" href="#index1" title="@lang('job_list.text10')">@lang('job_list.text11')</a>
+                </li>
+                <li class="menu_list">
+                    <a class="list_home" href="#index1" title="@lang('job_list.text12')"></a>
+                </li>
+                <li class="menu_list">
+                    <a class="list_save" href="#index1" title="@lang('job_list.text13')"></a>
+                </li>
+                <li class="menu_list">
+                    <a class="list_seach" href="#index1" title="@lang('job_list.text14')"></a>
+                </li>
+                <li class="menu_list">
+                    <a class="list_notification" href="#index1" title="@lang('job_list.text15')"></a>
+                </li>
+                <li class="menu_list">
+                    <a class="list_user" href="#index1" title="@lang('job_list.text16')"> Nguyễn Hoài Sơn</a>
+                </li>
+            </ul>
+            <ul>
+
+            </ul>
+        </div>
     </header>
     <div class="box_pakuzu">
         <div class="container">
@@ -128,7 +128,8 @@
                                 <a class="item_favorite" href="#"></a>
                             </div>
                             <div class="item_ttl_man">
-                                <a class="items_name" href="">Đối Tác Quản Lý Kinh Doanh Độc Lập Công Ty Hanwha Life Việt Nam</a>
+                                <a class="items_name" href="">Đối Tác Quản Lý Kinh Doanh Độc Lập Công Ty Hanwha Life
+                                    Việt Nam</a>
                                 <a class="items_cty" href="">Công Ty Cổ Phần Gió Nhẹ Miền Nam</a>
                             </div>
                             <div class="item_value">
@@ -143,7 +144,8 @@
                             </div>
                             <div class="item_ttl_man">
                                 <a class="items_name" href="">Sale Kiêm Marketing Leader</a>
-                                <a class="items_cty" href="">Chi Nhánh Thành Phố Hồ Chí Minh - Công Ty TNHH Dios Investment Vina</a>
+                                <a class="items_cty" href="">Chi Nhánh Thành Phố Hồ Chí Minh - Công Ty TNHH Dios
+                                    Investment Vina</a>
                             </div>
                             <div class="item_value">
                                 <p class="items_price">7 – 10 @lang('common.million')</p>
@@ -163,26 +165,30 @@
                     <ul class="box_list_items">
                         <li class="list_items">
                             <div class="item_ttl_man">
-                                <a class="items_name" href="">Đối Tác Quản Lý Kinh Doanh Độc Lập Công Ty Hanwha Life Việt Nam</a>
+                                <a class="items_name" href="">Đối Tác Quản Lý Kinh Doanh Độc Lập Công Ty Hanwha Life
+                                    Việt Nam</a>
                                 <a class="items_cty" href="">Công Ty Cổ Phần Gió Nhẹ Miền Nam</a>
                             </div>
                         </li>
                         <li class="list_items">
                             <div class="item_ttl_man">
                                 <a class="items_name" href="">Sale Kiêm Marketing Leader</a>
-                                <a class="items_cty" href="">Chi Nhánh Thành Phố Hồ Chí Minh - Công Ty TNHH Dios Investment Vina</a>
+                                <a class="items_cty" href="">Chi Nhánh Thành Phố Hồ Chí Minh - Công Ty TNHH Dios
+                                    Investment Vina</a>
                             </div>
                         </li>
                         <li class="list_items">
                             <div class="item_ttl_man">
-                                <a class="items_name" href="">Đối Tác Quản Lý Kinh Doanh Độc Lập Công Ty Hanwha Life Việt Nam</a>
+                                <a class="items_name" href="">Đối Tác Quản Lý Kinh Doanh Độc Lập Công Ty Hanwha Life
+                                    Việt Nam</a>
                                 <a class="items_cty" href="">Công Ty Cổ Phần Gió Nhẹ Miền Nam</a>
                             </div>
                         </li>
                         <li class="list_items">
                             <div class="item_ttl_man">
                                 <a class="items_name" href="">Sale Kiêm Marketing Leader</a>
-                                <a class="items_cty" href="">Chi Nhánh Thành Phố Hồ Chí Minh - Công Ty TNHH Dios Investment Vina</a>
+                                <a class="items_cty" href="">Chi Nhánh Thành Phố Hồ Chí Minh - Công Ty TNHH Dios
+                                    Investment Vina</a>
                             </div>
                         </li>
                     </ul>

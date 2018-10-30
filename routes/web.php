@@ -10,8 +10,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::namespace('Home')->group(function() {
+    Route::get('/', 'HomeController@home');
 });
 
 Route::prefix('manage')->middleware(['AdminMiddleware'])->namespace('Manage')->group(function () {
