@@ -64,10 +64,10 @@
             </div>
         </div>
     </nav>
-    <div class="box_intro box_cnt">
-        <div class="container">
+    <div class="container">
+        <div class="box_intro box_cnt">
             <p class="text1">@lang('home.text11')</p>
-            <p class="text2">@lang('home.text12')</p>
+            <p class="text2">@lang('home.text12', ['para1' => $jobsCount, 'para2' => '0'])</p>
         </div>
     </div>
     <div id="tmp_content">

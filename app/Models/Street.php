@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Province extends Model
+class Street extends Model
 {
     protected $fillable = [
     	'name',
-    	'code'
+    	'prefix',
+    	'province_id',
+    	'district_id'
     ];
 }
