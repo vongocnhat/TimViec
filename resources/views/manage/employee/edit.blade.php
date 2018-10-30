@@ -56,10 +56,6 @@
                     <div class="form-group">
                         {{ Form::label('gender', __('employee.gender'), ['class' => 'mb-1']) }}
                         {{ Form::text('gender', null, ['class' => 'form-control']) }}
-                        {{-- {{ Form::label(null, __('employee.male')) }}
-                        <label for="radio1" class="form-check-label ">
-                            <input type="radio" id="radio1" name="radios" value="option1" class="form-check-input">Option 1
-                        </label> --}}
                     </div>
                     <div class="form-group">
                         {{ Form::label('married', __('employee.married'), ['class' => 'mb-1']) }}

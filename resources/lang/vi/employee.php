@@ -16,6 +16,4 @@ return [
     'married' => 'Tình Trạng Hôn Nhân',
     'married_true' => 'Đã Kết Hôn',
     'married_false' => 'Chưa Kết Hôn',
-    'male' => 'Nam',
-    'female' => 'Nữ',
 ];

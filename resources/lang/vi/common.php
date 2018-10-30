@@ -17,4 +17,9 @@ return [
     'delete_required' => 'Xóa Không Thành Công: Vui lòng chọn ít nhất 1 checkbox (hộp kiểm)!',
     'cancel_message' => 'Hủy bỏ việc thêm mới?',
     'create_success' => 'Thêm thành công!',
+    'million' => 'Triệu',
+    'year' => 'Năm',
+    'male' => 'Nam',
+    'female' => 'Nữ',
+    'agreement' => 'Thỏa Thuận',
 ];
