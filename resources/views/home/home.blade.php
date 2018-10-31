@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@lang('home.text1')</title>
     <link rel="stylesheet" href="css/reset.css">
@@ -39,7 +39,7 @@
                 </div>
                 <ul class="list_item">
                     <li class="item">
-                        <a class="manage" href="{{ route('jobList.manage') }}">@lang('home.text5')</a>
+                        <a class="manage" href="{{ route('jobList.manager') }}">@lang('home.text5')</a>
                     </li>
                     <li class="item">
                         <a class="specialize" href="{{ route('jobList.specialize') }}">@lang('home.text6')</a>
@@ -89,7 +89,7 @@
                     </li>
                 </ul>
                 <div class="part_link">
-                    <a class="box_link" href="{{ route('jobList.manage') }}">@lang('home.text18')</a>
+                    <a class="box_link" href="{{ route('jobList.manager') }}">@lang('home.text18')</a>
                 </div>
             </div>
             <div class="box_cnt col specialize wow slideInRight">
