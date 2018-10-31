@@ -39,16 +39,16 @@
                 </div>
                 <ul class="list_item">
                     <li class="item">
-                        <a class="manage" href="#">@lang('home.text5')</a>
+                        <a class="manage" href="{{ route('jobList.manage') }}">@lang('home.text5')</a>
                     </li>
                     <li class="item">
-                        <a class="specialize" href="#">@lang('home.text6')</a>
+                        <a class="specialize" href="{{ route('jobList.specialize') }}">@lang('home.text6')</a>
                     </li>
                     <li class="item">
-                        <a class="labor" href="#">@lang('home.text7')</a>
+                        <a class="labor" href="{{ route('jobList.labor') }}">@lang('home.text7')</a>
                     </li>
                     <li class="item">
-                        <a class="student" href="#">@lang('home.text8')</a>
+                        <a class="student" href="{{ route('jobList.student') }}">@lang('home.text8')</a>
                     </li>
                 </ul>
             </div>
@@ -67,7 +67,7 @@
     <div class="container">
         <div class="box_intro box_cnt">
             <p class="text1">@lang('home.text11')</p>
-            <p class="text2">@lang('home.text12', ['para1' => $jobsCount, 'para2' => '0'])</p>
+            <p class="text2">@lang('home.text12', ['para1' => $jobsReady, 'para2' => $profilesReady])</p>
         </div>
     </div>
     <div id="tmp_content">
@@ -89,7 +89,7 @@
                     </li>
                 </ul>
                 <div class="part_link">
-                    <a class="box_link" href="">@lang('home.text18')</a>
+                    <a class="box_link" href="{{ route('jobList.manage') }}">@lang('home.text18')</a>
                 </div>
             </div>
             <div class="box_cnt col specialize wow slideInRight">
@@ -106,7 +106,7 @@
                     </li>
                 </ul>
                 <div class="part_link">
-                    <a class="box_link" href="">@lang('home.text18')</a>
+                    <a class="box_link" href="{{ route('jobList.specialize') }}">@lang('home.text18')</a>
                 </div>
             </div>
             <div class="box_cnt col labor wow slideInLeft">
@@ -123,7 +123,7 @@
                     </li>
                 </ul>
                 <div class="part_link">
-                    <a class="box_link" href="">@lang('home.text18')</a>
+                    <a class="box_link" href="{{ route('jobList.labor') }}">@lang('home.text18')</a>
                 </div>
             </div>
             <div class="box_cnt col student wow slideInRight">
@@ -140,14 +140,14 @@
                     </li>
                 </ul>
                 <div class="part_link">
-                    <a class="box_link" href="">@lang('home.text18')</a>
+                    <a class="box_link" href="{{ route('jobList.student') }}">@lang('home.text18')</a>
                 </div>
             </div>
             <div class="box_cnt col employer wow slideInLeft m-b-40">
                 <h2>@lang('home.text34')</h2>
                 <ul class="list_item">
                     <li class="item">
-                        <span>@lang('home.text35', ['para1' => '2,117,343', 'para2' => '2,117,343'])</span>
+                        <span>@lang('home.text35', ['para1' => $profilesReady, 'para2' => $profilesReady])</span>
                     </li>
                 </ul>
                 <div class="part_link">

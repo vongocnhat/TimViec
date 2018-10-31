@@ -17,7 +17,8 @@ class CreateJobsTable extends Migration
             $table->unsignedInteger('employer_id')->primary();
             $table->unsignedInteger('office_id');
             $table->unsignedInteger('type_of_work_id');
-            $table->text('career_ids');
+            $table->unsignedInteger('degree_id');
+            $table->text('career_ids')->nullable();
             $table->text('language_ids')->nullable();
             $table->string('name');
             $table->string('company_name', 191);
@@ -26,7 +27,6 @@ class CreateJobsTable extends Migration
             $table->unsignedInteger('wage_from')->nullable()->default(0);
             $table->unsignedInteger('wage_to')->nullable()->default(0);
             $table->tinyInteger('experience');
-            $table->string('literacy');
             $table->unsignedInteger('quantity');
             $table->string('probationary_period')->nullable();
             $table->string('gender')->nullable();
@@ -51,6 +51,9 @@ class CreateJobsTable extends Migration
                   ->onDelete('cascade');
             $table->foreign('type_of_work_id')
                   ->references('id')->on('type_of_works')
+                  ->onDelete('cascade');
+            $table->foreign('degree_id')
+                  ->references('id')->on('degrees')
                   ->onDelete('cascade');
             $table->foreign('province_id')
                   ->references('id')->on('provinces')

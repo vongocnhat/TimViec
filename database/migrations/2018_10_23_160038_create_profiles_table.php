@@ -17,6 +17,7 @@ class CreateProfilesTable extends Migration
             $table->unsignedInteger('employee_id')->primary();
             $table->unsignedInteger('career_id');
             $table->unsignedInteger('type_of_work_id');
+            $table->unsignedInteger('degree_id');
             $table->string('desired_job')->nullable();
             $table->text('work_location');
             $table->unsignedInteger('desire_minimum_wage')->nullable();
@@ -40,6 +41,9 @@ class CreateProfilesTable extends Migration
                   ->onDelete('cascade');
             $table->foreign('type_of_work_id')
                   ->references('id')->on('type_of_works')
+                  ->onDelete('cascade');
+            $table->foreign('degree_id')
+                  ->references('id')->on('degrees')
                   ->onDelete('cascade');
             $table->timestamps();
         });

@@ -52,6 +52,47 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
+        DB::table('degrees')->insert([
+            [
+                'degree' => 'Không'
+            ],
+            [
+                'degree' => 'Trung Học Cơ Sở'
+            ],
+            [
+                'degree' => 'Trung Học Phổ Thông'
+            ],
+            [
+                'degree' => 'Trung Cấp'
+            ],
+            [
+                'degree' => 'Cao Đẳng'
+            ],
+            [
+                'degree' => 'Đại Học'
+            ],
+            [
+                'degree' => 'Thạc Sĩ'
+            ]
+        ]);
+
+        DB::table('type_of_works')->insert([
+            [
+                'type_of_work' => 'Toàn Thời Gian'
+            ],
+            [
+                'type_of_work' => 'Bán Thời Gian'
+            ]
+        ]);
+
+        DB::table('offices')->insert([
+            [
+                'office' => 'Nhân Viên'
+            ],
+            [
+                'office' => 'Quản Lý'
+            ]
+        ]);
         for($i = 1 ; $i < 50 ; $i++)
         {
             $this->init++;
@@ -89,19 +130,12 @@ class DatabaseSeeder extends Seeder
                 'website' => $this->initNull('website' .$i)
             ]);
 
-            DB::table('offices')->insert([
-                'office'=> 'office'.$i
-            ]);
-
-            DB::table('type_of_works')->insert([
-                'type_of_work'=> 'type_of_work'.$i
-            ]);
-
             DB::table('jobs')->insert([
                 'employer_id' => $i,
-                'office_id' => $i,
-                'type_of_work_id' => $i,
-                'career_ids' => $i . ', ' . ($i + 1) . ', ' . ($i + 2),
+                'office_id' => rand(1, 2),
+                'type_of_work_id' => rand(1, 2),
+                'degree_id' => rand(1, 7),
+                'career_ids' => $this->initNull($i . ', ' . ($i + 1) . ', ' . ($i + 2)),
                 'language_ids' => $this->initNull($i . ', ' . ($i + 1) . ', ' . ($i + 2)),
                 'name' => 'name' .$i,
                 'company_name' => 'company_name' .$i,
@@ -110,7 +144,6 @@ class DatabaseSeeder extends Seeder
                 'wage_from' => $this->initNull(rand(1000000, 2000000)),
                 'wage_to' => $this->initNull(rand(4000000, 8000000)),
                 'experience' => rand(0, 10),
-                'literacy' => 'literacy' .$i,
                 'quantity' => $i,
                 'probationary_period' => $this->initNull('probationary_period' .$i),
                 'gender' => $this->initNull('gender' .$i),

@@ -21,16 +21,16 @@
             </div>
             <ul class="box_menu">
                 <li class="menu_list">
-                    <a class="list_manager active" href="#index1" title="@lang('job_list.text2')">@lang('job_list.text3')</a>
+                    <a class="list_manager active" href="{{ route('jobList.manager') }}" title="@lang('job_list.text2')">@lang('job_list.text3')</a>
                 </li>
                 <li class="menu_list">
-                    <a class="list_specialize" href="#index1" title="@lang('job_list.text4')">@lang('job_list.text5')</a>
+                    <a class="list_specialize" href="{{ route('jobList.specialize') }}" title="@lang('job_list.text4')">@lang('job_list.text5')</a>
                 </li>
                 <li class="menu_list">
-                    <a class="list_labor" href="#index1" title="@lang('job_list.text6')">@lang('job_list.text7')</a>
+                    <a class="list_labor" href="{{ route('jobList.labor') }}" title="@lang('job_list.text6')">@lang('job_list.text7')</a>
                 </li>
                 <li class="menu_list">
-                    <a class="list_student" href="#index1" title="@lang('job_list.text8')">@lang('job_list.text9')</a>
+                    <a class="list_student" href="{{ route('jobList.student') }}" title="@lang('job_list.text8')">@lang('job_list.text9')</a>
                 </li>
                 <li class="menu_list">
                     <a class="list_employer" href="#index1" title="@lang('job_list.text10')">@lang('job_list.text11')</a>
@@ -59,54 +59,28 @@
     <div class="box_pakuzu">
         <div class="container">
             <a class="paku_maner" href="">@lang('job_list.text17')</a>
-            <span>@lang('job_list.text18'</span>
+            <span>@lang('job_list.text18')</span>
         </div>
     </div>
     <div class="seation_search container">
-        <form class="form_seach" action="#" method="get">
+        {!! Form::open(['route' => 'jobList.searchAjax', 'method' => 'post', 'class' => 'form_seach']) !!}
             <ul class="box_form">
                 <li class="list_occupation">
-                    <select class="select_input" name="">
-                        <option value="vol">@lang('job_list.text19')</option>
-                        <option value="volvo">Volvo</option>
-                        <option value="saab">Saab</option>
-                        <option value="fiat">Fiat</option>
-                        <option value="audi">Audi</option>
-                    </select>
+                    {{ Form::select('carrer_id', $careers, null, ['class' => 'select_input', 'placeholder' => __('job_list.text19')]) }}
                 </li>
                 <li class="list_salary">
-                    <select class="select_input" name="">
-                        <option value="vol">@lang('job_list.text20')</option>
-                        <option value="volvo">Volvo</option>
-                        <option value="saab">Saab</option>
-                        <option value="fiat">Fiat</option>
-                        <option value="audi">Audi</option>
-                    </select>
+                    {{ Form::select('salary', $salaries, null, ['class' => 'select_input', 'placeholder' => __('job_list.text20')]) }}
                 </li>
                 <li class="list_exper">
-                    <select class="select_input" name="">
-                        <option value="vol">@lang('job_list.text21')</option>
-                        <option value="volvo">Volvo</option>
-                        <option value="saab">Saab</option>
-                        <option value="fiat">Fiat</option>
-                        <option value="audi">Audi</option>
-                        <option value="vol">Kinh nghiệm</option>
-                    </select>
+                    {{ Form::select('experience', $experiences, null, ['class' => 'select_input', 'placeholder' => __('job_list.text21')]) }}
                 </li>
                 <li class="list_province">
-                    <select class="select_input" name="">
-                        <option value="vol">@lang('job_list.text22')</option>
-                        <option value="volvo">Volvo</option>
-                        <option value="saab">Saab</option>
-                        <option value="fiat">Fiat</option>
-                        <option value="audi">Audi</option>
-                        <option value="vol">Kinh nghiệm</option>
-                    </select>
+                    {{ Form::select('province_id', $provinces, null, ['class' => 'select_input', 'placeholder' => __('job_list.text22')]) }}
                 </li>
             </ul>
-            <input class="inp_search" type="text" placeholder="@lang('job_list.text23')">
-            <input class="btn_seach" type="button" value="@lang('job_list.text24')">
-        </form>
+            {{ Form::text('inp_search', null, ['class' => 'inp_search', 'placeholder' => __('job_list.text23')]) }}
+            {{ Form::submit(__('job_list.text24'), ['class' => 'btn_seach']) }}
+        {!! Form::close() !!}
     </div>
     <!-- /header include -->
     <div class="content">
@@ -119,17 +93,17 @@
                 <div class="box_cnt">
                     <div class="cnt_title_man">
                         <p>@lang('job_list.text27')</p>
-                        <a class="latest active" href="#">@lang('job_list.text28')</a>
-                        <a class="deline" href="#">@lang('job_list.text29')</a>
+                        <a class="latest btn btn-success rounded-0 text-white" href="#">@lang('job_list.text28')</a>
+                        <a class="deadline btn btn-danger rounded-0 text-white" href="#">@lang('job_list.text29')</a>
                     </div>
                     <ul class="box_list_items">
+                        @foreach($jobs as $job)
                         <li class="list_items">
                             <div class="favorite">
                                 <a class="item_favorite" href="#"></a>
                             </div>
                             <div class="item_ttl_man">
-                                <a class="items_name" href="">Đối Tác Quản Lý Kinh Doanh Độc Lập Công Ty Hanwha Life
-                                    Việt Nam</a>
+                                <a class="items_name" href="">Đối Tác Quản Lý Kinh Doanh Độc Lập Công Ty Hanwha Life Việt Nam</a>
                                 <a class="items_cty" href="">Công Ty Cổ Phần Gió Nhẹ Miền Nam</a>
                             </div>
                             <div class="item_value">
@@ -138,21 +112,7 @@
                                 <p class="items_day">10/11/2018</p>
                             </div>
                         </li>
-                        <li class="list_items">
-                            <div class="favorite">
-                                <a class="item_favorite" href="#"></a>
-                            </div>
-                            <div class="item_ttl_man">
-                                <a class="items_name" href="">Sale Kiêm Marketing Leader</a>
-                                <a class="items_cty" href="">Chi Nhánh Thành Phố Hồ Chí Minh - Công Ty TNHH Dios
-                                    Investment Vina</a>
-                            </div>
-                            <div class="item_value">
-                                <p class="items_price">7 – 10 @lang('common.million')</p>
-                                <p class="items_place">Đà nẵng</p>
-                                <p class="items_day">10/11/2018</p>
-                            </div>
-                        </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -165,35 +125,32 @@
                     <ul class="box_list_items">
                         <li class="list_items">
                             <div class="item_ttl_man">
-                                <a class="items_name" href="">Đối Tác Quản Lý Kinh Doanh Độc Lập Công Ty Hanwha Life
-                                    Việt Nam</a>
+                                <a class="items_name" href="">Đối Tác Quản Lý Kinh Doanh Độc Lập Công Ty Hanwha Life Việt Nam</a>
                                 <a class="items_cty" href="">Công Ty Cổ Phần Gió Nhẹ Miền Nam</a>
                             </div>
                         </li>
                         <li class="list_items">
                             <div class="item_ttl_man">
                                 <a class="items_name" href="">Sale Kiêm Marketing Leader</a>
-                                <a class="items_cty" href="">Chi Nhánh Thành Phố Hồ Chí Minh - Công Ty TNHH Dios
-                                    Investment Vina</a>
+                                <a class="items_cty" href="">Chi Nhánh Thành Phố Hồ Chí Minh - Công Ty TNHH Dios Investment Vina</a>
                             </div>
                         </li>
                         <li class="list_items">
                             <div class="item_ttl_man">
-                                <a class="items_name" href="">Đối Tác Quản Lý Kinh Doanh Độc Lập Công Ty Hanwha Life
-                                    Việt Nam</a>
+                                <a class="items_name" href="">Đối Tác Quản Lý Kinh Doanh Độc Lập Công Ty Hanwha Life Việt Nam</a>
                                 <a class="items_cty" href="">Công Ty Cổ Phần Gió Nhẹ Miền Nam</a>
                             </div>
                         </li>
                         <li class="list_items">
                             <div class="item_ttl_man">
                                 <a class="items_name" href="">Sale Kiêm Marketing Leader</a>
-                                <a class="items_cty" href="">Chi Nhánh Thành Phố Hồ Chí Minh - Công Ty TNHH Dios
-                                    Investment Vina</a>
+                                <a class="items_cty" href="">Chi Nhánh Thành Phố Hồ Chí Minh - Công Ty TNHH Dios Investment Vina</a>
                             </div>
                         </li>
                     </ul>
                 </div>
             </div>
+            <!--
             <div class="follow_industry">
                 <div class="title">
                     <h2 class="title_h2">@lang('job_list.text34')</h2>
@@ -223,6 +180,7 @@
                     </ul>
                 </div>
             </div>
+            -->
         </div>
     </div>
     <!-- include footer -->

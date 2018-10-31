@@ -16,10 +16,12 @@ class HomeController extends Controller
         $this->re = $re;
     }
 
-    public function home()
+    public function index()
     {
         $re = $this->re;
-        $jobsCount = $re->jobsCount();
-        return view('home', compact('jobsCount'));
+        $jobsReady = $re->jobsReady();
+        $profilesReady = $re->profilesReady();
+
+        return view('home', compact('jobsReady', 'profilesReady'));
     }
 }

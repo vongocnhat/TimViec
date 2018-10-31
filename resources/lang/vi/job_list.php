@@ -32,4 +32,6 @@ return [
     'text32' => 'Cổng Công Việc chung',
     'text33' => 'Việc làm hấp dẫn',
     'text34' => 'Việc làm Theo ngành nghề',
+    'below'  => 'Dưới',
+    'over'   => 'Trên',
 ];
