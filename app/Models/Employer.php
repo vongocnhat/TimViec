@@ -27,5 +27,10 @@ class Employer extends Authenticatable
 
     protected $hidden = [
         'password', 'forget_password',
-    ];
+	];
+	
+	public function province()
+	{
+		return $this->belongsTo('App\Models\Province');
+	}
 }

@@ -10,16 +10,15 @@ class Job extends Model
 	    'employer_id',
 		'office_id',
 		'type_of_work_id',
+		'degree_id',
 		'career_ids',
 		'language_ids',
 		'name',
-		'company_name',
 		'deadline',
 		'viewed',
 		'wage_from',
 		'wage_to',
 		'experience',
-		'literacy',
 		'quantity',
 		'probationary_period',
 		'gender',
@@ -31,10 +30,13 @@ class Job extends Model
 		'apply_online',
 		'contact_person',
 		'email',
-		'phone',
-		'province_id',
-		'district_id',
-		'ward_id',
-		'address'
+		'phone'
 	];
+
+	protected $dates = ['deadline'];
+
+	public function employer()
+	{
+		return $this->belongsTo('App\Models\Employer');
+	}
 }

@@ -22,6 +22,6 @@ class HomeController extends Controller
         $jobsReady = $re->jobsReady();
         $profilesReady = $re->profilesReady();
 
-        return view('home', compact('jobsReady', 'profilesReady'));
+        return view('home.home', compact('jobsReady', 'profilesReady'));
     }
 }

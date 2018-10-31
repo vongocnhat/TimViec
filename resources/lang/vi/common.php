@@ -18,6 +18,8 @@ return [
     'cancel_message' => 'Hủy bỏ việc thêm mới?',
     'create_success' => 'Thêm thành công!',
     'million' => 'Triệu',
+    'below'  => 'Dưới',
+    'over'   => 'Trên',
     'year' => 'Năm',
     'male' => 'Nam',
     'female' => 'Nữ',

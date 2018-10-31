@@ -6,44 +6,6 @@ class DatabaseSeeder extends Seeder
 {
     private $init = -1;
 
-    private function initNull($value)
-    {
-        if ($this->init > 3) {
-            return $value;
-        } else {
-            return null;
-        }
-    }
-
-    private function randomDate()
-    {
-        // Convert to timetamps
-        $min = strtotime('1900-1-1');
-        $max = strtotime(date("Y-m-d"));
-
-        // Generate random number using above bounds
-        $val = rand($min, $max);
-
-        // Convert back to desired date format
-        return date('Y-m-d', $val);
-    }
-
-    private function randomDateDeadLine()
-    {
-        // Convert to timetamps
-        $min = strtotime('2010-1-1');
-        $max = strtotime(date("Y-m-d"));
-        
-        if ($this->init < 3) {
-            $min = strtotime(date("Y-m-d"));
-            $max = strtotime(date("Y-m-d", strtotime('+1 year')));
-        }
-        // Generate random number using above bounds
-        $val = rand($min, $max);
-
-        // Convert back to desired date format
-        return date('Y-m-d', $val);
-    }
     /**
      * Seed the application's database.
      *
@@ -51,47 +13,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
-        DB::table('degrees')->insert([
-            [
-                'degree' => 'Không'
-            ],
-            [
-                'degree' => 'Trung Học Cơ Sở'
-            ],
-            [
-                'degree' => 'Trung Học Phổ Thông'
-            ],
-            [
-                'degree' => 'Trung Cấp'
-            ],
-            [
-                'degree' => 'Cao Đẳng'
-            ],
-            [
-                'degree' => 'Đại Học'
-            ],
-            [
-                'degree' => 'Thạc Sĩ'
-            ]
-        ]);
-
-        DB::table('type_of_works')->insert([
-            [
-                'type_of_work' => 'Toàn Thời Gian'
-            ],
-            [
-                'type_of_work' => 'Bán Thời Gian'
-            ]
-        ]);
-
-        DB::table('offices')->insert([
-            [
-                'office' => 'Nhân Viên'
-            ],
-            [
-                'office' => 'Quản Lý'
-            ]
+        $this->call([
+            CareersTableSeeder::class,
+            DegreesTableSeeder::class,
+            OfficesTableSeeder::class,
+            TypeOfWorksTableSeeder::class,
         ]);
         for($i = 1 ; $i < 50 ; $i++)
         {
@@ -133,12 +59,11 @@ class DatabaseSeeder extends Seeder
             DB::table('jobs')->insert([
                 'employer_id' => $i,
                 'office_id' => rand(1, 2),
-                'type_of_work_id' => rand(1, 2),
+                'type_of_work_id' => rand(1, 6),
                 'degree_id' => rand(1, 7),
                 'career_ids' => $this->initNull($i . ', ' . ($i + 1) . ', ' . ($i + 2)),
                 'language_ids' => $this->initNull($i . ', ' . ($i + 1) . ', ' . ($i + 2)),
                 'name' => 'name' .$i,
-                'company_name' => 'company_name' .$i,
                 'deadline' => $this->randomDateDeadLine(),
                 'viewed' => $this->initNull(rand(0, 50)),
                 'wage_from' => $this->initNull(rand(1000000, 2000000)),
@@ -156,11 +81,46 @@ class DatabaseSeeder extends Seeder
                 'contact_person' => 'contact_person' .$i,
                 'email' => 'email' .$i.'@gmail.com',
                 'phone' => 'phone' .$i,
-                'province_id' => $i,
-                'district_id' => $i,
-                'ward_id' => $i,
-                'address' => 'address' .$i
             ]);
         }
+    }
+
+    private function initNull($value)
+    {
+        if ($this->init > 3) {
+            return $value;
+        } else {
+            return null;
+        }
+    }
+
+    private function randomDate()
+    {
+        // Convert to timetamps
+        $min = strtotime('1900-1-1');
+        $max = strtotime(date("Y-m-d"));
+
+        // Generate random number using above bounds
+        $val = rand($min, $max);
+
+        // Convert back to desired date format
+        return date('Y-m-d', $val);
+    }
+
+    private function randomDateDeadLine()
+    {
+        // Convert to timetamps
+        $min = strtotime('2010-1-1');
+        $max = strtotime(date("Y-m-d"));
+        
+        if ($this->init < 3) {
+            $min = strtotime(date("Y-m-d"));
+            $max = strtotime(date("Y-m-d", strtotime('+1 year')));
+        }
+        // Generate random number using above bounds
+        $val = rand($min, $max);
+
+        // Convert back to desired date format
+        return date('Y-m-d', $val);
     }
 }

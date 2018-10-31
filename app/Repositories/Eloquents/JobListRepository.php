@@ -18,11 +18,11 @@ class JobListRepository implements JobListRepositoryInterface
     public function salaries()
     {
         $salaries = [
-            5000000,
-            10000000,
-            15000000,
-            20000000,
-            25000000
+            5000000 => __('common.over') . ' ' . number_format(5000000, null, null, '.') . ' ' . __('common.million'),
+            10000000 => __('common.over') . ' ' . number_format(10000000, null, null, '.')  . ' ' . __('common.million'),
+            15000000 => __('common.over') . ' ' . number_format(15000000, null, null, '.')  . ' ' . __('common.million'),
+            20000000 => __('common.over') . ' ' . number_format(20000000, null, null, '.')  . ' ' . __('common.million'),
+            25000000 => __('common.over') . ' ' . number_format(25000000, null, null, '.')  . ' ' . __('common.million')
         ];
         return $salaries;
     }
@@ -30,11 +30,11 @@ class JobListRepository implements JobListRepositoryInterface
     public function experiences()
     {
         $experiences = [
-            1,
-            2,
-            3,
-            4,
-            5
+            1 => 1 . ' ' . __('common.year'),
+            2 => 2 . ' ' . __('common.year'),
+            3 => 3 . ' ' . __('common.year'),
+            4 => 4 . ' ' . __('common.year'),
+            5 => 5 . ' ' . __('common.year')
         ];
         return $experiences;
     }
@@ -51,7 +51,7 @@ class JobListRepository implements JobListRepositoryInterface
     
     public function specialize()
     {
-        return Job::where('office_id', 1)->get();
+        return Job::whereRaw('LENGTH(career_ids) > 0 AND office_id = 1')->get();
     }
     
     public function labor()
@@ -61,6 +61,6 @@ class JobListRepository implements JobListRepositoryInterface
 
     public function student()
     {
-        return Job::where('type_of_work_id', 2)->get();
+        return Job::whereRaw('type_of_work_id IN (3, 4)')->get();
     }
 }

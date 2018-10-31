@@ -59,7 +59,7 @@
     <div class="box_pakuzu">
         <div class="container">
             <a class="paku_maner" href="">@lang('job_list.text17')</a>
-            <span>@lang('job_list.text18'</span>
+            <span>@lang('job_list.text18')</span>
         </div>
     </div>
     <div class="seation_search container">
@@ -404,7 +404,7 @@
     <script type="text/javascript " src="js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script src="js/wow.min.js"></script>
     <script src="bootstrap4/js/bootstrap.min.js"></script>
     <script>
         new WOW().init();

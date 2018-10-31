@@ -17,10 +17,12 @@ Route::namespace('Home')->group(function() {
     Route::get('labor', 'JobListController@labor')->name('jobList.labor');
     Route::get('student', 'JobListController@student')->name('jobList.student');
     // ajax
-    Route::post('job-list/search-ajax', 'JobListController@searchAjax')->name('jobList.searchAjax'); 
+    Route::post('job-list/search-ajax', 'JobListController@searchAjax')->name('jobList.searchAjax');
+    // job-detail
+    Route::get('job-detail/{job_id}', 'JobDetailController@index')->name('jobDetail.index');
 });
 
-Route::prefix('manages')->middleware(['AdminMiddleware'])->namespace('Manage')->group(function () {
+Route::prefix('manage')->middleware(['AdminMiddleware'])->namespace('Manage')->group(function () {
     Route::resource('employer', 'EmployerController');
     Route::resource('employee', 'EmployeeController');
 });

@@ -23,7 +23,7 @@ class JobListController extends Controller
         $salaries = $re->salaries();
         $experiences = $re->experiences();
         $provinces = $re->provinces();
-        return view('job_list', compact('careers', 'salaries', 'experiences', 'provinces', 'jobs'));
+        return view('home.job_list', compact('careers', 'salaries', 'experiences', 'provinces', 'jobs'));
     }
 
     public function manager()

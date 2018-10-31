@@ -8,10 +8,11 @@ class Profile extends Model
 {
     protected $fillable = [
         'employee_id',
-    	'career_id',
-    	'type_of_work_id',
+		'career_id',
+		'degree_id',
+		'type_of_work_id',
+		'province_ids',
     	'desired_job',
-    	'work_location',
     	'desire_minimum_wage',
     	'career_goals',
     	'school',

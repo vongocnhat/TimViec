@@ -14,14 +14,14 @@ class CreateJobsTable extends Migration
     public function up()
     {
         Schema::create('jobs', function (Blueprint $table) {
-            $table->unsignedInteger('employer_id')->primary();
+            $table->increments('id');
+            $table->unsignedInteger('employer_id');
             $table->unsignedInteger('office_id');
             $table->unsignedInteger('type_of_work_id');
             $table->unsignedInteger('degree_id');
             $table->text('career_ids')->nullable();
             $table->text('language_ids')->nullable();
             $table->string('name');
-            $table->string('company_name', 191);
             $table->date('deadline');
             $table->unsignedInteger('viewed')->nullable()->default(0);
             $table->unsignedInteger('wage_from')->nullable()->default(0);
@@ -39,10 +39,6 @@ class CreateJobsTable extends Migration
             $table->string('contact_person');
             $table->string('email', 191);
             $table->string('phone', 191);
-            $table->unsignedInteger('province_id');
-            $table->unsignedInteger('district_id');
-            $table->unsignedInteger('ward_id');
-            $table->text('address');
             $table->foreign('employer_id')
                   ->references('id')->on('employers')
                   ->onDelete('cascade');
@@ -54,15 +50,6 @@ class CreateJobsTable extends Migration
                   ->onDelete('cascade');
             $table->foreign('degree_id')
                   ->references('id')->on('degrees')
-                  ->onDelete('cascade');
-            $table->foreign('province_id')
-                  ->references('id')->on('provinces')
-                  ->onDelete('cascade');
-            $table->foreign('district_id')
-                  ->references('id')->on('districts')
-                  ->onDelete('cascade');
-            $table->foreign('ward_id')
-                  ->references('id')->on('wards')
                   ->onDelete('cascade');
             $table->timestamps();
         });

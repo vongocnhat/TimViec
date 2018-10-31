@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@lang('job_list.text1')</title>
     <link rel="stylesheet" href="css/reset.css">
@@ -83,7 +83,7 @@
         {!! Form::close() !!}
     </div>
     <!-- /header include -->
-    <div class="content">
+    <div class="content">   
         <div class="container">
             <div class="section_cnt">
                 <div class="title">
@@ -103,13 +103,13 @@
                                 <a class="item_favorite" href="#"></a>
                             </div>
                             <div class="item_ttl_man">
-                                <a class="items_name" href="">Đối Tác Quản Lý Kinh Doanh Độc Lập Công Ty Hanwha Life Việt Nam</a>
-                                <a class="items_cty" href="">Công Ty Cổ Phần Gió Nhẹ Miền Nam</a>
+                            <a class="items_name" href="{{ route('jobDetail.index', $job->employer_id) }}">{{ $job->name }}</a>
+                                <a class="items_cty" href="">{{ $job->employer->company_name }}</a>
                             </div>
                             <div class="item_value">
-                                <p class="items_price">10 – 15 @lang('common.million')</p>
-                                <p class="items_place">Đà nẵng</p>
-                                <p class="items_day">10/11/2018</p>
+                                <p class="items_price">{{ number_format($job->wage_from, null, null, '.') }} – {{number_format($job->wage_to, null, null, '.') }} @lang('common.million')</p>
+                                <p class="items_place">{{ $job->employer->province->name }}</p>
+                                <p class="items_day">{{ $job->deadline->format('d/m/Y') }}</p>
                             </div>
                         </li>
                         @endforeach
@@ -253,7 +253,7 @@
     <script type="text/javascript " src="js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script src="js/wow.min.js"></script>
     <script src="bootstrap4/js/bootstrap.min.js"></script>
     <script>
         new WOW().init();
