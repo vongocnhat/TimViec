@@ -33,4 +33,14 @@ class Employer extends Authenticatable
 	{
 		return $this->belongsTo('App\Models\Province');
 	}
+
+	public function district()
+	{
+		return $this->belongsTo('App\Models\District');
+	}
+
+	public function ward()
+	{
+		return $this->belongsTo('App\Models\Ward');
+	}
 }

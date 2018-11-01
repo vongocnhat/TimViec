@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@lang('home.text1')</title>
+    {{-- <base href="file:///D:/NhatVN1/DoAn/TimViecCongTy/public/" /> --}}
+    <base href="{{ asset('/') }}">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/animate.css">
@@ -72,7 +74,7 @@
     </div>
     <div id="tmp_content">
         <div class="container">
-            <div class="box_cnt salient_features wow fadeInDown">
+            <div class="salient_features wow fadeInDown">
                 <h1>@lang('home.text13')</h1>
             </div>
             <div class="box_cnt col maneger wow slideInLeft">

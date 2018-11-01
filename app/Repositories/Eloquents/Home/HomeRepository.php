@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Repositories\Eloquents;
+namespace App\Repositories\Eloquents\Home;
 
 use App\Models\Job;
 use App\Models\Profile;
-use App\Repositories\Contracts\HomeRepositoryInterface;
+use App\Repositories\Contracts\Home\HomeRepositoryInterface;
 
 class HomeRepository implements HomeRepositoryInterface
 {
     public function jobsReady()
     {
-        return Job::count('deadline', '>=', date("Y-m-d"));
+        return Job::where('deadline', '<=', date("Y-m-d"))->count();
     }
 
     public function profilesReady()
     {
-        return Profile::count('public', true);
+        return Profile::where('public', true)->count();
     }
 
     public function profilesCount()

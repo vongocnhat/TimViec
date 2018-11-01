@@ -14,8 +14,8 @@ class CreateProfilesTable extends Migration
     public function up()
     {
         Schema::create('profiles', function (Blueprint $table) {
-            $table->increments('id');
             $table->unsignedInteger('employee_id');
+            $table->string('name', 191);
             $table->unsignedInteger('career_id');
             $table->unsignedInteger('type_of_work_id');
             $table->unsignedInteger('degree_id');
@@ -32,8 +32,10 @@ class CreateProfilesTable extends Migration
             $table->tinyInteger('word');
             $table->tinyInteger('excel');
             $table->tinyInteger('power_point');
+            $table->text('profile_img');
             $table->boolean('public')->nullable()->default(false);
             $table->boolean('receive_email')->nullable()->default(false);
+            $table->primary(['employee_id', 'name']);
             $table->foreign('employee_id')
                   ->references('id')->on('employees')
                   ->onDelete('cascade');

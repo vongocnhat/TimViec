@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class TypeOfWorksTableSeeder extends Seeder
@@ -15,22 +16,34 @@ class TypeOfWorksTableSeeder extends Seeder
         if (DB::table('type_of_works')->count() == 0) {
             DB::table('type_of_works')->insert([
                 [
-                    'type_of_work' => 'Toàn thời gian cố định'
+                    'name' => 'Toàn thời gian cố định',
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
                 ],
                 [
-                    'type_of_work' => 'Toàn thời gian tạm thời'
+                    'name' => 'Toàn thời gian tạm thời',
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
                 ],
                 [
-                    'type_of_work' => 'Bán thời gian cố định'
+                    'name' => 'Bán thời gian cố định',
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
                 ],
                 [
-                    'type_of_work' => 'Bán thời gian tạm thời'
+                    'name' => 'Bán thời gian tạm thời',
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
                 ],
                 [
-                    'type_of_work' => 'Theo hợp đồng tư vấn'
+                    'name' => 'Theo hợp đồng tư vấn',
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
                 ],
                 [
-                    'type_of_work' => 'Thực tập'
+                    'name' => 'Thực tập',
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
                 ]
             ]);
         }

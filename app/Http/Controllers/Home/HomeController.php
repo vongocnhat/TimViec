@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\Contracts\HomeRepositoryInterface;
+use App\Repositories\Contracts\Home\HomeRepositoryInterface;
 
 class HomeController extends Controller
 {
     // repository
-    protected $re;
+    private $re;
 
     public function __construct(HomeRepositoryInterface $re)
     {

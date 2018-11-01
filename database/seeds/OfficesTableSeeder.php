@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class OfficesTableSeeder extends Seeder
@@ -15,10 +16,14 @@ class OfficesTableSeeder extends Seeder
         if (DB::table('offices')->count() == 0) {
             DB::table('offices')->insert([
                 [
-                    'office' => 'Nhân Viên'
+                    'name' => 'Nhân Viên',
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
                 ],
                 [
-                    'office' => 'Quản Lý'
+                    'name' => 'Quản Lý',
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
                 ]
             ]);
         }

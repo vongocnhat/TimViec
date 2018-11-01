@@ -15,7 +15,7 @@ class CreateTypeOfWorksTable extends Migration
     {
         Schema::create('type_of_works', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('type_of_work', 191)->unique();
+            $table->string('name', 191)->unique();
             $table->timestamps();
         });
     }

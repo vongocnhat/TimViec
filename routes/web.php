@@ -16,10 +16,13 @@ Route::namespace('Home')->group(function() {
     Route::get('specialize', 'JobListController@specialize')->name('jobList.specialize');
     Route::get('labor', 'JobListController@labor')->name('jobList.labor');
     Route::get('student', 'JobListController@student')->name('jobList.student');
-    // ajax
+    // job-list ajax
     Route::post('job-list/search-ajax', 'JobListController@searchAjax')->name('jobList.searchAjax');
     // job-detail
-    Route::get('job-detail/{job_id}', 'JobDetailController@index')->name('jobDetail.index');
+    Route::get('job-detail/{job_id}', 'JobDetailController@show')->name('jobDetail.show');
+    // job-detail ajax
+    Route::get('job-detail-ajax/profile-select', 'JobDetailController@profilesSelect')->name('jobDetail.profileSelect');
+    Route::get('job-detail-ajax/send-profile-to-employer', 'JobDetailController@sendProfileToEmployer')->name('jobDetail.sendProfileToEmployer');
 });
 
 Route::prefix('manage')->middleware(['AdminMiddleware'])->namespace('Manage')->group(function () {

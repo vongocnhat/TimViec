@@ -962,10 +962,10 @@
     width: 24px;
     background-position: -119px -1px;
 }
-.bnt_profile{
+.btn_profile{
     overflow: hidden;
 }
-.bnt_profile a{
+.btn_profile a{
     float: right;
     display:table;
     height: 58px;
@@ -978,12 +978,19 @@
     border: 1px solid #243281;
     transition: 0.3s;
 }
-.bnt_profile a:hover{
+.btn_profile a:hover{
     text-decoration: none;
     background: #ffffff;
     color: #243281;
     border: 1px solid #243281;
 }
+
+a.btn_profile_disable {
+    background-color: #c82333;
+    border-color: #bd2130;
+    pointer-events: none;
+}
+
 .title_des{ 
     padding-bottom: 10px;
     border-bottom: 1px solid #969595;

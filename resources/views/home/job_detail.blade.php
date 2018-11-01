@@ -6,10 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@lang('job_detail.text1')</title>
+    {{-- <base href="file:///D:/NhatVN1/DoAn/TimViecCongTy/public/" /> --}}
+    <base href="{{ asset('/') }}">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="bootstrap4/css/bootstrap.css">
+    <link rel="stylesheet" href="css/dialog.css">
 </head>
 
 <body class="format_index1">
@@ -21,16 +24,16 @@
             </div>
             <ul class="box_menu">
                 <li class="menu_list">
-                    <a class="list_manager active" href="#index1" title="@lang('job_list.text2')">@lang('job_list.text3')</a>
+                    <a class="list_manager active" href="{{ route('jobList.manager') }}" title="@lang('job_list.text2')">@lang('job_list.text3')</a>
                 </li>
                 <li class="menu_list">
-                    <a class="list_specialize" href="#index1" title="@lang('job_list.text4')">@lang('job_list.text5')</a>
+                    <a class="list_specialize" href="{{ route('jobList.specialize') }}" title="@lang('job_list.text4')">@lang('job_list.text5')</a>
                 </li>
                 <li class="menu_list">
-                    <a class="list_labor" href="#index1" title="@lang('job_list.text6')">@lang('job_list.text7')</a>
+                    <a class="list_labor" href="{{ route('jobList.labor') }}" title="@lang('job_list.text6')">@lang('job_list.text7')</a>
                 </li>
                 <li class="menu_list">
-                    <a class="list_student" href="#index1" title="@lang('job_list.text8')">@lang('job_list.text9')</a>
+                    <a class="list_student" href="{{ route('jobList.student') }}" title="@lang('job_list.text8')">@lang('job_list.text9')</a>
                 </li>
                 <li class="menu_list">
                     <a class="list_employer" href="#index1" title="@lang('job_list.text10')">@lang('job_list.text11')</a>
@@ -63,50 +66,24 @@
         </div>
     </div>
     <div class="seation_search container">
-        <form class="form_seach" action="#" method="get">
+        {!! Form::open(['route' => 'jobList.searchAjax', 'method' => 'post', 'class' => 'form_seach']) !!}
             <ul class="box_form">
                 <li class="list_occupation">
-                    <select class="select_input" name="">
-                        <option value="vol">@lang('job_list.text19')</option>
-                        <option value="volvo">Volvo</option>
-                        <option value="saab">Saab</option>
-                        <option value="fiat">Fiat</option>
-                        <option value="audi">Audi</option>
-                    </select>
+                    {{ Form::select('carrer_id', $careers, null, ['class' => 'select_input', 'placeholder' => __('job_list.text19')]) }}
                 </li>
                 <li class="list_salary">
-                    <select class="select_input" name="">
-                        <option value="vol">@lang('job_list.text20')</option>
-                        <option value="volvo">Volvo</option>
-                        <option value="saab">Saab</option>
-                        <option value="fiat">Fiat</option>
-                        <option value="audi">Audi</option>
-                    </select>
+                    {{ Form::select('salary', $salaries, null, ['class' => 'select_input', 'placeholder' => __('job_list.text20')]) }}
                 </li>
                 <li class="list_exper">
-                    <select class="select_input" name="">
-                        <option value="vol">@lang('job_list.text21')</option>
-                        <option value="volvo">Volvo</option>
-                        <option value="saab">Saab</option>
-                        <option value="fiat">Fiat</option>
-                        <option value="audi">Audi</option>
-                        <option value="vol">Kinh nghiệm</option>
-                    </select>
+                    {{ Form::select('experience', $experiences, null, ['class' => 'select_input', 'placeholder' => __('job_list.text21')]) }}
                 </li>
                 <li class="list_province">
-                    <select class="select_input" name="">
-                        <option value="vol">@lang('job_list.text22')</option>
-                        <option value="volvo">Volvo</option>
-                        <option value="saab">Saab</option>
-                        <option value="fiat">Fiat</option>
-                        <option value="audi">Audi</option>
-                        <option value="vol">Kinh nghiệm</option>
-                    </select>
+                    {{ Form::select('province_id', $provinces, null, ['class' => 'select_input', 'placeholder' => __('job_list.text22')]) }}
                 </li>
             </ul>
-            <input class="inp_search" type="text" placeholder="@lang('job_list.text23')">
-            <input class="btn_seach" type="button" value="@lang('job_list.text24')">
-        </form>
+            {{ Form::text('inp_search', null, ['class' => 'inp_search', 'placeholder' => __('job_list.text23')]) }}
+            {{ Form::submit(__('job_list.text24'), ['class' => 'btn_seach']) }}
+        {!! Form::close() !!}
     </div>
     <!-- /header include -->
     <div class="content">
@@ -114,63 +91,81 @@
             <div class="section_product_details">
                 <div class="container">
                     <div class="title_des clearfix">
-                        <h2>Nhân Viên Kinh Doanh Truyền Thông, Sự Kiện</h2>
+                        <h2>{{ $job->name }}</h2>
                         <a class="name_cty" href="">
-                            <p>Công ty Cổ Phần Thương Mại Sự Kiện Truyền Thông HD</p>
+                            <p>{{ $job->employer->company_name }}</p>
                         </a>
                         <div class="title_left">
                             <a class="save_job" href="#">@lang('job_detail.text2')</a>
                             <a class="share" href="">@lang('job_detail.text3')</a>
                             <p class="deadline_submission">@lang('job_detail.text4')
-                                <span>10/11/2018</span>
+                                <span>{{ $job->deadline }}</span>
                             </p>
                             <p class="view">@lang('job_detail.text5')
-                                <span>40 |</span>
+                                <span>{{ $job->viewed }} |</span>
                             </p>
                             <p class="day">@lang('job_detail.text6')
-                                <span>10/11/2018</span>
+                                <span>{{ $job->updated_at }}</span>
                             </p>
                         </div>
-                        <div class="bnt_profile">
-                            <a href="">@lang('job_detail.text7')</a>
+                        <div class="btn_profile">
+                            @if ($job->apply_online === 1)
+                            <a href="{{ route('jobDetail.profileSelect') }}" data-job-id="{{ $job->id }}" class="btn_profile_click">@lang('job_detail.btn_online')</a>
+                            @else
+                            <a href="" class="btn_profile_disable">@lang('job_detail.btn_offline')</a>
+                            @endif
                         </div>
                     </div>
                     <ul class="box_item_des">
                         <li class="list_item">
                             <p class="wage">@lang('job_detail.text8')
-                                <span>15 – 20 @lang('common.million')</span>
+                                <span>
+                                    {{ $job->wage }} @lang('common.million')
+                                </span>
                             </p>
                             <p class="experi">@lang('job_detail.text10')
-                                <span>3 @lang('common.year')</span>
+                                <span>{{ $job->experience }} @lang('common.year')</span>
                             </p>
                             <p class="qualification ">@lang('job_detail.text12')
-                                <span>Đại học</span>
+                                <span>{{ $job->degree->name }}</span>
                             </p>
                             <p class="recruitment">@lang('job_detail.text13')
-                                <span>3</span>
+                                <span>{{ $job->quantity }}</span>
                             </p>
                             <p class="place">@lang('job_detail.text14')
-                                <span>Việc làm TP.HCM</span>
+                                <span>{{ $job->employer->province->name }}</span>
                             </p>
                             <p class="position">@lang('job_detail.text15')
-                                <span>Quản lý</span>
+                                <span>{{ $job->office->name }}</span>
                             </p>
                             <p class="form">@lang('job_detail.text16')
-                                <span>Toàn thời gian cố định</span>
+                                <span>{{ $job->typeOfWork->name }}</span>
                             </p>
                             <p class="time">@lang('job_detail.text17')
-                                <span>2</span>
+                                @if ($job->probationary_period)
+                                <span>{{ $job->probationary_period }}</span>
+                                @else
+                                <span>@lang('job_detail.probationary_period_no')</span>
+                                @endif
                             </p>
                             <p class="branch">@lang('job_detail.text18')
-                                <span>Kĩ thuật</span>
+                                @if ($job->career)
+                                <span>{{ $job->career->name }}</span>
+                                @else
+                                <span>@lang('job_detail.carrer_no')</span>
+                                @endif
                             </p>
                             <p class="gender">@lang('job_detail.text19')
-                                <span>@lang('common.male')</span>
+                                @if ($job->gender)
+                                <span>{{ $job->gender }}</span>
+                                @else
+                                <span>@lang('job_detail.gender_no')</span>
+                                @endif
                             </p>
                             <p class="age">@lang('job_detail.text20')
                                 <span>
-                                    @lang('job_detail.from', ['para1' => '18')
-                                    @lang('job_detail.to', ['para1' => '60')
+                                    {{ $job->age }}
+                                    @lang('job_detail.age')
                                 </span>
                             </p>
                         </li>
@@ -179,7 +174,7 @@
             </div>
             <div class="section_product_des">
                 <h6>@lang('job_detail.text21')
-                    <span>Trưởng Phòng Kỹ Thuật Cơ Điện</span>
+                    <span>{{ $job->name }}</span>
                 </h6>
                 <ul class="box_list_des">
                     <li class="list_des">
@@ -187,20 +182,7 @@
                             <p>@lang('job_detail.text22')</p>
                         </div>
                         <div class="text_des">
-                            <p>-
-                                <span>Thực hiện các công việc về thiết kế, tư vấn, bóc tách khối lượng, lập dự toán
-                                    khái toán cho
-                                    các công trình điều hòa không khí và thông gió - dự án ME.</span>
-                            </p>
-                            <p>-
-                                <span>Quản lý, phân công công việc cho nhân sự trong phòng.</span>
-                            </p>
-                            <p>-
-                                <span>Quản lý, phân công công việc cho nhân sự trong phòng.</span>
-                            </p>
-                            <p>-
-                                <span>Quản lý, phân công công việc cho nhân sự trong phòng.</span>
-                            </p>
+                            {!! $job->job_description !!}
                         </div>
                     </li>
                     <li class="list_des">
@@ -208,20 +190,7 @@
                             <p>@lang('job_detail.text23')</p>
                         </div>
                         <div class="text_des">
-                            <p>-
-                                <span>Thực hiện các công việc về thiết kế, tư vấn, bóc tách khối lượng, lập dự toán
-                                    khái toán cho
-                                    các công trình điều hòa không khí và thông gió - dự án ME.</span>
-                            </p>
-                            <p>-
-                                <span>Quản lý, phân công công việc cho nhân sự trong phòng.</span>
-                            </p>
-                            <p>-
-                                <span>Quản lý, phân công công việc cho nhân sự trong phòng.</span>
-                            </p>
-                            <p>-
-                                <span>Quản lý, phân công công việc cho nhân sự trong phòng.</span>
-                            </p>
+                            {!! $job->benefit !!}
                         </div>
                     </li>
                     <li class="list_des">
@@ -229,20 +198,7 @@
                             <p>@lang('job_detail.text24')</p>
                         </div>
                         <div class="text_des">
-                            <p>-
-                                <span>Thực hiện các công việc về thiết kế, tư vấn, bóc tách khối lượng, lập dự toán
-                                    khái toán cho
-                                    các công trình điều hòa không khí và thông gió - dự án ME.</span>
-                            </p>
-                            <p>-
-                                <span>Quản lý, phân công công việc cho nhân sự trong phòng.</span>
-                            </p>
-                            <p>-
-                                <span>Quản lý, phân công công việc cho nhân sự trong phòng.</span>
-                            </p>
-                            <p>-
-                                <span>Quản lý, phân công công việc cho nhân sự trong phòng.</span>
-                            </p>
+                            {!! $job->other_requirements !!}
                         </div>
                     </li>
                     <li class="list_des">
@@ -251,7 +207,13 @@
                         </div>
                         <div class="text_des">
                             <p>
-                                <span>@lang('job_detail.text26')</span>
+                                <span>
+                                    @if ($job->apply_online === 1)
+                                        @lang('job_detail.apply_online')
+                                    @else
+                                        @lang('job_detail.apply_offline')
+                                    @endif
+                                </span>
                             </p>
                         </div>
                     </li>
@@ -261,10 +223,14 @@
                         </div>
                         <div class="text_des">
                             <p class="deadline_submission">@lang('job_detail.text27')
-                                <span>10/11/2018</span>
+                                <span>{{ $job->deadline }}</span>
                             </p>
-                            <div class="bnt_profile">
-                                <a href="">@lang('job_detail.text28')</a>
+                            <div class="btn_profile">
+                                @if ($job->apply_online === 1)
+                                    <a href="{{ route('jobDetail.profileSelect') }}" data-job-id="{{ $job->id }}" class="btn_profile_click">@lang('job_detail.btn_online')</a>
+                                @else
+                                    <a href="" class="btn_profile_disable">@lang('job_detail.btn_offline')</a>
+                                @endif
                             </div>
                         </div>
                     </li>
@@ -278,9 +244,7 @@
                             <p>@lang('job_detail.text30')</p>
                         </div>
                         <div class="text_des">
-                            <p>-
-                                <span>Phòng Nhân sự - Công ty Cổ phần Cơ điện Fugytech</span>
-                            </p>
+                            <p>{{ $job->contact_person }}</p>
                         </div>
                     </li>
                     <li class="list_des">
@@ -288,8 +252,24 @@
                             <p>@lang('job_detail.text31')</p>
                         </div>
                         <div class="text_des">
-                            <p>-
-                                <span>Tầng 7, Tòa nhà Nisan số 434 Trần Khát Chân, Q Hai Bà Trưng, Hà Nội</span>
+                            <p>{{ $job->email }}</p>
+                        </div>
+                    </li>
+                    <li class="list_des">
+                        <div class="des_title">
+                            <p>@lang('job_detail.text32')</p>
+                        </div>
+                        <div class="text_des">
+                            <p>{{ $job->phone }}</p>
+                        </div>
+                    </li>
+                    <li class="list_des">
+                        <div class="des_title">
+                            <p>@lang('job_detail.text33')</p>
+                        </div>
+                        <div class="text_des">
+                            <p>
+                                {{ $job->address }}
                             </p>
                         </div>
                     </li>
@@ -297,7 +277,7 @@
             </div>
             <div class="section_interesting">
                 <div class="title">
-                    <h2 class="title_h2">@lang('job_detail.text32')</h2>
+                    <h2 class="title_h2">@lang('job_detail.text34')</h2>
                 </div>
                 <div class="box_cnt">
                     <ul class="box_list_items">
@@ -401,13 +381,45 @@
         <a class="page_top" href="#"></a>
     </div>
     <!-- /include footer -->
-    <script type="text/javascript " src="js/jquery-1.11.3.min.js"></script>
+    <!-- dialog -->
+    @include('home.includes.dialog')
+    <div class="dialog-dark" id="dialog_dark">
+        <div class="dialog-box">
+            <div class="dialog-titlebox">
+                <span class="dialog-title">@lang('job_detail.profile_select')</span>
+                <button class="btn btn-danger btn-cancel rounded-0">X</button>
+            </div>
+            <div class="dialog-content box-ajax">
+                
+            </div>
+        </div>
+    </div>
+    <!-- /dialog -->
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
-    <script src="js/wow.min.js"></script>
-    <script src="bootstrap4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/wow.min.js"></script>
+    <script type="text/javascript" src="bootstrap4/js/bootstrap.min.js"></script>
     <script>
         new WOW().init();
+    </script>
+    <script type="text/javascript" src="js/dialog.js"></script>
+    <script>
+        $('.btn_profile_click').click(function(e) {
+            e.preventDefault();
+            // ignore click body
+            e.stopPropagation();
+            var url = $(this).prop('href');
+            var job_id = $(this).data('jobId');
+            $.ajax({
+                url: url,
+                success: function(data) {
+                    $('#btn_profile_box box-ajax').html(data);
+                    $('#job_id').val(job_id);
+                }
+            });
+            $('#dialog_dark').css('display', 'flex');
+        });
     </script>
 </body>
 

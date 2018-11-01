@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Profile extends Model
 {
     protected $fillable = [
-        'employee_id',
+		'employee_id',
+		'name',
 		'career_id',
 		'degree_id',
 		'type_of_work_id',
@@ -23,8 +24,14 @@ class Profile extends Model
     	'graduation_type',
     	'word',
     	'excel',
-    	'power_point',
+		'power_point',
+		'profile_img',
     	'public',
     	'receive_email'
-    ];
+	];
+	
+	public function jobs()
+	{
+		return $this->belongsToMany('App\Models\Job')->withTimestamps();
+	}
 }

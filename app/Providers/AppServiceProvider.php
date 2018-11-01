@@ -33,12 +33,16 @@ class AppServiceProvider extends ServiceProvider
             'App\Repositories\Eloquents\EmployeeRepository'
         );
         $this->app->bind(
-            'App\Repositories\Contracts\HomeRepositoryInterface',
-            'App\Repositories\Eloquents\HomeRepository'
+            'App\Repositories\Contracts\Home\HomeRepositoryInterface',
+            'App\Repositories\Eloquents\Home\HomeRepository'
         );
         $this->app->bind(
-            'App\Repositories\Contracts\JobListRepositoryInterface',
-            'App\Repositories\Eloquents\JobListRepository'
+            'App\Repositories\Contracts\Home\JobListRepositoryInterface',
+            'App\Repositories\Eloquents\Home\JobListRepository'
+        );
+        $this->app->bind(
+            'App\Repositories\Contracts\Home\JobDetailRepositoryInterface',
+            'App\Repositories\Eloquents\Home\JobDetailRepository'
         );
     }
 }

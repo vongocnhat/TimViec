@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class DegreesTableSeeder extends Seeder
@@ -15,25 +16,39 @@ class DegreesTableSeeder extends Seeder
         if (DB::table('degrees')->count() == 0) {
             DB::table('degrees')->insert([
                 [
-                    'degree' => 'Không'
+                    'name' => 'Không',
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
                 ],
                 [
-                    'degree' => 'Trung Học Cơ Sở'
+                    'name' => 'Trung Học Cơ Sở',
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
                 ],
                 [
-                    'degree' => 'Trung Học Phổ Thông'
+                    'name' => 'Trung Học Phổ Thông',
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
                 ],
                 [
-                    'degree' => 'Trung Cấp'
+                    'name' => 'Trung Cấp',
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
                 ],
                 [
-                    'degree' => 'Cao Đẳng'
+                    'name' => 'Cao Đẳng',
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
                 ],
                 [
-                    'degree' => 'Đại Học'
+                    'name' => 'Đại Học',
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
                 ],
                 [
-                    'degree' => 'Thạc Sĩ'
+                    'name' => 'Thạc Sĩ',
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
                 ]
             ]);
         }

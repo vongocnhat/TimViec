@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\Contracts\JobListRepositoryInterface;
+use App\Repositories\Contracts\Home\JobListRepositoryInterface;
 
 class JobListController extends Controller
 {
     // repository
-    protected $re;
+    private $re;
 
     public function __construct(JobListRepositoryInterface $re)
     {

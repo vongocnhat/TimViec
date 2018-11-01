@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -35,7 +36,9 @@ class DatabaseSeeder extends Seeder
                 'ward_id'      => $i,
                 'address'      => 'address'   .  $i,
                 'gender'      => 'gender'   .  $i,
-                'married'     => rand(0,1)
+                'married'     => rand(0,1),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ]);
 
             DB::table('employers')->insert([
@@ -53,7 +56,9 @@ class DatabaseSeeder extends Seeder
                 'district_id' => $i,
                 'ward_id' => $i,
                 'address' => 'address' .$i,
-                'website' => $this->initNull('website' .$i)
+                'website' => $this->initNull('website' .$i),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ]);
 
             DB::table('jobs')->insert([
@@ -81,6 +86,8 @@ class DatabaseSeeder extends Seeder
                 'contact_person' => 'contact_person' .$i,
                 'email' => 'email' .$i.'@gmail.com',
                 'phone' => 'phone' .$i,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ]);
         }
     }
@@ -109,13 +116,12 @@ class DatabaseSeeder extends Seeder
 
     private function randomDateDeadLine()
     {
-        // Convert to timetamps
-        $min = strtotime('2010-1-1');
-        $max = strtotime(date("Y-m-d"));
-        
+        $min = strtotime(date("Y-m-d"));
+        $max = strtotime(date("Y-m-d", strtotime('+1 year')));
         if ($this->init < 3) {
-            $min = strtotime(date("Y-m-d"));
-            $max = strtotime(date("Y-m-d", strtotime('+1 year')));
+            // Convert to timetamps
+            $min = strtotime('2010-1-1');
+            $max = strtotime(date("Y-m-d"));
         }
         // Generate random number using above bounds
         $val = rand($min, $max);

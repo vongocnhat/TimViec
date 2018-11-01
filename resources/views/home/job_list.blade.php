@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@lang('job_list.text1')</title>
+    {{-- <base href="file:///D:/NhatVN1/DoAn/TimViecCongTy/public/" /> --}}
+    <base href="{{ asset('/') }}">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/animate.css">
@@ -103,13 +105,13 @@
                                 <a class="item_favorite" href="#"></a>
                             </div>
                             <div class="item_ttl_man">
-                            <a class="items_name" href="{{ route('jobDetail.index', $job->employer_id) }}">{{ $job->name }}</a>
+                            <a class="items_name" href="{{ route('jobDetail.show', $job->id) }}">{{ $job->name }}</a>
                                 <a class="items_cty" href="">{{ $job->employer->company_name }}</a>
                             </div>
                             <div class="item_value">
                                 <p class="items_price">{{ number_format($job->wage_from, null, null, '.') }} – {{number_format($job->wage_to, null, null, '.') }} @lang('common.million')</p>
                                 <p class="items_place">{{ $job->employer->province->name }}</p>
-                                <p class="items_day">{{ $job->deadline->format('d/m/Y') }}</p>
+                                <p class="items_day">{{ $job->deadline }}</p>
                             </div>
                         </li>
                         @endforeach
