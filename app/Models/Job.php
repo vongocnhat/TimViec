@@ -32,7 +32,8 @@ class Job extends Model
 		'apply_online',
 		'contact_person',
 		'email',
-		'phone'
+		'phone',
+		'status'
 	];
 
 	public function getDeadlineAttribute() {
@@ -74,7 +75,7 @@ class Job extends Model
 
 	public function profiles()
 	{
-		return $this->belongsToMany('App\Models\Profile')->withTimestamps();
+		return $this->belongsToMany('App\Models\Profile');
 	}
 
 	public function getWageAttribute() {

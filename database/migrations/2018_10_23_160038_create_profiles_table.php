@@ -17,10 +17,10 @@ class CreateProfilesTable extends Migration
             $table->unsignedInteger('employee_id');
             $table->string('name', 191);
             $table->unsignedInteger('career_id');
-            $table->unsignedInteger('type_of_work_id');
             $table->unsignedInteger('degree_id');
+            $table->unsignedInteger('type_of_work_id');
+            $table->text('province_ids');
             $table->string('desired_job')->nullable();
-            $table->text('work_location');
             $table->unsignedInteger('desire_minimum_wage')->nullable();
             $table->string('career_goals')->nullable();;
             $table->string('school');
@@ -28,7 +28,7 @@ class CreateProfilesTable extends Migration
             $table->string('start_at', 4);
             $table->string('ended_at', 4);
             $table->string('major')->nullable();
-            $table->string('graduation_type', 2);
+            $table->string('graduation_type', 2)->nullable();
             $table->tinyInteger('word');
             $table->tinyInteger('excel');
             $table->tinyInteger('power_point');

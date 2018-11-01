@@ -39,6 +39,7 @@ class CreateJobsTable extends Migration
             $table->string('contact_person');
             $table->string('email', 191);
             $table->string('phone', 191);
+            $table->boolean('status')->nullable()->default(false);
             $table->foreign('employer_id')
                   ->references('id')->on('employers')
                   ->onDelete('cascade');

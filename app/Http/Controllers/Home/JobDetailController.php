@@ -26,17 +26,21 @@ class JobDetailController extends Controller
         return view('home.job_detail', compact('careers', 'salaries', 'experiences', 'provinces', 'job'));
     }
 
-    public function profilesSelect()
+    public function profilesSelect(Request $request)
     {
-        $profiles = $this->re->profiles();
-        return view('home.ajaxs.profiles_select', compact('profiles'));
+        if($request->ajax()) {
+            $profiles = $this->re->profiles();
+            $job_id = $request->job_id;
+            return view('home.ajaxs.profiles_select', compact('profiles', 'job_id'));
+        }
     }
 
-    public function sendProfileToEmployer(Request $request)
+    public function storeSendProfileToEmployer(Request $request)
     {
+       
         $job_id = $request->job_id;
         $profile_id = $request->profile_id;
-        $job = $this->re->findOrFail($job_id);
+        $job = $this->re->job($job_id);
         $job->profiles()->attach($profile_id);
     }
 }

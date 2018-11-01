@@ -383,17 +383,6 @@
     <!-- /include footer -->
     <!-- dialog -->
     @include('home.includes.dialog')
-    <div class="dialog-dark" id="dialog_dark">
-        <div class="dialog-box">
-            <div class="dialog-titlebox">
-                <span class="dialog-title">@lang('job_detail.profile_select')</span>
-                <button class="btn btn-danger btn-cancel rounded-0">X</button>
-            </div>
-            <div class="dialog-content box-ajax">
-                
-            </div>
-        </div>
-    </div>
     <!-- /dialog -->
     <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="js/jquery.js"></script>
@@ -413,12 +402,12 @@
             var job_id = $(this).data('jobId');
             $.ajax({
                 url: url,
+                data: { job_id: job_id },
                 success: function(data) {
-                    $('#btn_profile_box box-ajax').html(data);
-                    $('#job_id').val(job_id);
+                    $('#dialog_dark .box-ajax').html(data);
+                    $('#dialog_dark').css('display', 'flex');
                 }
             });
-            $('#dialog_dark').css('display', 'flex');
         });
     </script>
 </body>

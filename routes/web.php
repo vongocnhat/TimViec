@@ -22,7 +22,7 @@ Route::namespace('Home')->group(function() {
     Route::get('job-detail/{job_id}', 'JobDetailController@show')->name('jobDetail.show');
     // job-detail ajax
     Route::get('job-detail-ajax/profile-select', 'JobDetailController@profilesSelect')->name('jobDetail.profileSelect');
-    Route::get('job-detail-ajax/send-profile-to-employer', 'JobDetailController@sendProfileToEmployer')->name('jobDetail.sendProfileToEmployer');
+    Route::post('job-detail-ajax/send-profile-to-employer', 'JobDetailController@storeSendProfileToEmployer')->name('jobDetail.storeSendProfileToEmployer');
 });
 
 Route::prefix('manage')->middleware(['AdminMiddleware'])->namespace('Manage')->group(function () {

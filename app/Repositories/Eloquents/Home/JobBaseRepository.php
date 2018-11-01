@@ -17,11 +17,11 @@ abstract class JobBaseRepository
     public function salaries()
     {
         $salaries = [
-            5 => __('common.over') . ' ' . number_format(5, null, null, '.') . ' ' . __('common.million'),
-            10 => __('common.over') . ' ' . number_format(10, null, null, '.')  . ' ' . __('common.million'),
-            15 => __('common.over') . ' ' . number_format(15, null, null, '.')  . ' ' . __('common.million'),
-            20 => __('common.over') . ' ' . number_format(20, null, null, '.')  . ' ' . __('common.million'),
-            25 => __('common.over') . ' ' . number_format(25, null, null, '.')  . ' ' . __('common.million')
+            5 => number_format(5, null, null, '.') . ' ' . __('common.million'),
+            10 => number_format(10, null, null, '.')  . ' ' . __('common.million'),
+            15 => number_format(15, null, null, '.')  . ' ' . __('common.million'),
+            20 => number_format(20, null, null, '.')  . ' ' . __('common.million'),
+            25 => number_format(25, null, null, '.')  . ' ' . __('common.million')
         ];
         return $salaries;
     }

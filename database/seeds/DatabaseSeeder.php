@@ -86,6 +86,39 @@ class DatabaseSeeder extends Seeder
                 'contact_person' => 'contact_person' .$i,
                 'email' => 'email' .$i.'@gmail.com',
                 'phone' => 'phone' .$i,
+                'status' => rand(0,1),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ]);
+            
+            DB::table('degrees')->insert([
+                'name' => 'degree' . $i,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ]);
+
+            DB::table('profiles')->insert([
+                'employee_id' => $i,
+                'name' => 'name' . $i,
+                'career_id' => $i,
+                'degree_id' => $i,
+                'type_of_work_id' => rand(1, 6),
+                'province_ids' => $i . ', ' . ($i + 1) . ', ' . ($i + 2),
+                'desired_job' => $this->initNull('desired_job' . $i),
+                'desire_minimum_wage' => $this->initNull(rand(4000000, 8000000)),
+                'career_goals' => $this->initNull('career_goals' . $i),
+                'school' => 'school' . $i,
+                'type_of_school' => 'type_of_school' . $i,
+                'start_at' => rand(2000, 2005),
+                'ended_at' => rand(2006, 2010),
+                'major' => $this->initNull('major' . $i),
+                'graduation_type' => $this->initNull($i),
+                'word' => rand(1, 3),
+                'excel' => rand(1, 3),
+                'power_point' => rand(1, 3),
+                'profile_img' => 'profile_img' . $i,
+                'public' => $this->initNull(rand(0, 1)),
+                'receive_email' => $this->initNull(rand(0, 1)),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ]);
