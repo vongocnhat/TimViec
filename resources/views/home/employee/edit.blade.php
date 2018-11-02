@@ -1,10 +1,9 @@
-@extends('manage.layout')
-@section('title', __('employee.title'))
+@extends('home.layouts.job_layout')
 @section('content')
-<div class="col-12">
-    <div class="card">
-        {!! Form::open(['route' => 'employee.store']) !!}
-            <div class="card-header">@lang('common.create') @lang('employee.employee')</div>
+<div class="container">
+    <div class="box_cnt">
+        {!! Form::model($employee, ['route' => ['employeeHome.update', $employee->id], 'method' => 'PUT']) !!}
+            <div class="card-header">@lang('common.update') @lang('employee.employee')</div>
             <div class="card-body">
                 <div class="row">    
                     <div class="col-6">
@@ -80,9 +79,9 @@
             </div>
             <div class="card-footer">
                 <button type="submit" class="btn btn-primary btn-sm">
-                    <i class="fas fa-save"></i> @lang('common.save')
+                    <i class="fas fa-save"></i> @lang('common.update')
                 </button>
-                <a href="{{ route('employee.index') }}" 
+                <a href="#" 
                     class="btn btn-danger btn-sm btnCancel" 
                     data-message-confirm="@lang('common.cancel_message')">
                     <i class="fa fa-ban"></i> @lang('common.cancel')
@@ -92,9 +91,3 @@
     </div>
 </div>
 @endsection
-@section('css')
-    @include('manage.includes.datepicker_css')
-@stop
-@section('script')
-    @include('manage.includes.datepicker_js')
-@stop

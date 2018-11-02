@@ -19,16 +19,31 @@
     <header class="tmp_header">
         <div class="container clearfix">
             <div class="box_logo">
-                <a class="logo" href="#"></a>
+                <a class="logo" href="{{ route('home') }}"></a>
             </div>
             <div class="box_login_re">
                 <ul class="box_item">
+                    @if(!Auth::guard('employee')->check())
                     <li class="item_login">
-                        <a class="login" href="#">@lang('home.text2')</a>
+                        <a class="login" href="{{ route('employeeHome.signInView') }}">@lang('home.text2')</a>
                     </li>
                     <li class="item_login">
-                        <a class="registration" href="#">@lang('home.text3')</a>
+                        <a class="registration" href="{{ route('employeeHome.create') }}">@lang('home.text3')</a>
                     </li>
+                    @else
+                    <li class="list_user">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-info dropdown-toggle rounded-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                @lang('home.hello'): {{ Auth::guard('employee')->user()->name }}
+                            </button>
+                            <div class="dropdown-menu w-100 rounded-0">
+                                <a href="{{ route('employeeHome.edit') }}" class="dropdown-item">@lang('home.account_manage')</a>
+                                <a href="{{ route('employeeHome.edit') }}" class="dropdown-item">@lang('home.profiles_manage')</a>
+                                <a href="{{ route('employeeHome.signOut') }}" class="dropdown-item">@lang('home.sign_out')</a>
+                            </div>
+                        </div>
+                    </li>
+                    @endif
                 </ul>
             </div>
         </div>
@@ -66,11 +81,9 @@
             </div>
         </div>
     </nav>
-    <div class="container">
-        <div class="box_intro box_cnt">
-            <p class="text1">@lang('home.text11')</p>
-            <p class="text2">@lang('home.text12', ['para1' => $jobsReady, 'para2' => $profilesReady])</p>
-        </div>
+    <div class="box_intro">
+        <p class="text1">@lang('home.text11')</p>
+        <p class="text2">@lang('home.text12', ['para1' => $jobsReady, 'para2' => $profilesReady])</p>
     </div>
     <div id="tmp_content">
         <div class="container">
@@ -226,7 +239,7 @@
     <script type="text/javascript " src="js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
-    <script src="bootstrap4/js/bootstrap.min.js"></script>
+    <script src="bootstrap4/js/bootstrap.bundle.min.js"></script>
     <script src="js/wow.min.js"></script>
     <script>
         new WOW().init();

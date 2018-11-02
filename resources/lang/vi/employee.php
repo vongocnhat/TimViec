@@ -16,4 +16,9 @@ return [
     'married' => 'Tình Trạng Hôn Nhân',
     'married_true' => 'Đã Kết Hôn',
     'married_false' => 'Chưa Kết Hôn',
+    'province_select' => 'Chọn Thành Phố',
+    'district_select' => 'Chọn Quận',
+    'ward_select' => 'Chọn Phường',
+    'male' => 'Nam',
+    'female' => 'Nữ',
 ];

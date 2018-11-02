@@ -15,7 +15,6 @@ return [
     'text13' => 'Lưu mục ưa thích',
     'text14' => 'Tìm kiếm',
     'text15' => 'Thông báo',
-    'text16' => 'Đăng nhâp',
     'text17' => 'Trang chủ',
     'text18' => 'Cổng Quản lý',
     'text19' => 'Tất cả ngành nghề',

@@ -456,11 +456,11 @@ section {
 }
 
 .au-btn--blue2 {
-    background: #00aced;
+    background-color: #e24131;
 }
 
 .au-btn--blue2:hover {
-    background: #00a2e3;
+    background-color: #de594a;
 }
 
 .au-btn--block {
@@ -702,8 +702,9 @@ section {
 
 /* ----- Input ----- */
 .au-input {
-    line-height: 30px;
-    border: 1px solid #e5e5e5;
+    line-height: 43px;
+    height: 43px;
+    border: 1px solid #3f7ac3;
     font-size: 14px;
     color: #666;
     padding: 0 17px;

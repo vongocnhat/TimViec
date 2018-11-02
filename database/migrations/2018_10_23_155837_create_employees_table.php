@@ -37,6 +37,7 @@ class CreateEmployeesTable extends Migration
             $table->foreign('ward_id')
                   ->references('id')->on('wards')
                   ->onDelete('cascade');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

@@ -28,8 +28,8 @@ class DatabaseSeeder extends Seeder
                 'last_name'     => 'last_name'  .  $i,
                 'email'      => 'email'   .  $i .'@gmail.com',
                 'phone'      => 'phone'   .  $i,
-                                // 123456
-                'password'      => '$2y$12$LtZHvHbNXazJzwv6CTSWWuOi5lKr7ffHZ6rTkrG2pHd5bpphY0xc.',
+                                // empty
+                'password'      => '$2y$12$OSK5OycQkM3SJyC/YuPh0u.Z99bwyMRh4m6YC4YUGvxOZoaxim5by',
                 'birthday'      =>  $this->randomDate(),
                 'province_id'  => $i,
                 'district_id'  => $i,
@@ -46,8 +46,8 @@ class DatabaseSeeder extends Seeder
                 'last_name' => 'last_name' .$i,
                 'email' => 'email' .$i.'@gmail.com',
                 'phone' => 'phone' .$i,
-                // 123456
-                'password'      => '$2y$12$LtZHvHbNXazJzwv6CTSWWuOi5lKr7ffHZ6rTkrG2pHd5bpphY0xc.',
+                                // empty
+                'password'      => '$2y$12$OSK5OycQkM3SJyC/YuPh0u.Z99bwyMRh4m6YC4YUGvxOZoaxim5by',
                 'company_name' => 'company_name' .$i,
                 'company_size' => $this->initNull('company_size' .$i),
                 'landline_phone' => $this->initNull('landline_phone' .$i),

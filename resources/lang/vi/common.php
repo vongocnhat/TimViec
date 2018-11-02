@@ -19,8 +19,6 @@ return [
     'create_success' => 'Thêm thành công!',
     'million' => 'Triệu',
     'year' => 'Năm',
-    'male' => 'Nam',
-    'female' => 'Nữ',
     'agreement' => 'Thỏa Thuận',
     'select' => 'Chọn',
 ];

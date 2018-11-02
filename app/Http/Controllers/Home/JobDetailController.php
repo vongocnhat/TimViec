@@ -17,11 +17,10 @@ class JobDetailController extends Controller
 
     public function show($id)
     {
-        $re = $this->re;
-        $careers = $re->careers();
-        $salaries = $re->salaries();
-        $experiences = $re->experiences();
-        $provinces = $re->provinces();
+        $careers = $this->re->careers();
+        $salaries = $this->re->salaries();
+        $experiences = $this->re->experiences();
+        $provinces = $this->re->provinces();
         $job = $this->re->job($id);
         return view('home.job_detail', compact('careers', 'salaries', 'experiences', 'provinces', 'job'));
     }

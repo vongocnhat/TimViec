@@ -43,4 +43,8 @@ class Employer extends Authenticatable
 	{
 		return $this->belongsTo('App\Models\Ward');
 	}
+
+	public function getNameAttribute() {
+        return $this->attributes['first_name'] . ' ' . $this->attributes['last_name'];
+	}
 }

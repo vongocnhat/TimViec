@@ -5,7 +5,7 @@
 }
 .index1 .container{
     width: 1120px;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 .clearfix:after {
     content: "";
@@ -16,7 +16,7 @@
 .tmp_header{
     width: 100%;
     padding: 10px 0;
-    overflow: hidden;
+    /* overflow: hidden; */
     background: rgb(230, 227, 227);
 }
 .index1{
