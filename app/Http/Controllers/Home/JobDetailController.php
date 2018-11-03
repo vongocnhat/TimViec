@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Home;
 
+use Exception;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\Home\JobDetailRepositoryInterface;
@@ -28,18 +29,25 @@ class JobDetailController extends Controller
     public function profilesSelect(Request $request)
     {
         if($request->ajax()) {
-            $profiles = $this->re->profiles();
+            $profilesById = $this->re->profilesById();
             $job_id = $request->job_id;
-            return view('home.ajaxs.profiles_select', compact('profiles', 'job_id'));
+            return view('home.ajaxs.profiles_select', compact('profilesById', 'job_id'));
         }
     }
 
     public function storeSendProfileToEmployer(Request $request)
     {
-       
-        $job_id = $request->job_id;
-        $profile_id = $request->profile_id;
-        $job = $this->re->job($job_id);
-        $job->profiles()->attach($profile_id);
+        try {
+            $job_id = $request->job_id;
+            $profile_id = $request->profile_id;
+            $job = $this->re->job($job_id);
+            $job->profiles()->attach($profile_id);
+        } catch(Exception $e) {
+            if (strpos($e->getMessage(), 'Duplicate entry')) {
+                echo __('job_detail.profile_duplicate');
+            } else {
+                echo __('common.error');
+            }
+        }
     }
 }

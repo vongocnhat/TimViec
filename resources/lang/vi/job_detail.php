@@ -39,4 +39,5 @@ return [
     'probationary_period_no'    => 'Không',
     'gender_no'                 => 'Không Yêu Cầu',
     'age'                       => 'Tuổi',
+    'profile_duplicate'         => 'Bạn Đã Nộp Hồ Sơ Rồi',
 ];

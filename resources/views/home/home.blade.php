@@ -32,16 +32,16 @@
                     </li>
                     @else
                     <li class="list_user">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-info dropdown-toggle rounded-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                @lang('home.hello'): {{ Auth::guard('employee')->user()->name }}
-                            </button>
+                        {{-- <div class="btn-group"> --}}
+                            <a class="btn btn-primary dropdown-toggle rounded-0 list_user text-white c-pointer" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                               {{ Auth::guard('employee')->user()->last_name }}
+                            </a>
                             <div class="dropdown-menu w-100 rounded-0">
                                 <a href="{{ route('employeeHome.edit') }}" class="dropdown-item">@lang('home.account_manage')</a>
                                 <a href="{{ route('employeeHome.edit') }}" class="dropdown-item">@lang('home.profiles_manage')</a>
                                 <a href="{{ route('employeeHome.signOut') }}" class="dropdown-item">@lang('home.sign_out')</a>
                             </div>
-                        </div>
+                        {{-- </div> --}}
                     </li>
                     @endif
                 </ul>

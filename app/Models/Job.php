@@ -13,14 +13,14 @@ class Job extends Model
 		'office_id',
 		'type_of_work_id',
 		'degree_id',
+		'experience_id',
+		'salary_id',
 		'career_ids',
 		'language_ids',
+		'province_ids',
 		'name',
 		'deadline',
 		'viewed',
-		'wage_from',
-		'wage_to',
-		'experience',
 		'quantity',
 		'probationary_period',
 		'gender',
@@ -78,10 +78,9 @@ class Job extends Model
 		return $this->belongsToMany('App\Models\Profile');
 	}
 
-	public function getWageAttribute() {
-		return Common::mergeFromTo(number_format($this->wage_from, null, null, '.'),
-			   number_format($this->wage_to, null, null, '.'),
-			   __('common.million'));
+	public function salary()
+	{
+		return $this->belongsTo('App\Models\Salary');
 	}
 
 	public function getAgeAttribute() {

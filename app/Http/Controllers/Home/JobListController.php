@@ -54,8 +54,9 @@ class JobListController extends Controller
         return $this->jobList($students);
     }
 
-    public function searchAjax()
+    public function searchAjax(Request $request)
     {
-        echo 's';
+        $jobs = $this->re->jobsById($request);
+        return view('home.ajaxs.jobs_by_id', compact('jobs'));
     }
 }

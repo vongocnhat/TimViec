@@ -19,14 +19,15 @@ class CreateJobsTable extends Migration
             $table->unsignedInteger('office_id');
             $table->unsignedInteger('type_of_work_id');
             $table->unsignedInteger('degree_id');
+            $table->unsignedInteger('experience_id');
+            $table->unsignedInteger('salary_id');
             $table->text('career_ids')->nullable();
             $table->text('language_ids')->nullable();
+            $table->text('province_ids')->nullable();
             $table->string('name');
             $table->date('deadline');
             $table->unsignedInteger('viewed')->nullable()->default(0);
-            $table->unsignedInteger('wage_from')->nullable()->default(0);
-            $table->unsignedInteger('wage_to')->nullable()->default(0);
-            $table->tinyInteger('experience');
+            $table->tinyInteger('experience')->nullable();
             $table->unsignedInteger('quantity');
             $table->string('probationary_period')->nullable();
             $table->string('gender')->nullable();
@@ -40,6 +41,7 @@ class CreateJobsTable extends Migration
             $table->string('email', 191);
             $table->string('phone', 191);
             $table->boolean('status')->nullable()->default(false);
+
             $table->foreign('employer_id')
                   ->references('id')->on('employers')
                   ->onDelete('cascade');
@@ -51,6 +53,12 @@ class CreateJobsTable extends Migration
                   ->onDelete('cascade');
             $table->foreign('degree_id')
                   ->references('id')->on('degrees')
+                  ->onDelete('cascade');
+            $table->foreign('experience_id')
+                  ->references('id')->on('experiences')
+                  ->onDelete('cascade');
+            $table->foreign('salary_id')
+                  ->references('id')->on('salaries')
                   ->onDelete('cascade');
             $table->timestamps();
         });

@@ -3,7 +3,7 @@
 <div class="container">
     <div class="box_cnt">
         {!! Form::model($employee, ['route' => ['employeeHome.update', $employee->id], 'method' => 'PUT']) !!}
-            <div class="card-header">@lang('common.update') @lang('employee.employee')</div>
+            <div class="card-header">@lang('common.update') @lang('employee_home.employee')</div>
             <div class="card-body">
                 <div class="row">    
                     <div class="col-6">
@@ -55,25 +55,25 @@
                     {{ Form::text('address', null, ['class' => 'au-input au-input--full']) }}
                 </div>
                 <div class="form-check-inline form-check d-block">
-                    {{ Form::label('gender', __('employee.gender'), ['class' => 'mb-1']) }}
+                    {{ Form::label('gender', __('employee.gender'), ['class' => 'mb-1']) }}:
                     <label class="form-check-label mr-4">
-                        {{ Form::radio('gender', __('employee.male'), null, ['class' => 'form-check-input']) }}
+                        {{ Form::radio('gender', __('employee.male'), null, ['class' => 'form-check-input', 'id' => 'gender_male']) }}
                         @lang('employee.male')
                     </label>
                     <label class="form-check-label">
-                        {{ Form::radio('gender', __('employee.female'), null, ['class' => 'form-check-input']) }}
+                        {{ Form::radio('gender', __('employee.female'), null, ['class' => 'form-check-input', 'id' => 'gender_female']) }}
                         @lang('employee.female')
                     </label>
                 </div>
-                <div class="form-group">
-                    {{ Form::label('married', __('employee.married'), ['class' => 'mb-1']) }}
+                <div class="form-check-inline form-check d-block">
+                    {{ Form::label('married', __('employee.married'), ['class' => 'mb-1']) }}:
                     <label class="form-check-label mr-4">
-                        {{ Form::radio('married', 0, null, ['class' => 'form-check-input']) }}
-                        @lang('employee.single')
+                        {{ Form::radio('married', 0, null, ['class' => 'form-check-input', 'id' => 'married_false']) }}
+                        @lang('employee.married_false')
                     </label>
                     <label class="form-check-label">
-                        {{ Form::radio('married', 1, null, ['class' => 'form-check-input']) }}
-                        @lang('employee.marrgied')
+                        {{ Form::radio('married', 1, null, ['class' => 'form-check-input', 'id' => 'married_true']) }}
+                        @lang('employee.married_true')
                     </label>
                 </div>
             </div>
@@ -81,7 +81,7 @@
                 <button type="submit" class="btn btn-primary btn-sm">
                     <i class="fas fa-save"></i> @lang('common.update')
                 </button>
-                <a href="#" 
+                <a href="javascript: history.back()" 
                     class="btn btn-danger btn-sm btnCancel" 
                     data-message-confirm="@lang('common.cancel_message')">
                     <i class="fa fa-ban"></i> @lang('common.cancel')

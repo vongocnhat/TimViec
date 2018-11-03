@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
             DegreesTableSeeder::class,
             OfficesTableSeeder::class,
             TypeOfWorksTableSeeder::class,
+            ExperiencesTableSeeder::class,
+            SalariesTableSeeder::class,
         ]);
         for($i = 1 ; $i < 50 ; $i++)
         {
@@ -66,14 +68,14 @@ class DatabaseSeeder extends Seeder
                 'office_id' => rand(1, 2),
                 'type_of_work_id' => rand(1, 6),
                 'degree_id' => rand(1, 7),
-                'career_ids' => $this->initNull($i . ', ' . ($i + 1) . ', ' . ($i + 2)),
-                'language_ids' => $this->initNull($i . ', ' . ($i + 1) . ', ' . ($i + 2)),
+                'experience_id' => rand(1, 8),
+                'salary_id' => rand(1, 9),
+                'career_ids' => $this->initNull($i . ',' . ($i + 1) . ',' . ($i + 2)),
+                'language_ids' => $this->initNull($i . ',' . ($i + 1) . ',' . ($i + 2)),
+                'province_ids' => $this->initNull($i . ',' . ($i + 1) . ',' . ($i + 2)),
                 'name' => 'name' .$i,
                 'deadline' => $this->randomDateDeadLine(),
                 'viewed' => $this->initNull(rand(0, 50)),
-                'wage_from' => $this->initNull(rand(1000000, 2000000)),
-                'wage_to' => $this->initNull(rand(4000000, 8000000)),
-                'experience' => rand(0, 10),
                 'quantity' => $i,
                 'probationary_period' => $this->initNull('probationary_period' .$i),
                 'gender' => $this->initNull('gender' .$i),
@@ -90,20 +92,14 @@ class DatabaseSeeder extends Seeder
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ]);
-            
-            DB::table('degrees')->insert([
-                'name' => 'degree' . $i,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ]);
 
             DB::table('profiles')->insert([
                 'employee_id' => $i,
                 'name' => 'name' . $i,
                 'career_id' => $i,
-                'degree_id' => $i,
+                'degree_id' => rand(1, 7),
                 'type_of_work_id' => rand(1, 6),
-                'province_ids' => $i . ', ' . ($i + 1) . ', ' . ($i + 2),
+                'province_ids' => $i . ',' . ($i + 1) . ',' . ($i + 2),
                 'desired_job' => $this->initNull('desired_job' . $i),
                 'desire_minimum_wage' => $this->initNull(rand(4000000, 8000000)),
                 'career_goals' => $this->initNull('career_goals' . $i),

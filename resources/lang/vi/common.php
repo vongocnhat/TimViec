@@ -19,6 +19,8 @@ return [
     'create_success' => 'Thêm thành công!',
     'million' => 'Triệu',
     'year' => 'Năm',
+    'over' => 'Trên',
     'agreement' => 'Thỏa Thuận',
     'select' => 'Chọn',
+    'error' => 'Xảy ra lỗi vui lòng thử lại sau',
 ];

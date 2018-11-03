@@ -1,6 +1,26 @@
 @extends('home.layouts.job_layout')
 @section('title', __('job_detail.text1'))
 @section('content')
+<div class="seation_search container">
+    {!! Form::open(['route' => 'jobList.searchAjax', 'method' => 'post', 'class' => 'form_seach', 'id' => 'form_search']) !!}
+        <ul class="box_form">
+            <li class="list_occupation">
+                {{ Form::select('career_id', $careers, null, ['class' => 'select_input', 'placeholder' => __('job_list.text19')]) }}
+            </li>
+            <li class="list_salary">
+                {{ Form::select('salary_id', $salaries, null, ['class' => 'select_input', 'placeholder' => __('job_list.text20')]) }}
+            </li>
+            <li class="list_exper">
+                {{ Form::select('experience_id', $experiences, null, ['class' => 'select_input', 'placeholder' => __('job_list.text21')]) }}
+            </li>
+            <li class="list_province">
+                {{ Form::select('province_id', $provinces, null, ['class' => 'select_input', 'placeholder' => __('job_list.text22')]) }}
+            </li>
+        </ul>
+        {{ Form::text('inp_search', null, ['class' => 'inp_search', 'placeholder' => __('job_list.text23')]) }}
+        {{ Form::submit(__('job_list.text24'), ['class' => 'btn_seach c-pointer']) }}
+    {!! Form::close() !!}
+</div>
 <div class="content">
     <div class="container">
         <div class="section_cnt">
@@ -14,23 +34,8 @@
                     <a class="latest btn btn-success rounded-0 text-white" href="#">@lang('job_list.text28')</a>
                     <a class="deadline btn btn-danger rounded-0 text-white" href="#">@lang('job_list.text29')</a>
                 </div>
-                <ul class="box_list_items">
-                    @foreach($jobs as $job)
-                    <li class="list_items">
-                        <div class="favorite">
-                            <a class="item_favorite" href="#"></a>
-                        </div>
-                        <div class="item_ttl_man">
-                        <a class="items_name" href="{{ route('jobDetail.show', $job->id) }}">{{ $job->name }}</a>
-                            <a class="items_cty" href="">{{ $job->employer->company_name }}</a>
-                        </div>
-                        <div class="item_value">
-                            <p class="items_price">{{ number_format($job->wage_from, null, null, '.') }} – {{number_format($job->wage_to, null, null, '.') }} @lang('common.million')</p>
-                            <p class="items_place">{{ $job->employer->province->name }}</p>
-                            <p class="items_day">{{ $job->deadline }}</p>
-                        </div>
-                    </li>
-                    @endforeach
+                <ul class="box_list_items" id="job_by_id_ajax_box">
+                    @include('home.ajaxs.jobs_by_id')
                 </ul>
             </div>
         </div>
@@ -101,4 +106,21 @@
         -->
     </div>
 </div>
+@endsection
+@section('script')
+<script>
+    $('#form_search').submit(function(e) {
+        e.preventDefault();
+        var url = $(this).prop('action');
+        var data = $(this).serialize();
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: data,
+            success: function(data) {
+                $('#job_by_id_ajax_box').html(data);
+            }
+        });
+    });
+</script>
 @endsection

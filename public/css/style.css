@@ -33,7 +33,7 @@
     display: block;
     background: url(../img/logo_img.png);
     background-size: 100%; 
-    background-position-y: -7px;
+    /* background-position-y: -7px; */
     width: 147px;
     height: 50px;
     text-indent: 9999px;
@@ -428,7 +428,7 @@
 .index1 .menu_list{
     float: left;
 }
-.index1 .menu_list a{
+.index1 .menu_list > a{
     display: inline-block;
     color: rgb(196, 192, 192);
     text-decoration: none;
@@ -439,15 +439,24 @@
     position: relative;
     opacity: 0.7;
 }
-.index1 .menu_list a.active{
+.index1 .menu_list > a.active{
     color: #ffffff;
     opacity: 1;
 }
-.index1 .menu_list a:hover{
+.index1 .menu_list > a:hover{
     color: #ffffff;
     opacity: 1;
 }
-.index1 .menu_list a::before{
+
+.index1 .menu_list .btn-group > a::before {
+    content: "";
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin: 0 auto;
+}
+
+.index1 .menu_list > a::before{
     content: "";
     display: block;
     background: url(../img/icon/sprites_menu.png);
@@ -608,7 +617,7 @@
     border-right: 0;
 }
 .seation_search .inp_search{
-    width: 800px;
+    width: calc(100% - 245px);
     height: 50px;
     margin: 10px 30px;
     padding: 0 20px;

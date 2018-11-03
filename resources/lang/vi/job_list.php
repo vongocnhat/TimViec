@@ -18,9 +18,9 @@ return [
     'text17' => 'Trang chủ',
     'text18' => 'Cổng Quản lý',
     'text19' => 'Tất cả ngành nghề',
-    'text20' => 'Mức lương',
-    'text21' => 'Kinh nghiệm',
-    'text22' => 'Tỉnh Thành',
+    'text20' => 'Tất Cả Mức lương',
+    'text21' => 'Tất Cả Kinh nghiệm',
+    'text22' => 'Tất Cả Tỉnh Thành',
     'text23' => 'Nhập tiêu đề công việc, tên nhà tuyển dụng, địa điểm...',
     'text24' => 'Tìm kiếm',
     'text25' => 'Cổng Việc làm Quản lý',
@@ -31,4 +31,5 @@ return [
     'text32' => 'Cổng Công Việc chung',
     'text33' => 'Việc làm hấp dẫn',
     'text34' => 'Việc làm Theo ngành nghề',
+    'not_found' => 'Không tìm thấy công việc phù hợp với yêu cầu của bạn!!!',
 ];

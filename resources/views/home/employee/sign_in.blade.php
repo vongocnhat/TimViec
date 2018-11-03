@@ -43,7 +43,7 @@
                 <div class="login-wrap">
                     <div class="login-content">
                         <div class="login-logo">
-                            <a href="#">
+                            <a href="{{ route('home') }}">
                                 <img src="img/logo_img.png">
                             </a>
                         </div>

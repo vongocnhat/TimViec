@@ -43,8 +43,8 @@
                 <div class="login-wrap">
                     <div class="login-content">
                         <div class="login-logo">
-                            <a href="#">
-                                <img src="manage/images/icon/logo.png" alt="CoolAdmin">
+                            <a href="{{ route('home') }}">
+                                <img src="img/logo_img.png">
                             </a>
                         </div>
                         <div class="login-form">
