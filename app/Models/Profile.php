@@ -12,7 +12,6 @@ class Profile extends Model
 		'career_id',
 		'degree_id',
 		'type_of_work_id',
-		'province_ids',
     	'desired_job',
     	'desire_minimum_wage',
     	'career_goals',

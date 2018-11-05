@@ -21,9 +21,6 @@ class CreateJobsTable extends Migration
             $table->unsignedInteger('degree_id');
             $table->unsignedInteger('experience_id');
             $table->unsignedInteger('salary_id');
-            $table->text('career_ids')->nullable();
-            $table->text('language_ids')->nullable();
-            $table->text('province_ids')->nullable();
             $table->string('name');
             $table->date('deadline');
             $table->unsignedInteger('viewed')->nullable()->default(0);

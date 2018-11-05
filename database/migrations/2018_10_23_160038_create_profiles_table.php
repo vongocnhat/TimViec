@@ -19,7 +19,6 @@ class CreateProfilesTable extends Migration
             $table->unsignedInteger('career_id');
             $table->unsignedInteger('degree_id');
             $table->unsignedInteger('type_of_work_id');
-            $table->text('province_ids');
             $table->string('desired_job')->nullable();
             $table->unsignedInteger('desire_minimum_wage')->nullable();
             $table->string('career_goals')->nullable();;
