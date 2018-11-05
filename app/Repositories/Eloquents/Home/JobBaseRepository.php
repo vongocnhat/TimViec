@@ -94,18 +94,24 @@ abstract class JobBaseRepository
             if (!empty($experience_id)) {
                 $sql .= ' AND `experience_id` = ' . $experience_id;
             }
+            // $jobs = Job::with('provinces', 'salary', 'employer')->whereRaw($sql)->get();
+            $jobs = new Job;
             if (!empty($career_id)) {
-                $sql .= " AND `career_ids` LIKE '%" . $career_id . ",%'";
+                // $sql .= " AND `career_ids` LIKE '%" . $career_id . ",%'";
+                $jobs = $jobs->whereHas('careers', function($query) use ($career_id) {
+                    $query->where('career_id', $career_id);
+                });
             }
             if (!empty($province_id)) {
-                $sql .= " AND `province_ids` LIKE '%" . $province_id . ",%'";
+                // $sql .= " AND `province_ids` LIKE '%" . $province_id . ",%'";
+                $jobs = $jobs->whereHas('provinces', function($query) use ($province_id) {
+                    $query->where('province_id', $province_id);
+                });
             }
-            if (!(empty($province_id) && empty($career_id))) {
-                $jobs = Job::with('provinces', 'careers')->whereRaw($sql)->get();
-            }
-            $jobs = Job::with('provinces')->whereRaw($sql)->get();
+            $jobs = $jobs->whereRaw($sql);
+            dd($jobs->toSql());
         } else {
-            $jobs = Job::with('provinces')->whereRaw($para_sql)->get();
+            $jobs = Job::with('provinces', 'salary', 'employer')->whereRaw($para_sql)->get();
         }
         return $jobs;
     }

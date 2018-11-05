@@ -31,6 +31,6 @@ class Profile extends Model
 	
 	public function jobs()
 	{
-		return $this->belongsToMany('App\Models\Job')->withTimestamps();
+		return $this->belongsToMany('App\Models\Job');
 	}
 }

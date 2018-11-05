@@ -49,6 +49,10 @@ class Job extends Model
 		return Common::mergeFromTo($this->age_from, $this->age_to, __('job_detail.age_no'));
 	}
 
+	public function getProvincesToStringAttribute() {
+		return $this->provinces->implode('name', ', ');
+	}
+
 	public function getAddressAttribute() {
 		$str = $this->employer->address 	. ', '
 			 . $this->employer->ward->name 	. ', '

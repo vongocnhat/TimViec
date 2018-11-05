@@ -1,6 +1,8 @@
 <?php
 
 use Carbon\Carbon;
+use App\Models\Job;
+use App\Models\Profile;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,14 +17,15 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            CareersTableSeeder::class,
-            DegreesTableSeeder::class,
-            OfficesTableSeeder::class,
-            TypeOfWorksTableSeeder::class,
-            ExperiencesTableSeeder::class,
-            SalariesTableSeeder::class,
+            // CareersTableSeeder::class,
+            // DegreesTableSeeder::class,
+            // OfficesTableSeeder::class,
+            // TypeOfWorksTableSeeder::class,
+            // ExperiencesTableSeeder::class,
+            // SalariesTableSeeder::class,
         ]);
-        for($i = 1 ; $i < 50 ; $i++)
+        $max = 50;
+        for($i = 1 ; $i < $max ; $i++)
         {
             $this->init++;
             DB::table('employees')->insert([
@@ -90,7 +93,63 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ]);
 
-            DB::table('profiles')->insert([
+            DB::table('jobs')->insert([
+                'employer_id' => $i,
+                'office_id' => rand(1, 2),
+                'type_of_work_id' => rand(1, 6),
+                'degree_id' => rand(1, 7),
+                'experience_id' => rand(1, 8),
+                'salary_id' => rand(1, 9),
+                'name' => 'name' .$i,
+                'deadline' => $this->randomDateDeadLine(),
+                'viewed' => $this->initNull(rand(0, 50)),
+                'quantity' => $i,
+                'probationary_period' => $this->initNull('probationary_period' .$i),
+                'gender' => $this->initNull('gender' .$i),
+                'age_from' => rand(18, 25),
+                'age_to' => $this->initNull(rand(26, 60)),
+                'job_description' => 'job_description' .$i,
+                'benefit' => $this->initNull('benefit' .$i),
+                'other_requirements' => $this->initNull('other_requirements' .$i),
+                'apply_online' => $this->initNull(rand(0, 1)),
+                'contact_person' => 'contact_person' .$i,
+                'email' => 'email' .$i.'@gmail.com',
+                'phone' => 'phone' .$i,
+                'status' => rand(0,1),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ]);
+
+            Job::create([
+                'employer_id' => $i,
+                'office_id' => rand(1, 2),
+                'type_of_work_id' => rand(1, 6),
+                'degree_id' => rand(1, 7),
+                'experience_id' => rand(1, 8),
+                'salary_id' => rand(1, 9),
+                'name' => 'name' .$i,
+                'deadline' => $this->randomDateDeadLine(),
+                'viewed' => $this->initNull(rand(0, 50)),
+                'quantity' => $i,
+                'probationary_period' => $this->initNull('probationary_period' .$i),
+                'gender' => $this->initNull('gender' .$i),
+                'age_from' => rand(18, 25),
+                'age_to' => $this->initNull(rand(26, 60)),
+                'job_description' => 'job_description' .$i,
+                'benefit' => $this->initNull('benefit' .$i),
+                'other_requirements' => $this->initNull('other_requirements' .$i),
+                'apply_online' => $this->initNull(rand(0, 1)),
+                'contact_person' => 'contact_person' .$i,
+                'email' => 'email' .$i.'@gmail.com',
+                'phone' => 'phone' .$i,
+                'status' => rand(0,1),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ])->provinces()->attach([$i , $i+1, $i+2]);
+        }
+        for($i = 1 ; $i < $max - 2; $i++)
+        {
+            Profile::create([
                 'employee_id' => $i,
                 'name' => 'name' . $i,
                 'career_id' => $i,
@@ -113,7 +172,7 @@ class DatabaseSeeder extends Seeder
                 'receive_email' => $this->initNull(rand(0, 1)),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
-            ]);
+            ])->jobs()->attach([$i , $i+1, $i+2]);
         }
     }
 

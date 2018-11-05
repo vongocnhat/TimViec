@@ -10,7 +10,7 @@
     </div>
     <div class="item_value">
         <p class="items_price">{{ $job->salary->name }}</p>
-        <p class="items_place">{{ ($job->provincesdasdasd) }}</p>
+        <p class="items_place">{{ ($job->provinces_to_string) }}</p>
         <p class="items_day">{{ $job->deadline }}</p>
     </div>
 </li>
