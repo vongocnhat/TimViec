@@ -16,9 +16,9 @@ class CreateProfileProvinceTable extends Migration
         Schema::create('profile_province', function (Blueprint $table) {
             $table->unsignedInteger('profile_id');
             $table->unsignedInteger('province_id');
-            $table->primary(['profile_id', 'province_id']);
+            $table->unique(['profile_id', 'province_id']);
             $table->foreign('profile_id')
-                  ->references('employee_id')->on('employees')
+                  ->references('id')->on('profiles')
                   ->onDelete('cascade');
             $table->foreign('province_id')
                   ->references('id')->on('provinces')

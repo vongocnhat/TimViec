@@ -16,7 +16,7 @@ class CreateJobProvinceTable extends Migration
         Schema::create('job_province', function (Blueprint $table) {
             $table->unsignedInteger('job_id');
             $table->unsignedInteger('province_id');
-            $table->primary(['job_id', 'province_id']);
+            $table->unique(['job_id', 'province_id']);
             $table->foreign('job_id')
                   ->references('id')->on('jobs')
                   ->onDelete('cascade');

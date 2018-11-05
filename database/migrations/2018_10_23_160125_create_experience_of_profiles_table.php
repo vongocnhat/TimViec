@@ -14,6 +14,7 @@ class CreateExperienceOfProfilesTable extends Migration
     public function up()
     {
         Schema::create('experience_of_profiles', function (Blueprint $table) {
+            $table->increments('id');
             $table->unsignedInteger('profile_id');
             $table->string('company_name', 191);
             $table->unsignedInteger('office_id');
@@ -22,7 +23,7 @@ class CreateExperienceOfProfilesTable extends Migration
             $table->string('wage')->nullable()->default(0);
             $table->text('job_description');
             $table->text('achievement');
-            $table->primary(['profile_id', 'company_name']);
+            $table->unique(['profile_id', 'company_name']);
             $table->foreign('profile_id')
                   ->references('employee_id')->on('profiles')
                   ->onDelete('cascade');

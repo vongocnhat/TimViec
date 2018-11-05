@@ -16,7 +16,7 @@ class CreateCareerJobTable extends Migration
         Schema::create('career_job', function (Blueprint $table) {
             $table->unsignedInteger('career_id');
             $table->unsignedInteger('job_id');
-            $table->primary(['career_id', 'job_id']);
+            $table->unique(['career_id', 'job_id']);
             $table->foreign('career_id')
                   ->references('id')->on('careers')
                   ->onDelete('cascade');

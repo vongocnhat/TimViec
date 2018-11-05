@@ -14,6 +14,7 @@ class CreateProfilesTable extends Migration
     public function up()
     {
         Schema::create('profiles', function (Blueprint $table) {
+            $table->increments('id');
             $table->unsignedInteger('employee_id');
             $table->string('name', 191);
             $table->unsignedInteger('career_id');
@@ -34,7 +35,7 @@ class CreateProfilesTable extends Migration
             $table->text('profile_img');
             $table->boolean('public')->nullable()->default(false);
             $table->boolean('receive_email')->nullable()->default(false);
-            $table->primary(['employee_id', 'name']);
+            $table->unique(['employee_id', 'name']);
             $table->foreign('employee_id')
                   ->references('id')->on('employees')
                   ->onDelete('cascade');

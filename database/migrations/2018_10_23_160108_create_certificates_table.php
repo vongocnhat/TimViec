@@ -14,12 +14,13 @@ class CreateCertificatesTable extends Migration
     public function up()
     {
         Schema::create('certificates', function (Blueprint $table) {
-            $table->unsignedInteger('certificate_id');
+            $table->increments('id');
+            $table->unsignedInteger('profile_id');
             $table->string('name', 191);
             $table->text('certificate_img');
-            $table->primary(['certificate_id', 'name']);
-            $table->foreign('certificate_id')
-                  ->references('employee_id')->on('profiles')
+            $table->unique(['profile_id', 'name']);
+            $table->foreign('profile_id')
+                  ->references('id')->on('profiles')
                   ->onDelete('cascade');
             $table->timestamps();
         });

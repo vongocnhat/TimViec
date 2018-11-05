@@ -16,12 +16,12 @@ class CreateJobProfileTable extends Migration
         Schema::create('job_profile', function (Blueprint $table) {
             $table->unsignedInteger('job_id');
             $table->unsignedInteger('profile_id');
-            $table->primary(['job_id', 'profile_id']);
+            $table->unique(['job_id', 'profile_id']);
             $table->foreign('job_id')
                   ->references('id')->on('jobs')
                   ->onDelete('cascade');
             $table->foreign('profile_id')
-                  ->references('employee_id')->on('profiles')
+                  ->references('id')->on('profiles')
                   ->onDelete('cascade');
         });
     }

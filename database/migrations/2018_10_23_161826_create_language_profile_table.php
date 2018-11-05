@@ -20,12 +20,12 @@ class CreateLanguageProfileTable extends Migration
             $table->tinyInteger('speaking');
             $table->tinyInteger('reading');
             $table->tinyInteger('writing');
-            $table->primary(['language_id', 'profile_id']);
+            $table->unique(['language_id', 'profile_id']);
             $table->foreign('language_id')
                   ->references('id')->on('languages')
                   ->onDelete('cascade');
             $table->foreign('profile_id')
-                  ->references('employee_id')->on('profiles')
+                  ->references('id')->on('profiles')
                   ->onDelete('cascade');
             $table->timestamps();
         });

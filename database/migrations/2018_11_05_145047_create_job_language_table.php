@@ -16,7 +16,7 @@ class CreateJobLanguageTable extends Migration
         Schema::create('job_language', function (Blueprint $table) {
             $table->unsignedInteger('job_id');
             $table->unsignedInteger('language_id');
-            $table->primary(['job_id', 'language_id']);
+            $table->unique(['job_id', 'language_id']);
             $table->foreign('job_id')
                   ->references('id')->on('jobs')
                   ->onDelete('cascade');
