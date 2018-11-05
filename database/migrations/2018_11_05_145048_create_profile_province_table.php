@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateJobProfileTable extends Migration
+class CreateProfileProvinceTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateJobProfileTable extends Migration
      */
     public function up()
     {
-        Schema::create('job_profile', function (Blueprint $table) {
-            $table->unsignedInteger('job_id');
+        Schema::create('profile_province', function (Blueprint $table) {
             $table->unsignedInteger('profile_id');
-            $table->primary(['job_id', 'profile_id']);
-            $table->foreign('job_id')
-                  ->references('id')->on('jobs')
-                  ->onDelete('cascade');
+            $table->unsignedInteger('province_id');
+            $table->primary(['profile_id', 'province_id']);
             $table->foreign('profile_id')
-                  ->references('employee_id')->on('profiles')
+                  ->references('employee_id')->on('employees')
+                  ->onDelete('cascade');
+            $table->foreign('province_id')
+                  ->references('id')->on('provinces')
                   ->onDelete('cascade');
         });
     }
@@ -33,6 +33,6 @@ class CreateJobProfileTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('job_profile');
+        Schema::dropIfExists('profile_province');
     }
 }

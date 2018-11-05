@@ -45,14 +45,21 @@ class Job extends Model
         return Carbon::parse($this->attributes['updated_at'])->format('d/m/Y');
 	}
 
+	public function getAgeAttribute() {
+		return Common::mergeFromTo($this->age_from, $this->age_to, __('job_detail.age_no'));
+	}
+
+	public function getAddressAttribute() {
+		$str = $this->employer->address 	. ', '
+			 . $this->employer->ward->name 	. ', '
+			 . $this->employer->district->name . ', '
+			 . $this->employer->province->name;
+		return $str;
+	}
+
 	public function employer()
 	{
 		return $this->belongsTo('App\Models\Employer');
-	}
-
-	public function degree()
-	{
-		return $this->belongsTo('App\Models\Degree');
 	}
 
 	public function office()
@@ -65,14 +72,14 @@ class Job extends Model
 		return $this->belongsTo('App\Models\TypeOfWork');
 	}
 
-	public function career()
+	public function degree()
 	{
-		return $this->belongsTo('App\Models\Career');
+		return $this->belongsTo('App\Models\Degree');
 	}
 
-	public function profiles()
+	public function experience()
 	{
-		return $this->belongsToMany('App\Models\Profile');
+		return $this->belongsTo('App\Models\Experience');
 	}
 
 	public function salary()
@@ -80,15 +87,23 @@ class Job extends Model
 		return $this->belongsTo('App\Models\Salary');
 	}
 
-	public function getAgeAttribute() {
-		return Common::mergeFromTo($this->age_from, $this->age_to, __('job_detail.age_no'));
+	public function careers()
+	{
+		return $this->belongsToMany('App\Models\Career');
 	}
 
-	public function getAddressAttribute() {
-		$str = $this->employer->address 	. ', '
-			 . $this->employer->ward->name 	. ', '
-			 . $this->employer->district->name . ', '
-			 . $this->employer->province->name;
-		return $str;
+	public function profiles()
+	{
+		return $this->belongsToMany('App\Models\Profile');
+	}
+
+	public function languages()
+	{
+		return $this->belongsToMany('App\Models\Language');
+	}
+
+	public function provinces()
+	{
+		return $this->belongsToMany('App\Models\Province');
 	}
 }

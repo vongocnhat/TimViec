@@ -10,9 +10,7 @@
     </div>
     <div class="item_value">
         <p class="items_price">{{ $job->salary->name }}</p>
-        @if ($job->province_ids)
-        <p class="items_place">{{ ($job->provinces) }}</p>
-        @endif
+        <p class="items_place">{{ ($job->provincesdasdasd) }}</p>
         <p class="items_day">{{ $job->deadline }}</p>
     </div>
 </li>
