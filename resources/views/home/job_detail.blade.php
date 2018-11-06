@@ -64,8 +64,8 @@
                             @endif
                         </p>
                         <p class="branch">@lang('job_detail.text18')
-                            @if (!empty($job->career_to_string))
-                            <span>{{ $job->career_to_string }}</span>
+                            @if (!empty($job->careers_to_string))
+                            <span>{{ $job->careers_to_string }}</span>
                             @else
                             <span>@lang('job_detail.career_no')</span>
                             @endif
