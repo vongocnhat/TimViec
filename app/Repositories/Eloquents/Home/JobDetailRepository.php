@@ -12,11 +12,7 @@ class JobDetailRepository extends JobBaseRepository implements JobDetailReposito
 {
     public function job($id)
     {
-<<<<<<< HEAD
         return Job::with('careers')->findOrFail($id);
-=======
-        return Job::findOrFail($id);
->>>>>>> e53ab3a5be88548143a85298c51c07b167a8e9d3
     }
 
     public function profilesById()

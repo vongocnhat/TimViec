@@ -53,13 +53,10 @@ class Job extends Model
 		return $this->provinces->implode('name', ', ');
 	}
 
-<<<<<<< HEAD
 	public function getCareersToStringAttribute() {
 		return $this->careers->implode('name', ', ');
 	}
 
-=======
->>>>>>> e53ab3a5be88548143a85298c51c07b167a8e9d3
 	public function getAddressAttribute() {
 		$str = $this->employer->address 	. ', '
 			 . $this->employer->ward->name 	. ', '
@@ -110,11 +107,7 @@ class Job extends Model
 
 	public function languages()
 	{
-<<<<<<< HEAD
-		return $this->belongsToMany('App\Models\Language')->withPivot('listenning', 'speaking', 'reading', 'writing')->withTimestamps();
-=======
 		return $this->belongsToMany('App\Models\Language');
->>>>>>> e53ab3a5be88548143a85298c51c07b167a8e9d3
 	}
 
 	public function provinces()

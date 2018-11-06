@@ -35,11 +35,7 @@ return [
     'text34'                    => 'Việc làm hấp dẫn',
     'btn_offline'               => 'Nộp Trực Tiếp',
     'profile_select'            => 'Chọn Hồ Sơ Để Nộp',
-<<<<<<< HEAD
     'career_no'                 => 'Tất Cả Ngành Nghề',
-=======
-    'carrer_no'                 => 'Tất Cả Ngành Nghề',
->>>>>>> e53ab3a5be88548143a85298c51c07b167a8e9d3
     'probationary_period_no'    => 'Không',
     'gender_no'                 => 'Không Yêu Cầu',
     'age'                       => 'Tuổi',
