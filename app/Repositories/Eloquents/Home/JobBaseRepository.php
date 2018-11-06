@@ -105,11 +105,11 @@ abstract class JobBaseRepository
             if (!empty($province_id)) {
                 // $sql .= " AND `province_ids` LIKE '%" . $province_id . ",%'";
                 $jobs = $jobs->whereHas('provinces', function($query) use ($province_id) {
-                    $query->where('province_id', $province_id);
+                    $query->where('province_id', 10);
                 });
             }
             $jobs = $jobs->whereRaw($sql);
-            // dd($jobs->toSql());
+            dd($jobs->toSql());
         } else {
             $jobs = Job::with('provinces', 'salary', 'employer')->whereRaw($para_sql)->get();
         }

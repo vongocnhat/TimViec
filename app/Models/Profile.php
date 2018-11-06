@@ -38,4 +38,19 @@ class Profile extends Model
 	{
 		return $this->belongsToMany('App\Models\Language')->withPivot('listenning', 'speaking', 'reading', 'writing')->withTimestamps();
 	}
+
+	public function employee()
+	{
+		return $this->belongsTo('App\Models\Employee');
+	}
+
+	public function career()
+	{
+		return $this->belongsTo('App\Models\Career');
+	}
+
+	public function typeOfWork()
+	{
+		return $this->belongsTo('App\Models\TypeOfWork');
+	}
 }
