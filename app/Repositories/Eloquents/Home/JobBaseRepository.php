@@ -109,7 +109,11 @@ abstract class JobBaseRepository
                 });
             }
             $jobs = $jobs->whereRaw($sql);
+<<<<<<< HEAD
+            // dd($jobs->toSql());
+=======
             dd($jobs->toSql());
+>>>>>>> e53ab3a5be88548143a85298c51c07b167a8e9d3
         } else {
             $jobs = Job::with('provinces', 'salary', 'employer')->whereRaw($para_sql)->get();
         }

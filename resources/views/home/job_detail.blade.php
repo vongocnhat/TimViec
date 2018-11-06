@@ -64,10 +64,17 @@
                             @endif
                         </p>
                         <p class="branch">@lang('job_detail.text18')
+<<<<<<< HEAD
+                            @if (!empty($job->career_to_string))
+                            <span>{{ $job->career_to_string }}</span>
+                            @else
+                            <span>@lang('job_detail.career_no')</span>
+=======
                             @if ($job->career)
                             <span>{{ $job->career->name }}</span>
                             @else
                             <span>@lang('job_detail.carrer_no')</span>
+>>>>>>> e53ab3a5be88548143a85298c51c07b167a8e9d3
                             @endif
                         </p>
                         <p class="gender">@lang('job_detail.text19')

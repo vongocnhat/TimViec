@@ -17,12 +17,22 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
+<<<<<<< HEAD
+            CareersTableSeeder::class,
+            DegreesTableSeeder::class,
+            OfficesTableSeeder::class,
+            TypeOfWorksTableSeeder::class,
+            ExperiencesTableSeeder::class,
+            SalariesTableSeeder::class,
+            LanguagesTableSeeder::class,
+=======
             // CareersTableSeeder::class,
             // DegreesTableSeeder::class,
             // OfficesTableSeeder::class,
             // TypeOfWorksTableSeeder::class,
             // ExperiencesTableSeeder::class,
             // SalariesTableSeeder::class,
+>>>>>>> e53ab3a5be88548143a85298c51c07b167a8e9d3
         ]);
         $max = 50;
         for($i = 1 ; $i < $max ; $i++)
@@ -66,7 +76,11 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ]);
 
+<<<<<<< HEAD
+            $job = Job::create([
+=======
             DB::table('jobs')->insert([
+>>>>>>> e53ab3a5be88548143a85298c51c07b167a8e9d3
                 'employer_id' => $i,
                 'office_id' => rand(1, 2),
                 'type_of_work_id' => rand(1, 6),
@@ -93,6 +107,18 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ]);
 
+<<<<<<< HEAD
+            if ($i < 5) {
+                $job->provinces()->attach([$i , $i+1, $i+2]);
+                $job->careers()->attach([$i , $i+1, $i+2]);
+                $job->languages()->attach([$i , $i+1, $i+2]);
+            }
+        }
+
+        for($i = 1 ; $i < $max ; $i++)
+        {
+            $profile =  Profile::create([
+=======
             DB::table('jobs')->insert([
                 'employer_id' => $i,
                 'office_id' => rand(1, 2),
@@ -150,6 +176,7 @@ class DatabaseSeeder extends Seeder
         for($i = 1 ; $i < $max - 2; $i++)
         {
             Profile::create([
+>>>>>>> e53ab3a5be88548143a85298c51c07b167a8e9d3
                 'employee_id' => $i,
                 'name' => 'name' . $i,
                 'career_id' => $i,
@@ -172,7 +199,28 @@ class DatabaseSeeder extends Seeder
                 'receive_email' => $this->initNull(rand(0, 1)),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
+<<<<<<< HEAD
+            ]);
+
+            if ($i < 5) {
+                $profile->jobs()->attach([$i , $i+1, $i+2]);
+                $profile->languages()->attach([$i => 
+                ['listenning' => rand(1, 3),
+                'speaking' => rand(1, 3),
+                'reading' => rand(1, 3),
+                'writing' => rand(1, 3)], $i+1 => 
+                ['listenning' => rand(1, 3),
+                'speaking' => rand(1, 3),
+                'reading' => rand(1, 3),
+                'writing' => rand(1, 3)], $i+2 => 
+                ['listenning' => rand(1, 3),
+                'speaking' => rand(1, 3),
+                'reading' => rand(1, 3),
+                'writing' => rand(1, 3)]]);
+            }
+=======
             ])->jobs()->attach([$i , $i+1, $i+2]);
+>>>>>>> e53ab3a5be88548143a85298c51c07b167a8e9d3
         }
     }
 

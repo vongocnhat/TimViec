@@ -33,4 +33,12 @@ class Profile extends Model
 	{
 		return $this->belongsToMany('App\Models\Job');
 	}
+<<<<<<< HEAD
+
+	public function languages()
+	{
+		return $this->belongsToMany('App\Models\Language');
+	}
+=======
+>>>>>>> e53ab3a5be88548143a85298c51c07b167a8e9d3
 }
