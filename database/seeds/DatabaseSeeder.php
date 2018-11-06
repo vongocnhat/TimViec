@@ -94,7 +94,7 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ]);
 
-            if ($i < $max - 2) {
+            if ($i < 20) {
                 $job->provinces()->attach([$i , $i+1, $i+2]);
                 $job->careers()->attach([$i , $i+1, $i+2]);
                 $job->languages()->attach([$i , $i+1, $i+2]);
@@ -128,7 +128,7 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ]);
 
-            if ($i < $max - 2) {
+            if ($i < 20) {
                 $profile->jobs()->attach([$i , $i+1, $i+2]);
                 $profile->languages()->attach([$i => 
                 ['listenning' => rand(1, 3),
