@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             LanguagesTableSeeder::class,
         ]);
         $max = 50;
+        $genderArr = [__('employee.male'), __('employee.female')];
         for($i = 1 ; $i < $max ; $i++)
         {
             $this->init++;
@@ -41,7 +42,7 @@ class DatabaseSeeder extends Seeder
                 'district_id'  => $i,
                 'ward_id'      => $i,
                 'address'      => 'address'   .  $i,
-                'gender'      => 'gender'   .  $i,
+                'gender'      => $genderArr[rand(0, 1)],
                 'married'     => rand(0,1),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -79,7 +80,7 @@ class DatabaseSeeder extends Seeder
                 'viewed' => $this->initNull(rand(0, 50)),
                 'quantity' => $i,
                 'probationary_period' => $this->initNull('probationary_period' .$i),
-                'gender' => $this->initNull('gender' .$i),
+                'gender' => $this->initNull($genderArr[rand(0, 1)]),
                 'age_from' => rand(18, 25),
                 'age_to' => $this->initNull(rand(26, 60)),
                 'job_description' => 'job_description' .$i,

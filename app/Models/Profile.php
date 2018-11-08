@@ -53,4 +53,13 @@ class Profile extends Model
 	{
 		return $this->belongsTo('App\Models\TypeOfWork');
 	}
+
+	public function degree()
+	{
+		return $this->belongsTo('App\Models\Degree');
+	}
+
+	public function getWageNumberAttribute() {
+        return $this->attributes['first_name'] . ' ' . $this->attributes['last_name'];
+	}
 }

@@ -23,7 +23,7 @@ Route::namespace('Home')->group(function() {
     // job-detail ajax
     Route::get('job-detail-ajax/profile-select', 'JobDetailController@profilesSelect')->name('jobDetail.profileSelect');
     Route::post('job-detail-ajax/send-profile-to-employer', 'JobDetailController@storeSendProfileToEmployer')->name('jobDetail.storeSendProfileToEmployer');
-    Route::prefix('employee-home')->name('employeeHome.')->group(function () {
+    Route::namespace('Employee')->prefix('employee-home')->name('employeeHome.')->group(function () {
         Route::get('create', 'EmployeeHomeController@create')->name('create');
         Route::post('store', 'EmployeeHomeController@store')->name('store');
         Route::get('edit', 'EmployeeHomeController@edit')->name('edit');
@@ -32,8 +32,8 @@ Route::namespace('Home')->group(function() {
         Route::post('sign-in', 'EmployeeHomeController@signInCheck')->name('signInCheck');
         Route::get('sign-out', 'EmployeeHomeController@signOut')->name('signOut');
         // profile
-        Route::resource('profile-home', 'ProfileHomeController');
-        Route::get('job-profile', 'JobProfileHomeController@index')->name('jobProfile');
+        Route::resource('profile', 'ProfileHomeController');
+        // Route::get('job-profile', 'JobProfileHomeController@index')->name('jobProfile');
     });
 });
 

@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="bootstrap4/css/bootstrap.css">
     <link rel="stylesheet" href="css/common.css">
+    <link href="manage/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
     @yield('css')
 </head>
 
@@ -29,6 +30,7 @@
     <script type="text/javascript" src="js/main.js"></script>
     <script src="js/wow.min.js"></script>
     <script src="bootstrap4/js/bootstrap.bundle.min.js"></script>
+    <script src="manage/js/common.js"></script>
     <script>
         new WOW().init();
     </script>
