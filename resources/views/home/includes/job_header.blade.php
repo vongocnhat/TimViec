@@ -1,20 +1,20 @@
-<header class="tmp_header index1">
+<header class="tmp_header index1{{ isset($backgroundColor) ? $backgroundColor : null }}">
     <div class="container clearfix">
         <div class="box_logo">
             <a class="logo" href="{{ route('home') }}"></a>
         </div>
         <ul class="box_menu">
             <li class="menu_list">
-                <a class="list_manager active" href="{{ route('jobList.manager') }}" title="@lang('job_list.text2')">@lang('job_list.text3')</a>
+                <a class="list_manager active_menu" href="{{ route('jobList.manager') }}" title="@lang('job_list.text2')">@lang('job_list.text3')</a>
             </li>
             <li class="menu_list">
-                <a class="list_specialize" href="{{ route('jobList.specialize') }}" title="@lang('job_list.text4')">@lang('job_list.text5')</a>
+                <a class="list_specialize active_menu" href="{{ route('jobList.specialize') }}" title="@lang('job_list.text4')">@lang('job_list.text5')</a>
             </li>
             <li class="menu_list">
-                <a class="list_labor" href="{{ route('jobList.labor') }}" title="@lang('job_list.text6')">@lang('job_list.text7')</a>
+                <a class="list_labor active_menu" href="{{ route('jobList.labor') }}" title="@lang('job_list.text6')">@lang('job_list.text7')</a>
             </li>
             <li class="menu_list">
-                <a class="list_student" href="{{ route('jobList.student') }}" title="@lang('job_list.text8')">@lang('job_list.text9')</a>
+                <a class="list_student active_menu" href="{{ route('jobList.student') }}" title="@lang('job_list.text8')">@lang('job_list.text9')</a>
             </li>
             <li class="menu_list">
                 <a class="list_employer" href="#index1" title="@lang('job_list.text10')">@lang('job_list.text11')</a>

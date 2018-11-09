@@ -31,6 +31,7 @@
     <script src="js/wow.min.js"></script>
     <script src="bootstrap4/js/bootstrap.bundle.min.js"></script>
     <script src="manage/js/common.js"></script>
+    <script src="js/common.js"></script>
     <script>
         new WOW().init();
     </script>

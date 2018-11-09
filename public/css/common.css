@@ -19,3 +19,32 @@
 .text-danger-hover:focus, .text-danger-hover:hover {
     color: #bd2130 !important;
 }
+
+.specialize-background, .section_cnt .title .title_h2.specialize-color::before {
+    background-color: #00999f !important;
+}
+
+.labor-background, .section_cnt .title .title_h2.labor-color::before {
+    background-color: #0b9d54 !important;
+}
+
+.student-background, .section_cnt .title .title_h2.student-color::before {
+    background-color: #ce7b1a !important;
+}
+
+.specialize-color {
+    color: #00999f !important;
+}
+
+.labor-color, .section_cnt .title .title_h2.specialize-color::before {
+    color: #0b9d54 !important;
+}
+
+.student-color {
+    color: #ce7b1a !important;
+}
+
+.display-table-m-auto {
+    display: table;
+    margin: auto;
+}

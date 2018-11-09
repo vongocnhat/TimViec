@@ -31,26 +31,6 @@ abstract class JobBaseRepository
         return Province::pluck('name', 'id');
     }
 
-    public function manager($request = null)
-    {
-        return $this->searchJobs($request, '`office_id` = 2');
-    }
-    
-    public function specialize($request = null)
-    {
-        return $this->searchJobs($request, 'office_id = 1');
-    }
-    
-    public function labor($request = null)
-    {
-        return $this->searchJobs($request, '`degree_id` <= 3');
-    }
-
-    public function student($request = null)
-    {
-        return $this->searchJobs($request, '`type_of_work_id` IN (3, 4)');
-    }
-
     public function jobsById($request)
     {
         $url = url()->previous();
@@ -71,7 +51,7 @@ abstract class JobBaseRepository
         }
     }
 
-    private function searchJobs($request, $para_sql)
+    public function searchJobs($request, $para_sql, $numberPage = 10)
     {
         $jobs = Job::with('provinces', 'salary', 'employer');
         if (!(empty($request->career_id)
@@ -104,9 +84,9 @@ abstract class JobBaseRepository
                     $query->where('province_id', $province_id);
                 });
             }
-            $jobs = $jobs->whereRaw($sql . ' AND `status` = 1')->get();
+            $jobs = $jobs->whereRaw($sql . ' AND `status` = 1')->paginate($numberPage);
         } else {
-            $jobs = $jobs->whereRaw($para_sql . ' AND `status` = 1')->get();
+            $jobs = $jobs->whereRaw($para_sql . ' AND `status` = 1')->paginate($numberPage);
         }
         return $jobs;
     }

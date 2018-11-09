@@ -39,7 +39,7 @@
                             </span>
                         </p>
                         <p class="experi">@lang('job_detail.text10')
-                            <span>{{ $job->experience }} @lang('common.year')</span>
+                            <span>{{ $job->experience->name }} </span>
                         </p>
                         <p class="qualification ">@lang('job_detail.text12')
                             <span>{{ $job->degree->name }}</span>
@@ -244,15 +244,16 @@
         // ignore click body
         e.stopPropagation();
         var url = $(this).prop('href');
-        var job_id = $(this).data('jobId');
+        var jobID = $(this).data('jobId');
         $.ajax({
             url: url,
-            data: { job_id: job_id },
+            data: { jobID: jobID },
             success: function(data) {
                 $('#dialog_dark .box-ajax').html(data);
                 $('#dialog_dark').css('display', 'flex');
             }
         });
     });
+    // $('#frmStoreSendProfileToEmployer').
 </script>
 @endsection

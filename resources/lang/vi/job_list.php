@@ -23,7 +23,7 @@ return [
     'text22' => 'Tất Cả Tỉnh Thành',
     'text23' => 'Nhập tiêu đề công việc, tên nhà tuyển dụng, địa điểm...',
     'text24' => 'Tìm kiếm',
-    'text25' => 'Cổng Việc làm Quản lý',
+    'text25' => 'Cổng Việc Làm :para1',
     'text26' => 'Tuyển gấp',
     'text27' => 'Sắp xếp Theo',
     'text28' => 'Mới nhất',

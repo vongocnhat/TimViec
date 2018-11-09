@@ -11,5 +11,23 @@ use App\Repositories\Contracts\Home\JobListRepositoryInterface;
 
 class JobListRepository extends JobBaseRepository implements JobListRepositoryInterface
 {
+    public function manager($request = null, $numberPage)
+    {
+        return $this->searchJobs($request, '`office_id` = 2', $numberPage);
+    }
     
+    public function specialize($request = null, $numberPage)
+    {
+        return $this->searchJobs($request, 'office_id = 1', $numberPage);
+    }
+    
+    public function labor($request = null, $numberPage)
+    {
+        return $this->searchJobs($request, '`degree_id` <= 3', $numberPage);
+    }
+
+    public function student($request = null, $numberPage)
+    {
+        return $this->searchJobs($request, '`type_of_work_id` IN (3, 4)', $numberPage);
+    }
 }

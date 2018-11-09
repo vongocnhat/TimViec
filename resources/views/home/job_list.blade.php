@@ -18,15 +18,15 @@
             </li>
         </ul>
         {{ Form::text('inp_search', null, ['class' => 'inp_search', 'placeholder' => __('job_list.text23')]) }}
-        {{ Form::submit(__('job_list.text24'), ['class' => 'btn_seach c-pointer']) }}
+        {{ Form::submit(__('job_list.text24'), ['class' => 'btn_seach c-pointer' . $backgroundColor]) }}
     {!! Form::close() !!}
 </div>
 <div class="content">
     <div class="container">
         <div class="section_cnt">
             <div class="title">
-                <h1 class="title_manna">@lang('job_list.text25')</h1>
-                <h2 class="title_h2">@lang('job_list.text26')</h2>
+                <h1 class="title_manna{{ $color }}">{{ $jobTitle }}</h1>
+                <h2 class="title_h2{{ $color }}">@lang('job_list.text26')</h2>
             </div>
             <div class="box_cnt">
                 <div class="cnt_title_man">
@@ -38,10 +38,13 @@
                     @include('home.ajaxs.jobs_by_id')
                 </ul>
             </div>
+            <div class="mt-3 display-table-m-auto">
+                {{ $jobs->links() }}
+            </div>
         </div>
         <div class="section_interesting">
             <div class="title">
-                <h1 class="title_manna">@lang('job_list.text32')</h1>
+                <h1 class="title_manna{{ $color }}">@lang('job_list.text32')</h1>
                 <h2 class="title_h2">@lang('job_list.text33')</h2>
             </div>
             <div class="box_cnt">

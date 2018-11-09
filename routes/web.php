@@ -19,7 +19,7 @@ Route::namespace('Home')->group(function() {
     // job-list ajax
     Route::post('job-list/search-ajax', 'JobListController@searchAjax')->name('jobList.searchAjax');
     // job-detail
-    Route::get('job-detail/{job_id}', 'JobDetailController@show')->name('jobDetail.show');
+    Route::get('job-detail/{jobID}/{backgroundColor}/{color}', 'JobDetailController@show')->name('jobDetail.show');
     // job-detail ajax
     Route::get('job-detail-ajax/profile-select', 'JobDetailController@profilesSelect')->name('jobDetail.profileSelect');
     Route::post('job-detail-ajax/send-profile-to-employer', 'JobDetailController@storeSendProfileToEmployer')->name('jobDetail.storeSendProfileToEmployer');

@@ -24,7 +24,6 @@ class CreateJobsTable extends Migration
             $table->string('name');
             $table->date('deadline');
             $table->unsignedInteger('viewed')->nullable()->default(0);
-            $table->tinyInteger('experience')->nullable();
             $table->unsignedInteger('quantity');
             $table->string('probationary_period')->nullable();
             $table->string('gender')->nullable();

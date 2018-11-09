@@ -12,7 +12,7 @@ class JobDetailRepository extends JobBaseRepository implements JobDetailReposito
 {
     public function job($id)
     {
-        return Job::with('careers')->whereRaw('`status` = 1')->findOrFail($id);
+        return Job::with('careers', 'experience')->whereRaw('`status` = 1')->findOrFail($id);
     }
 
     public function profilesById()

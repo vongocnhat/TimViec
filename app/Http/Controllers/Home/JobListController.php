@@ -16,42 +16,42 @@ class JobListController extends Controller
         $this->re = $re;
     }
 
-    private function jobList($jobs)
+    private function jobList($jobs, $jobTitle, $backgroundColor = null, $color = null)
     {
         $re = $this->re;
         $careers = $re->careers();
         $salaries = $re->salaries();
         $experiences = $re->experiences();
         $provinces = $re->provinces();
-        return view('home.job_list', compact('careers', 'salaries', 'experiences', 'provinces', 'jobs'));
+        return view('home.job_list', compact('careers', 'salaries', 'experiences', 'provinces', 'jobs', 'jobTitle', 'backgroundColor', 'color'));
     }
 
     public function manager()
     {
         $re = $this->re;
-        $managers = $re->manager();
-        return $this->jobList($managers);
+        $managers = $re->manager(null, 10);
+        return $this->jobList($managers, __('job_list.text25', ['para1' => __('job_list.text3')]), ' manager-background', ' manager-color');
     }
 
     public function specialize()
     {
         $re = $this->re;
-        $specializes = $re->specialize();
-        return $this->jobList($specializes);
+        $specializes = $re->specialize(null, 10);
+        return $this->jobList($specializes, __('job_list.text25', ['para1' => __('job_list.text5')]), ' specialize-background', ' specialize-color');
     }
 
     public function labor()
     {
         $re = $this->re;
-        $labors = $re->labor();
-        return $this->jobList($labors);
+        $labors = $re->labor(null, 10);
+        return $this->jobList($labors, __('job_list.text25', ['para1' => __('job_list.text7')]), ' labor-background', ' labor-color');
     }
 
     public function student()
     {
         $re = $this->re;
-        $students = $re->student();
-        return $this->jobList($students);
+        $students = $re->student(null, 10);
+        return $this->jobList($students, __('job_list.text25', ['para1' => __('job_list.text9')]), ' student-background', ' student-color');
     }
 
     public function searchAjax(Request $request)

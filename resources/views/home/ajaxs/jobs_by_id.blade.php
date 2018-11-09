@@ -5,7 +5,7 @@
         <a class="item_favorite" href="#"></a>
     </div>
     <div class="item_ttl_man">
-    <a class="items_name" href="{{ route('jobDetail.show', $job->id) }}">{{ $job->name }}</a>
+    <a class="items_name" href="{{ route('jobDetail.show', ['jobID'=>$job->id, 'backgroundColor'=>$backgroundColor, 'color'=>$color]) }}">{{ $job->name }}</a>
         <a class="items_cty" href="">{{ $job->employer->company_name }}</a>
     </div>
     <div class="item_value">
