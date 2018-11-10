@@ -45,7 +45,7 @@
                         <td>{{ $employee->province->name }}</td>
                         <td>{{ $employee->district->name }}</td>
                         <td>{{ $employee->ward->name }}</td>
-                        <td>{{ $employee->address }}</td>
+                        <td>{{ $employee->addressA }}</td>
                         <td>{{ $employee->gender }}</td>
                         <td>{{ $employee->married === 0 ? __('employee.married_false') : __('employee.married_true') }}</td>
                         <td class="text-center">

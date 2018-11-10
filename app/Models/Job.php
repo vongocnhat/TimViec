@@ -33,36 +33,45 @@ class Job extends Model
 		'status'
 	];
 
-	public function getDeadlineAttribute() {
+	public function getDeadlineAAttribute() {
         return Carbon::parse($this->attributes['deadline'])->format('d/m/Y');
 	}
 
-	public function getCreatedAtAttribute() {
+	public function getCreatedAtAAttribute() {
         return Carbon::parse($this->attributes['created_at'])->format('d/m/Y');
 	}
 
-	public function getUpdatedAtAttribute() {
+	public function getUpdatedAtAAttribute() {
         return Carbon::parse($this->attributes['updated_at'])->format('d/m/Y');
 	}
 
-	public function getAgeAttribute() {
-		return Common::mergeFromTo($this->age_from, $this->age_to, __('job_detail.age_no'));
+	public function getAgeAAttribute() {
+		return Common::mergeFromToAge($this->age_from, $this->age_to);
 	}
 
-	public function getProvincesToStringAttribute() {
+	public function getProvincesToStringAAttribute() {
 		return $this->provinces->implode('name', ', ');
 	}
 
-	public function getCareersToStringAttribute() {
+	public function getCareersToStringAAttribute() {
 		return $this->careers->implode('name', ', ');
 	}
 
-	public function getAddressAttribute() {
+	public function getAddressAAttribute() {
 		$str = $this->employer->address 	. ', '
 			 . $this->employer->ward->name 	. ', '
 			 . $this->employer->district->name . ', '
 			 . $this->employer->province->name;
 		return $str;
+	}
+
+	public function getGenderAAttribute() {
+		if ($this->gender) {
+			return $this->gender;
+		}
+		else {
+			return __('common.no');
+		}
 	}
 
 	public function employer()

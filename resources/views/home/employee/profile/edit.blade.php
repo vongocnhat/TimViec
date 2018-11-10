@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
     <div class="box_cnt">
-        {!! Form::model($employee, ['route' => ['employeeHome.update', $employee->id], 'method' => 'PUT']) !!}
+        {!! Form::model($profile, ['route' => ['employeeHome.update', $employee->id], 'method' => 'PUT']) !!}
             <div class="card-header">@lang('common.update') @lang('employee_home.employee')</div>
             <div class="card-body max-width-500">
                 <div class="form-group">

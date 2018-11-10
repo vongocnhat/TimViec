@@ -4,7 +4,7 @@ namespace App\Models;
 
 class Common
 {
-    public static function mergeFromTo($from, $to, $message)
+    public static function mergeFromToAge($from, $to)
     {
         $value = '';
 		if ($from) {
@@ -13,8 +13,15 @@ class Common
 		if ($to) {
 			$value .= ' - ' . $to;
 		}
-		if ((!$from && $to) || !($from && $to))
-			$value = $message;
+		$value .= ' ' . __('common.years_old');
+		if (!$from)
+			$value = __('common.no');
         return $value;
 	}
+
+	public static function money($value)
+	{
+		return number_format($value, null, null, ',');
+	}
+	
 }

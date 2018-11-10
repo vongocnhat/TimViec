@@ -18,7 +18,6 @@ return [
     'text18'                    => 'Ngành nghề:',
     'text19'                    => 'Yêu cầu giới tính:',
     'text20'                    => 'Yêu cầu độ tuổi:',
-    'age_no'                    => 'Không yêu cầu độ tuổi',
     'text21'                    => 'Thông tin tuyển dụng',
     'text22'                    => 'MÔ TẢ CÔNG VIỆC',
     'text23'                    => 'QUYỀN LỢI ĐƯỢC HƯỞNG',
@@ -36,8 +35,5 @@ return [
     'btn_offline'               => 'Nộp Trực Tiếp',
     'profile_select'            => 'Chọn Hồ Sơ Để Nộp',
     'career_no'                 => 'Tất Cả Ngành Nghề',
-    'probationary_period_no'    => 'Không',
-    'gender_no'                 => 'Không Yêu Cầu',
-    'age'                       => 'Tuổi',
     'profile_duplicate'         => 'Bạn Đã Nộp Hồ Sơ Rồi',
 ];

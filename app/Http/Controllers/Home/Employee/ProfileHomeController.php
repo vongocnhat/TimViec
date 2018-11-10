@@ -33,7 +33,10 @@ class ProfileHomeController extends Controller
      */
     public function create()
     {
-        //
+        $careers = $this->re->careers();
+        $degrees = $this->re->degrees();
+        $typeOfWorks = $this->re->typeOfWorks();
+        return view('home.employee.profile.create', compact('careers', 'degrees', 'typeOfWorks'));
     }
 
     /**
@@ -44,7 +47,8 @@ class ProfileHomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->re->store($request);
+        return redirect()->route('employeeHome.profile.index');
     }
 
     /**
@@ -66,7 +70,8 @@ class ProfileHomeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $profile = $this->re->findOrFail($id);
+        return view('home.employee.profile.edit', compact('profile'));
     }
 
     /**
@@ -79,6 +84,9 @@ class ProfileHomeController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->re->update($request, $id);
+        $request->session()->flash('notify_success', __('common.update_success'));
+        return redirect()->route('employeeHome.profile.index');
     }
 
     /**
@@ -89,6 +97,7 @@ class ProfileHomeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->re->destroy($request);
+        return back();
     }
 }

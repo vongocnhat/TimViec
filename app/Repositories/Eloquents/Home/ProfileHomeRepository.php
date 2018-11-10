@@ -2,7 +2,10 @@
 
 namespace App\Repositories\Eloquents\Home;
 
+use App\Models\Career;
+use App\Models\Degree;
 use App\Models\Profile;
+use App\Models\TypeOfWork;
 use Illuminate\Support\Facades\Auth;
 use App\Repositories\Contracts\BaseRepositoryInterface;
 use App\Repositories\Contracts\Home\ProfileHomeRepositoryInterface;
@@ -53,5 +56,20 @@ class ProfileHomeRepository implements ProfileHomeRepositoryInterface, BaseRepos
                 session()->flash('notify_error', __('common.deletes_fail'));
             }
         }
+    }
+
+    public function careers()
+    {
+        return Career::pluck('name', 'id');
+    }
+
+    public function degrees()
+    {
+        return Degree::pluck('name', 'id');
+    }
+
+    public function typeOfWorks()
+    {
+        return TypeOfWork::pluck('name', 'id');
     }
 }

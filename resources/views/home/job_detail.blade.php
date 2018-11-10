@@ -14,13 +14,13 @@
                         <a class="save_job" href="#">@lang('job_detail.text2')</a>
                         <a class="share" href="">@lang('job_detail.text3')</a>
                         <p class="deadline_submission">@lang('job_detail.text4')
-                            <span>{{ $job->deadline }}</span>
+                            <span>{{ $job->deadlineA }}</span>
                         </p>
                         <p class="view">@lang('job_detail.text5')
                             <span>{{ $job->viewed }} |</span>
                         </p>
                         <p class="day">@lang('job_detail.text6')
-                            <span>{{ $job->updated_at }}</span>
+                            <span>{{ $job->updated_atA }}</span>
                         </p>
                     </div>
                     <div class="btn_profile">
@@ -35,7 +35,7 @@
                     <li class="list_item">
                         <p class="wage">@lang('job_detail.text8')
                             <span>
-                                {{ $job->wage }} @lang('common.million')
+                                {{ $job->salary->name }}
                             </span>
                         </p>
                         <p class="experi">@lang('job_detail.text10')
@@ -48,7 +48,7 @@
                             <span>{{ $job->quantity }}</span>
                         </p>
                         <p class="place">@lang('job_detail.text14')
-                            <span>{{ $job->employer->province->name }}</span>
+                            <span>{{ $job->address }}</span>
                         </p>
                         <p class="position">@lang('job_detail.text15')
                             <span>{{ $job->office->name }}</span>
@@ -60,7 +60,7 @@
                             @if ($job->probationary_period)
                             <span>{{ $job->probationary_period }}</span>
                             @else
-                            <span>@lang('job_detail.probationary_period_no')</span>
+                            <span>@lang('common.no')</span>
                             @endif
                         </p>
                         <p class="branch">@lang('job_detail.text18')
@@ -71,16 +71,11 @@
                             @endif
                         </p>
                         <p class="gender">@lang('job_detail.text19')
-                            @if ($job->gender)
-                            <span>{{ $job->gender }}</span>
-                            @else
-                            <span>@lang('job_detail.gender_no')</span>
-                            @endif
+                            <span>{{ $job->genderA }}</span>
                         </p>
                         <p class="age">@lang('job_detail.text20')
                             <span>
-                                {{ $job->age }}
-                                @lang('job_detail.age')
+                                {{ $job->ageA }}
                             </span>
                         </p>
                     </li>
@@ -138,7 +133,7 @@
                     </div>
                     <div class="text_des">
                         <p class="deadline_submission">@lang('job_detail.text27')
-                            <span>{{ $job->deadline }}</span>
+                            <span>{{ $job->deadlineA }}</span>
                         </p>
                         <div class="btn_profile">
                             @if ($job->apply_online === 1)
@@ -167,7 +162,7 @@
                         <p>@lang('job_detail.text31')</p>
                     </div>
                     <div class="text_des">
-                        <p>{{ $job->email }}</p>
+                        <p>{{ $job->addressA }}</p>
                     </div>
                 </li>
                 <li class="list_des">
@@ -175,7 +170,7 @@
                         <p>@lang('job_detail.text32')</p>
                     </div>
                     <div class="text_des">
-                        <p>{{ $job->phone }}</p>
+                        <p>{{ $job->email }}</p>
                     </div>
                 </li>
                 <li class="list_des">
@@ -184,7 +179,7 @@
                     </div>
                     <div class="text_des">
                         <p>
-                            {{ $job->address }}
+                            {{ $job->phone }}
                         </p>
                     </div>
                 </li>

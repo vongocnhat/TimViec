@@ -51,7 +51,7 @@
                                 <td>{{ $profile->degree->name }}</td>
                                 <td>{{ $profile->typeOfWork->name }}</td>
                                 <td>{{ $profile->desired_job }}</td>
-                                <td>{{ $profile->desire_minimum_wage }}</td>
+                                <td>{{ $profile->desire_minimum_wageA }}</td>
                                 <td>{{ $profile->career_goals }}</td>
                                 <td>{{ $profile->school }}</td>
                                 <td>{{ $profile->type_of_school }}</td>

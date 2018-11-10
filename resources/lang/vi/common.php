@@ -20,6 +20,8 @@ return [
     'million' => 'Triệu',
     'year' => 'Năm',
     'over' => 'Trên',
+    'years_old' => 'Tuổi',
+    'no' => 'Không',
     'agreement' => 'Thỏa Thuận',
     'select' => 'Chọn',
     'error' => 'Xảy ra lỗi vui lòng thử lại sau',
