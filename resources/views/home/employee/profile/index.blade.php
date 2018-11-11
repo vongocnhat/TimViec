@@ -21,21 +21,6 @@
                                 <th class="width-42">{{ Form::checkbox(null, null, null, ['class' => 'parent-checkbox-delete']) }}</th>
                                 <th>@lang('profile_home.name')</th>
                                 <th>@lang('profile_home.career_id')</th>
-                                <th>@lang('profile_home.degree_id')</th>
-                                <th>@lang('profile_home.type_of_work_id')</th>
-                                <th>@lang('profile_home.desired_job')</th>
-                                <th>@lang('profile_home.desire_minimum_wage')</th>
-                                <th>@lang('profile_home.career_goals')</th>
-                                <th>@lang('profile_home.school')</th>
-                                <th>@lang('profile_home.type_of_school')</th>
-                                <th>@lang('profile_home.start_at')</th>
-                                <th>@lang('profile_home.ended_at')</th>
-                                <th>@lang('profile_home.major')</th>
-                                <th>@lang('profile_home.graduation_type')</th>
-                                <th>@lang('profile_home.word')</th>
-                                <th>@lang('profile_home.excel')</th>
-                                <th>@lang('profile_home.power_point')</th>
-                                <th>@lang('profile_home.profile_img')</th>
                                 <th>@lang('profile_home.public')</th>
                                 <th>@lang('profile_home.receive_email')</th>
                                 <th>@lang('common.edit')</th>
@@ -48,23 +33,8 @@
                                 <td class="width-42">{{ Form::checkbox('ids[]', $profile->id, null, ['class' => 'checkbox-delete']) }}</td>
                                 <td>{{ $profile->name }}</td>
                                 <td>{{ $profile->career->name }}</td>
-                                <td>{{ $profile->degree->name }}</td>
-                                <td>{{ $profile->typeOfWork->name }}</td>
-                                <td>{{ $profile->desired_job }}</td>
-                                <td>{{ $profile->desire_minimum_wageA }}</td>
-                                <td>{{ $profile->career_goals }}</td>
-                                <td>{{ $profile->school }}</td>
-                                <td>{{ $profile->type_of_school }}</td>
-                                <td>{{ $profile->start_at }}</td>
-                                <td>{{ $profile->ended_at }}</td>
-                                <td>{{ $profile->major }}</td>
-                                <td>{{ $profile->graduation_type }}</td>
-                                <td>{{ $profile->word }}</td>
-                                <td>{{ $profile->excel }}</td>
-                                <td>{{ $profile->power_point }}</td>
-                                <td>{{ $profile->profile_img }}</td>
-                                <td>{{ $profile->public }}</td>
-                                <td>{{ $profile->receive_email }}</td>
+                                <td>{{ $profile->publicA }}</td>
+                                <td>{{ $profile->receive_emailA }}</td>
                                 <td class="text-center">
                                     <a href="{{ route('employeeHome.profile.edit', $profile->id) }}" 
                                     class="fas fa-edit" 

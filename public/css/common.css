@@ -48,3 +48,11 @@
     display: table;
     margin: auto;
 }
+
+.no-spin::-webkit-calendar-picker-indicator,
+.no-spin::-webkit-inner-spin-button,
+.no-spin::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    display: none;
+    -moz-appearance: none;
+}

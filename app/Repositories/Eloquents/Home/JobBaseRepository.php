@@ -13,22 +13,22 @@ abstract class JobBaseRepository
 {
     public function careers()
     {
-        return Career::pluck('name', 'id');
+        return Career::orderBy('id')->pluck('name', 'id');
     }
 
     public function salaries()
     {
-        return Salary::pluck('name', 'id')->sortKeys();
+        return Salary::orderBy('id')->pluck('name', 'id')->sortKeys();
     }
 
     public function experiences()
     {
-        return Experience::pluck('name', 'id')->sortKeys();
+        return Experience::orderBy('id')->pluck('name', 'id')->sortKeys();
     }
 
     public function provinces()
     {
-        return Province::pluck('name', 'id');
+        return Province::orderBy('id')->pluck('name', 'id');
     }
 
     public function jobsById($request)

@@ -12,21 +12,18 @@ class Profile extends Model
 		'career_id',
 		'degree_id',
 		'type_of_work_id',
+		'experience_id',
+		'office_id',
     	'desired_job',
-    	'desire_minimum_wage',
+		'desire_minimum_wage',
+		'currency',
     	'career_goals',
-    	'school',
-    	'type_of_school',
-    	'start_at',
-    	'ended_at',
-    	'major',
-    	'graduation_type',
     	'word',
     	'excel',
 		'power_point',
 		'profile_img',
     	'public',
-    	'receive_email'
+		'receive_email'
 	];
 	
 	public function jobs()
@@ -61,5 +58,21 @@ class Profile extends Model
 
 	public function getDesireMinimumWageAAttribute() {
         return Common::money($this->desire_minimum_wage);
+	}
+
+	public function getPublicAAttribute() {
+        if ($this->public === 1) {
+			return __('common.yes');
+		} else {
+			return __('common.no');
+		}
+	}
+
+	public function getReceiveEmailAAttribute() {
+        if ($this->receive_email === 1) {
+			return __('common.yes');
+		} else {
+			return __('common.no');
+		}
 	}
 }

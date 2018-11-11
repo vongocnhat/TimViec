@@ -18,8 +18,8 @@ class CreateExperienceOfProfilesTable extends Migration
             $table->unsignedInteger('profile_id');
             $table->string('company_name', 191);
             $table->unsignedInteger('office_id');
-            $table->date('start_at');
-            $table->date('ended_at');
+            $table->string('start_at', 10);
+            $table->string('ended_at', 10);
             $table->string('wage')->nullable()->default(0);
             $table->text('job_description');
             $table->text('achievement');

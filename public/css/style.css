@@ -1106,3 +1106,78 @@ a.btn_profile_disable {
     margin: 0;
     float: left;
 }
+/* --------------- section Ho so ------------ */
+.section_submit_profile{
+    padding: 20px;
+    background: #ffffff;
+    margin-top: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    -webkit-box-shadow: 0px 3px 16px -6px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 3px 16px -6px rgba(0,0,0,0.75);
+    box-shadow: 0px 3px 16px -6px rgba(0,0,0,0.75);
+}
+.section_submit_profile .title_info{
+    padding: 10px;
+    border-bottom: 1px solid rgb(211, 211, 211);
+}
+.section_submit_profile .title_info h2{
+     font-size: 18px;
+}
+.section_submit_profile .title_info h2 span{
+    font-size: 16px;
+    color: sandybrown;
+}
+.section_submit_profile .form_profile{
+    padding: 10px;
+}
+.section_submit_profile .form_profile .row{
+    margin: 0;
+}
+.section_submit_profile .form_profile .label{
+    margin-top: 7px;
+    font-weight: bold;
+    padding: 0;
+    float: left;
+    width: 210px;
+    text-align: right;
+    margin-right: 20px;
+}
+.section_submit_profile .form_profile span{
+    color: red;
+}
+.section_submit_profile .form_profile .form-group{
+    margin-bottom: 20px;
+}
+.section_submit_profile .form_profile .select{
+    float: left;
+    margin-right: 10px;
+}
+.section_submit_profile .form_profile button{
+    width: 100px;
+}
+.section_submit_profile .form-group .text_to{
+    margin: 7px 15px 0;
+}
+#input_txt{
+    margin-right: 15px;
+}
+.section_submit_profile .form-group .label_language{
+    width: 200px;
+}
+.section_submit_profile .form-group .kind{
+    width: 100px;
+    text-align: center;
+    margin-top: 8px;
+}
+.section_submit_profile .form-group input[type="radio"]{
+    width: 93px;
+    margin-right: 0px;
+    position: inherit;
+    margin-left: 3px;
+}
+
+.section_submit_profile .form_profile .form-group .langue{
+    margin-bottom: 0;
+}

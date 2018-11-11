@@ -21,8 +21,10 @@ return [
     'year' => 'Năm',
     'over' => 'Trên',
     'years_old' => 'Tuổi',
+    'yes' => 'Có',
     'no' => 'Không',
     'agreement' => 'Thỏa Thuận',
     'select' => 'Chọn',
     'error' => 'Xảy ra lỗi vui lòng thử lại sau',
+    'not_updated' => 'Chưa cập nhật',
 ];

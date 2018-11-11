@@ -6,8 +6,11 @@ return [
     'career_id' => 'Ngành Nghề',
     'degree_id' => 'Tên Bằng Cấp',
     'type_of_work_id' => 'Loại Công Việc',
+    'experience_id' => 'Tổng số năm kinh nghiệm',
+    'office_id' => 'Chức Danh Mong Muốn',
     'provinces->name' => 'Địa Điểm Làm Việc',
-    'desired_job' => 'Công Việc Mong Muốn',
+    'desired_job' => 'Vị trí Mong Muốn',
+    'desired_job_placeholder' => 'Ví dụ: Nhân viên kinh doanh, Nhân viên hành chính ....',
     'desire_minimum_wage' => 'Mức Lương Tối Thiểu',
     'career_goals' => 'Mục Tiêu Nghề Nghiệp',
     'school' => 'Trường Học',
@@ -25,4 +28,5 @@ return [
     'career_id_select' => 'Chọn Ngành Nghề',
     'degree_id_select' => 'Chọn Bằng Cấp',
     'type_of_work_id_select' => 'Chọn Loại Công Việc',
+
 ];

@@ -7,9 +7,11 @@
             <div class="container">
                 <div class="title_des clearfix">
                     <h2>{{ $job->name }}</h2>
-                    <a class="name_cty" href="">
-                        <p>{{ $job->employer->company_name }}</p>
-                    </a>
+                    <p>
+                        <a class="name_cty" href="">
+                            {{ $job->employer->company_name }}
+                        </a>
+                    </p>
                     <div class="title_left">
                         <a class="save_job" href="#">@lang('job_detail.text2')</a>
                         <a class="share" href="">@lang('job_detail.text3')</a>
@@ -24,11 +26,7 @@
                         </p>
                     </div>
                     <div class="btn_profile">
-                        @if ($job->apply_online === 1)
-                        <a href="{{ route('jobDetail.profileSelect') }}" data-job-id="{{ $job->id }}" class="btn_profile_click">@lang('job_detail.btn_online')</a>
-                        @else
-                        <a href="" class="btn_profile_disable">@lang('job_detail.btn_offline')</a>
-                        @endif
+                        {!! $job->apply_onlineA !!}
                     </div>
                 </div>
                 <ul class="box_item_des">
@@ -48,7 +46,7 @@
                             <span>{{ $job->quantity }}</span>
                         </p>
                         <p class="place">@lang('job_detail.text14')
-                            <span>{{ $job->address }}</span>
+                            <span>{{ $job->provinces_to_stringA }}</span>
                         </p>
                         <p class="position">@lang('job_detail.text15')
                             <span>{{ $job->office->name }}</span>
@@ -64,11 +62,7 @@
                             @endif
                         </p>
                         <p class="branch">@lang('job_detail.text18')
-                            @if (!empty($job->careers_to_string))
-                            <span>{{ $job->careers_to_string }}</span>
-                            @else
-                            <span>@lang('job_detail.career_no')</span>
-                            @endif
+                            <span>{{ $job->careers_to_stringA }}</span>
                         </p>
                         <p class="gender">@lang('job_detail.text19')
                             <span>{{ $job->genderA }}</span>
@@ -117,13 +111,11 @@
                     </div>
                     <div class="text_des">
                         <p>
-                            <span>
-                                @if ($job->apply_online === 1)
-                                    @lang('job_detail.apply_online')
-                                @else
-                                    @lang('job_detail.apply_offline')
-                                @endif
-                            </span>
+                            @if ($job->apply_online === 1)
+                                @lang('job_detail.apply_online')
+                            @else
+                                @lang('job_detail.apply_offline')
+                            @endif
                         </p>
                     </div>
                 </li>
@@ -136,11 +128,7 @@
                             <span>{{ $job->deadlineA }}</span>
                         </p>
                         <div class="btn_profile">
-                            @if ($job->apply_online === 1)
-                                <a href="{{ route('jobDetail.profileSelect') }}" data-job-id="{{ $job->id }}" class="btn_profile_click">@lang('job_detail.btn_online')</a>
-                            @else
-                                <a href="" class="btn_profile_disable">@lang('job_detail.btn_offline')</a>
-                            @endif
+                            {!! $job->apply_onlineA !!}
                         </div>
                     </div>
                 </li>
@@ -225,7 +213,7 @@
     </div>
 </div>
 <!-- dialog -->
-@include('home.includes.dialog')
+@include('home.includes.profile_dialog_select')
 <!-- /dialog -->
 @endsection
 @section('css')

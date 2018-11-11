@@ -52,5 +52,6 @@ return [
     'hello'           => 'Xin Chào',
     'account_manage'  => 'Quản Lý Tài Khoản',
     'profiles_manage' => 'Quản Lý Hồ Sơ',
+    'profiles_manage_submitted' => 'Quản Lý Hồ Sơ Đã Nộp',
     'sign_out'        => 'Thoát',
 ];

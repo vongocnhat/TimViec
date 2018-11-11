@@ -13,12 +13,12 @@ class JobListRepository extends JobBaseRepository implements JobListRepositoryIn
 {
     public function manager($request = null, $numberPage)
     {
-        return $this->searchJobs($request, '`office_id` = 2', $numberPage);
+        return $this->searchJobs($request, '`office_id` IN (4, 5, 6)', $numberPage);
     }
     
     public function specialize($request = null, $numberPage)
     {
-        return $this->searchJobs($request, 'office_id = 1', $numberPage);
+        return $this->searchJobs($request, 'office_id IN (1, 2, 3)', $numberPage);
     }
     
     public function labor($request = null, $numberPage)

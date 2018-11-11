@@ -16,11 +16,20 @@ class CreateCertificatesTable extends Migration
         Schema::create('certificates', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('profile_id');
+            $table->unsignedInteger('graduate_id');
             $table->string('name', 191);
+            $table->string('school');
+            $table->string('type_of_school');
+            $table->string('start_at', 10);
+            $table->string('ended_at', 10);
+            $table->string('major')->nullable();
             $table->text('certificate_img');
             $table->unique(['profile_id', 'name']);
             $table->foreign('profile_id')
                   ->references('id')->on('profiles')
+                  ->onDelete('cascade');
+            $table->foreign('graduate_id')
+                  ->references('id')->on('graduates')
                   ->onDelete('cascade');
             $table->timestamps();
         });

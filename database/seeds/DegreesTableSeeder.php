@@ -46,7 +46,7 @@ class DegreesTableSeeder extends Seeder
                     'updated_at' => Carbon::now(),
                 ],
                 [
-                    'name' => 'Thạc Sĩ',
+                    'name' => 'Trên Đại Học',
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
                 ]

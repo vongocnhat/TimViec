@@ -39,6 +39,7 @@
                             <div class="dropdown-menu rounded-0">
                                 <a href="{{ route('employeeHome.edit') }}" class="dropdown-item">@lang('home.account_manage')</a>
                                 <a href="{{ route('employeeHome.profile.index') }}" class="dropdown-item">@lang('home.profiles_manage')</a>
+                                <a href="{{ route('employeeHome.profile-submitted.index') }}" class="dropdown-item">@lang('home.profiles_manage_submitted')</a>
                                 <a href="{{ route('employeeHome.signOut') }}" class="dropdown-item">@lang('home.sign_out')</a>
                             </div>
                         {{-- </div> --}}

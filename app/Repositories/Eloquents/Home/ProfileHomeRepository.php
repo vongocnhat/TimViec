@@ -4,7 +4,10 @@ namespace App\Repositories\Eloquents\Home;
 
 use App\Models\Career;
 use App\Models\Degree;
+use App\Models\Office;
 use App\Models\Profile;
+use App\Models\Province;
+use App\Models\Experience;
 use App\Models\TypeOfWork;
 use Illuminate\Support\Facades\Auth;
 use App\Repositories\Contracts\BaseRepositoryInterface;
@@ -60,16 +63,31 @@ class ProfileHomeRepository implements ProfileHomeRepositoryInterface, BaseRepos
 
     public function careers()
     {
-        return Career::pluck('name', 'id');
+        return Career::orderBy('id')->pluck('name', 'id');
     }
 
     public function degrees()
     {
-        return Degree::pluck('name', 'id');
+        return Degree::orderBy('id')->pluck('name', 'id');
     }
 
     public function typeOfWorks()
     {
-        return TypeOfWork::pluck('name', 'id');
+        return TypeOfWork::orderBy('id')->pluck('name', 'id');
+    }
+
+    public function offices()
+    {
+        return Office::orderBy('id')->pluck('name', 'id');
+    }
+
+    public function experiences()
+    {
+        return Experience::orderBy('id')->pluck('name', 'id');
+    }
+
+    public function provinces()
+    {
+        return Province::orderBy('id')->pluck('name', 'id');
     }
 }

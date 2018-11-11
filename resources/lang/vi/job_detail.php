@@ -36,4 +36,6 @@ return [
     'profile_select'            => 'Chọn Hồ Sơ Để Nộp',
     'career_no'                 => 'Tất Cả Ngành Nghề',
     'profile_duplicate'         => 'Bạn Đã Nộp Hồ Sơ Rồi',
+    'profile_no'                => 'Bạn chưa có hồ sơ nào',
+    'profile_create'            => 'Thêm Hồ Sơ',
 ];

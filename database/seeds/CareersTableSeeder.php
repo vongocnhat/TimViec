@@ -16,6 +16,7 @@ class CareersTableSeeder extends Seeder
         
         if (DB::table('careers')->count() == 0) {
             DB::table('careers')->insert([
+                ['name' => 'Không', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
                 ['name' => 'Quản trị kinh doanh', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
                 ['name' => 'Bán hàng ', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
                 ['name' => 'Khách sạn-Nhà hàng', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],

@@ -12,19 +12,38 @@ class OfficesTableSeeder extends Seeder
      */
     public function run()
     {
-        //
         if (DB::table('offices')->count() == 0) {
             DB::table('offices')->insert([
                 [
-                    'name' => 'Nhân Viên',
+                    'name' => 'Cộng tác viên',
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
                 ],
                 [
-                    'name' => 'Quản Lý',
+                    'name' => 'Chuyên viên - Nhân viên',
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
-                ]
+                ],
+                [
+                    'name' => 'Chuyên gia',
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ],
+                [
+                    'name' => 'Quản lý nhóm - giám sát',
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ],
+                [
+                    'name' => 'Quản lý cấp trung',
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ],
+                [
+                    'name' => 'Quản lý cấp cao',
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ],
             ]);
         }
     }

@@ -50,11 +50,28 @@ class Job extends Model
 	}
 
 	public function getProvincesToStringAAttribute() {
-		return $this->provinces->implode('name', ', ');
+		if ($this->provinces->count() > 0) {
+			return $this->provinces->implode('name', ', ');
+		}
+		else {
+			return __('common.not_updated');
+		}
 	}
 
 	public function getCareersToStringAAttribute() {
-		return $this->careers->implode('name', ', ');
+		if ($this->careers->count() > 0) {
+			return $this->careers->implode('name', ', ');
+		}
+		else {
+			return __('job_detail.career_no');
+		}
+	}
+
+	public function getApplyOnlineAAttribute() {
+		if ($this->apply_online === 1)
+			return '<a href="' . route('jobDetail.profileSelect') . '" data-job-id="' . $this->id . '" class="btn_profile_click">' . __('job_detail.btn_online') . '</a>';
+		else
+			return '<a href="" class="btn_profile_disable">' . __('job_detail.btn_offline') . '</a>';
 	}
 
 	public function getAddressAAttribute() {

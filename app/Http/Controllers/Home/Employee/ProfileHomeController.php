@@ -36,7 +36,10 @@ class ProfileHomeController extends Controller
         $careers = $this->re->careers();
         $degrees = $this->re->degrees();
         $typeOfWorks = $this->re->typeOfWorks();
-        return view('home.employee.profile.create', compact('careers', 'degrees', 'typeOfWorks'));
+        $offices = $this->re->offices();
+        $experiences = $this->re->experiences();
+        $provinces = $this->re->provinces();
+        return view('home.employee.profile.create', compact('careers', 'degrees', 'typeOfWorks', 'offices', 'experiences', 'provinces'));
     }
 
     /**
@@ -71,7 +74,10 @@ class ProfileHomeController extends Controller
     public function edit($id)
     {
         $profile = $this->re->findOrFail($id);
-        return view('home.employee.profile.edit', compact('profile'));
+        $careers = $this->re->careers();
+        $degrees = $this->re->degrees();
+        $typeOfWorks = $this->re->typeOfWorks();
+        return view('home.employee.profile.edit', compact('profile', 'careers', 'degrees', 'typeOfWorks'));
     }
 
     /**

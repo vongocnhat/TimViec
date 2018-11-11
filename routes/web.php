@@ -33,6 +33,10 @@ Route::namespace('Home')->group(function() {
         Route::get('sign-out', 'EmployeeHomeController@signOut')->name('signOut');
         // profile
         Route::resource('profile', 'ProfileHomeController');
+        // /profile
+        // profile submitted
+        Route::resource('profile-submitted', 'ProfileSubmittedHomeController');
+        // /profile submitted
         // Route::get('job-profile', 'JobProfileHomeController@index')->name('jobProfile');
     });
 });

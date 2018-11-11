@@ -24,9 +24,11 @@ class DatabaseSeeder extends Seeder
             ExperiencesTableSeeder::class,
             SalariesTableSeeder::class,
             LanguagesTableSeeder::class,
+            GraduatesTableSeeder::class,
         ]);
         $max = 50;
         $genderArr = [__('employee.male'), __('employee.female')];
+        $currency = ['VND', 'USA'];
         for($i = 1 ; $i < $max ; $i++)
         {
             $this->init++;
@@ -70,7 +72,7 @@ class DatabaseSeeder extends Seeder
 
             $job = Job::create([
                 'employer_id' => $i,
-                'office_id' => rand(1, 2),
+                'office_id' => rand(1, 6),
                 'type_of_work_id' => rand(1, 6),
                 'degree_id' => rand(1, 7),
                 'experience_id' => rand(1, 8),
@@ -110,18 +112,15 @@ class DatabaseSeeder extends Seeder
                 'career_id' => $i,
                 'degree_id' => rand(1, 7),
                 'type_of_work_id' => rand(1, 6),
+                'experience_id' => rand(1, 8),
+                'office_id' => rand(1, 6),
                 'desired_job' => $this->initNull('desired_job' . $i),
                 'desire_minimum_wage' => $this->initNull(rand(4000000, 8000000)),
+                'currency' => $currency[rand(0, 1)],
                 'career_goals' => $this->initNull('career_goals' . $i),
-                'school' => 'school' . $i,
-                'type_of_school' => 'type_of_school' . $i,
-                'start_at' => rand(2000, 2005),
-                'ended_at' => rand(2006, 2010),
-                'major' => $this->initNull('major' . $i),
-                'graduation_type' => $this->initNull($i),
-                'word' => rand(1, 3),
-                'excel' => rand(1, 3),
-                'power_point' => rand(1, 3),
+                'word' => rand(1, 4),
+                'excel' => rand(1, 4),
+                'power_point' => rand(1, 4),
                 'profile_img' => 'profile_img' . $i,
                 'public' => $this->initNull(rand(0, 1)),
                 'receive_email' => $this->initNull(rand(0, 1)),

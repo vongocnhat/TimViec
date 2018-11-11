@@ -7,5 +7,6 @@
         <div class="dialog-content box-ajax">
             
         </div>
+        <a href="#" class="btn btn-success">@lang('job_detail.profile_create')</a>
     </div>
 </div>
