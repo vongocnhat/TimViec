@@ -2,7 +2,7 @@
 @section('title', __('job_detail.text1'))
 @section('content')
 <div class="seation_search container">
-    {!! Form::open(['route' => 'jobList.searchAjax', 'method' => 'post', 'class' => 'form_seach', 'id' => 'form_search']) !!}
+    {!! Form::open(['route' => ['jobList.searchAjax', $jobType], 'method' => 'post', 'class' => 'form_seach', 'id' => 'form_search']) !!}
         <ul class="box_form">
             <li class="list_occupation">
                 {{ Form::select('career_id', $careers, null, ['class' => 'select_input', 'placeholder' => __('job_list.text19')]) }}

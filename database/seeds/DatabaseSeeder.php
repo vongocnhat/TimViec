@@ -121,6 +121,7 @@ class DatabaseSeeder extends Seeder
                 'word' => rand(1, 4),
                 'excel' => rand(1, 4),
                 'power_point' => rand(1, 4),
+                'other_soft' => $i,
                 'profile_img' => 'profile_img' . $i,
                 'public' => $this->initNull(rand(0, 1)),
                 'receive_email' => $this->initNull(rand(0, 1)),

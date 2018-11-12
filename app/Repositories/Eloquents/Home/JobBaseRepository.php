@@ -37,16 +37,16 @@ abstract class JobBaseRepository
         switch ($url)
         {
             case route('jobList.manager'):
-                return $this->manager($request);
+                return $this->manager($request, 10);
             break;
             case route('jobList.specialize'):
-                return $this->specialize($request);
+                return $this->specialize($request, 10);
             break;
             case route('jobList.labor'):
-                return $this->labor($request);
+                return $this->labor($request, 10);
             break;
             case route('jobList.student'):
-                return $this->student($request);
+                return $this->student($request, 10);
             break;
         }
     }

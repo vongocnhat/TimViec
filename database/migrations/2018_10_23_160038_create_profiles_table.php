@@ -29,6 +29,7 @@ class CreateProfilesTable extends Migration
             $table->tinyInteger('word');
             $table->tinyInteger('excel');
             $table->tinyInteger('power_point');
+            $table->string('other_soft')->nullable();
             $table->text('profile_img');
             $table->boolean('public')->nullable()->default(false);
             $table->boolean('receive_email')->nullable()->default(false);

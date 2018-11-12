@@ -18,13 +18,15 @@ class JobDetailController extends Controller
         $this->re = $re;
     }
 
-    public function show($jobID, $backgroundColor, $color)
+    public function show($jobType, $jobID)
     {
         $careers = $this->re->careers();
         $salaries = $this->re->salaries();
         $experiences = $this->re->experiences();
         $provinces = $this->re->provinces();
         $job = $this->re->job($jobID);
+        $backgroundColor = ' ' . $jobType . '-' .'background';
+        $color = ' ' . $jobType . '-' .'color';
         return view('home.job_detail', compact('careers', 'salaries', 'experiences', 'provinces', 'job', 'backgroundColor', 'color'));
     }
 

@@ -21,6 +21,7 @@ class Profile extends Model
     	'word',
     	'excel',
 		'power_point',
+		'other_soft',
 		'profile_img',
     	'public',
 		'receive_email'

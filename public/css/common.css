@@ -49,6 +49,10 @@
     margin: auto;
 }
 
+.mr-10px {
+    margin-right: 10px;
+}
+
 .no-spin::-webkit-calendar-picker-indicator,
 .no-spin::-webkit-inner-spin-button,
 .no-spin::-webkit-outer-spin-button {

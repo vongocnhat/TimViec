@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Home\Employee;
 
+use App\Models\Common;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\Home\ProfileHomeRepositoryInterface;
@@ -39,7 +40,9 @@ class ProfileHomeController extends Controller
         $offices = $this->re->offices();
         $experiences = $this->re->experiences();
         $provinces = $this->re->provinces();
-        return view('home.employee.profile.create', compact('careers', 'degrees', 'typeOfWorks', 'offices', 'experiences', 'provinces'));
+        $months = Common::months();
+        $years = Common::years();
+        return view('home.employee.profile.create', compact('careers', 'degrees', 'typeOfWorks', 'offices', 'experiences', 'provinces', 'months', 'years'));
     }
 
     /**
