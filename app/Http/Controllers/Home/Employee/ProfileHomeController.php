@@ -42,7 +42,8 @@ class ProfileHomeController extends Controller
         $provinces = $this->re->provinces();
         $months = Common::months();
         $years = Common::years();
-        return view('home.employee.profile.create', compact('careers', 'degrees', 'typeOfWorks', 'offices', 'experiences', 'provinces', 'months', 'years'));
+        $currencies = Common::currencies();
+        return view('home.employee.profile.create', compact('careers', 'degrees', 'typeOfWorks', 'offices', 'experiences', 'provinces', 'months', 'years', 'currencies'));
     }
 
     /**

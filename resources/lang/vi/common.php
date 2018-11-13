@@ -6,6 +6,7 @@ return [
     'delete_message' => 'Xóa :table_name: :name?',
     'save' => 'Lưu',
     'cancel' => 'Hủy Bỏ',
+    'finish' => 'Hoàn Tất',
     'create' => 'Thêm Mới',
     'edit' => 'Sửa',
     'update' => 'Cập Nhật',

@@ -38,4 +38,9 @@ class Common
 		}
 		return $years;
 	}
+
+	public static function currencies()
+	{
+		return ['VND', 'USD'];
+	}
 }

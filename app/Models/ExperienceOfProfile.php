@@ -12,7 +12,6 @@ class ExperienceOfProfile extends Model
     	'office_id',
     	'start_at',
     	'ended_at',
-    	'wage',
     	'job_description',
     	'achievement'
     ];

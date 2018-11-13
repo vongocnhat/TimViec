@@ -1181,3 +1181,17 @@ a.btn_profile_disable {
 .section_submit_profile .form_profile .form-group .langue{
     margin-bottom: 0;
 }
+/* /////////////////// */
+.container-profile {
+    position: relative;
+}
+
+.finish_box_n {
+    position: absolute;
+    bottom: -180px;
+    width: 100%;
+}
+
+#languages {
+    margin-bottom: 180px;
+}
