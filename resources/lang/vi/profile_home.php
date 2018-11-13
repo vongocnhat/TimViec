@@ -26,6 +26,7 @@ return [
     'public' => 'Công Khai Hồ Sơ',
     'public_true' => 'Cho phép Nhà tuyển dụng tìm kiếm thông tin của bạn và chủ động liên hệ mời phỏng vấn.',
     'public_false' => 'Không cho phép nhà tuyển dụng tìm kiếm. Hồ sơ chỉ dùng để ứng tuyển.',
+    'certificate_name' => 'Ví dụ: Cử nhân kinh tế, Trung cấp du lịch, Tốt nghiệp THPT...',
     'other_soft' => 'Phần mềm khác',
     'receive_email' => 'Nhận Email Tìm Việc',
     'receive_email_true' => 'Nhận email thông báo việc làm cho hồ sơ này.',

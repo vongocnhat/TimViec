@@ -33,8 +33,8 @@
                                 {{ Form::select('degree_id', $degrees, null, ['class' => 'form-control col-sm-4', 'placeholder' => __('profile_home.degree_id')]) }}
                             </div>
                             <div class="form-group row">
-                                <label for="provinces_id" class="label ">@lang('profile_home.provinces->name')<span> *</span></label>
-                                {{ Form::select('provinces_id', $provinces, null, ['class' => 'form-control col-sm-4', 'multiple']) }}
+                                <label for="provinces_id[]" class="label ">@lang('profile_home.provinces->name')<span> *</span></label>
+                                {{ Form::select('provinces_id[]', $provinces, null, ['class' => 'form-control col-sm-4', 'multiple']) }}
                             </div>
                             <div class="form-group row">
                                 <label for="experience_id" class="label ">@lang('profile_home.experience_id')<span> *</span></label>
@@ -137,13 +137,12 @@
                     <div class="form_profile">
                         {!! Form::open() !!}
                             <div class="form-group row">
-                                <label for="inputAddress" class="label" >@lang('profile_home.text21') <span>*</span></label>
-                                {{ Form::text('name') }}
-                                <input type="text" class="form-control col-sm-7" id="inputAddress" placeholder="Ví dụ: Cử nhân kinh tế, Trung cấp du lịch, Tốt nghiệp THPT...">
+                                <label for="name" class="label">@lang('profile_home.text21') <span>*</span></label>
+                                {{ Form::text('name', null, ['class'=>'form-control col-sm-7', 'placeholder'=>__('profile_home.certificate_name')]) }}
                             </div>
                             <div class="form-group row">
-                                <label for="inputAddress" class="label " >@lang('profile_home.text22') <span>*</span></label>
-                                <input type="text" class="form-control col-sm-7" id="inputAddress">
+                                <label for="school" class="label " >@lang('profile_home.text22') <span>*</span></label>
+                                {{ Form::text('school', null, ['class'=>'form-control col-sm-7']) }}
                             </div>
                             <div class="form-group row">
                                 <label for="start_month_certificate" class="label ">@lang('profile_home.text23')<span> *</span></label>

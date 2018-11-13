@@ -57,6 +57,11 @@ class Profile extends Model
 		return $this->belongsTo('App\Models\Degree');
 	}
 
+	public function provinces()
+	{
+		return $this->belongsToMany('App\Models\Province');
+	}
+
 	public function getDesireMinimumWageAAttribute() {
         return Common::money($this->desire_minimum_wage);
 	}

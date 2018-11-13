@@ -34,13 +34,13 @@ class Common
 	{
 		$years = [];
 		for ($i=(int)date("Y"); $i >= 1950 ; $i--) {
-			array_push($years, $i);
+			array_push($years, [$i => $i]);
 		}
 		return $years;
 	}
 
 	public static function currencies()
 	{
-		return ['VND', 'USD'];
+		return ['VND'=>'VND', 'USD'=>'USD'];
 	}
 }

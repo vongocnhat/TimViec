@@ -28,8 +28,11 @@ class ProfileHomeRepository implements ProfileHomeRepositoryInterface, BaseRepos
     public function store($request)
     {
         $profile = new Profile();
-        $profile->fill($request->all());
+        $profile->employee_id = Auth::guard('employee')->user()->id;
+        $profile->fill($request->except('profile_img'));
+        $profile->profile_img = 'ten anh';
         $profile->save();
+        $profile->provinces()->attach($request->provinces_id);        
     }
 
     public function update($request, $id)
