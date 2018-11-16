@@ -6,6 +6,8 @@ use App\Models\Career;
 use App\Models\Degree;
 use App\Models\Office;
 use App\Models\Profile;
+use App\Models\Graduate;
+use App\Models\Language;
 use App\Models\Province;
 use App\Models\Experience;
 use App\Models\TypeOfWork;
@@ -92,5 +94,15 @@ class ProfileHomeRepository implements ProfileHomeRepositoryInterface, BaseRepos
     public function provinces()
     {
         return Province::orderBy('id')->pluck('name', 'id');
+    }
+
+    public function graduates()
+    {
+        return Graduate::orderBy('id')->pluck('name', 'id');
+    }
+
+    public function languages()
+    {
+        return Language::orderBy('id')->pluck('name', 'id');
     }
 }

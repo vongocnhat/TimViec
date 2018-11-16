@@ -135,7 +135,11 @@
                         <h2>@lang('profile_home.text19') <span>@lang('profile_home.required_false')</span></h2>
                     </div>
                     <div class="form_profile">
-                        {!! Form::open() !!}
+                        {!! Form::open(['id'=>'formCertificates']) !!}
+                            <div class="form-group row">
+                                <label for="graduate_id" class="label">@lang('profile_home.graduate_id') <span>*</span></label>
+                                {{ Form::select('graduate_id', $graduates, null, ['class'=>'form-control col-sm-4', 'placeholder'=>__('profile_home.graduate_id')]) }}
+                            </div>
                             <div class="form-group row">
                                 <label for="name" class="label">@lang('profile_home.text21') <span>*</span></label>
                                 {{ Form::text('name', null, ['class'=>'form-control col-sm-7', 'placeholder'=>__('profile_home.certificate_name')]) }}
@@ -155,18 +159,14 @@
                                 {{ Form::select('end_year_certificate', $years, null, ['class' => 'form-control col-sm-2', 'placeholder' => __('common.year')]) }}
                             </div>
                             <div class="form-group row">
-                                    <label for="inputAddress" class="label " >@lang('profile_home.text24') <span>*</span></label>
-                                    <input type="text" class="form-control col-sm-7" id="inputAddress">
-                                </div>
-                                <div class="form-group row">
-                                        <label for="rank" class="label ">@lang('profile_home.text25')<span> *</span></label>
-                                        <select id="Select" class="form-control select col-sm-7">
-                                            <option>Chọn loại tốt nghiệp..</option>
-                                            <option>Disabled select</option>
-                                            <option>Disabled select</option>
-                                        </select>
-                                    </div>
-                            <button class="btn btn-success" id="btnCertificateSave">@lang('common.save')</button>
+                                <label for="major" class="label " >@lang('profile_home.text24') <span>*</span></label>
+                                {{ Form::text('major', null, ['class'=>'form-control col-sm-7']) }}
+                            </div>
+                            <div class="form-group row">
+                                <label for="certificate_img" class="label " >@lang('profile_home.certificate_img') <span>*</span></label>
+                                {{ Form::file('certificate_img', ['class' => 'form-control col-sm-4', 'accept'=>'image/*']) }}
+                            </div>
+                            <button type="submit" class="btn btn-success" id="btnCertificateSave">@lang('common.save')</button>
                             <button class="btn btn-secondary" id="btnCertificateCancel">@lang('common.cancel')</button>
                         {!! Form::close() !!}
                     </div>
@@ -176,7 +176,7 @@
                         <h2>@lang('profile_home.text12') <span>@lang('profile_home.required_false')</span></h2>
                     </div>
                     <div class="form_profile">
-                        <form action="#" method="get">
+                        {!! Form::open(['id'=>'formExperiences']) !!}
                             <div class="form-group row">
                                 <label for="company_name" class="label" >@lang('profile_home.text13')<span>*</span></label>
                                 {{ Form::text('company_name', null, ['class'=>'form-control col-sm-7']) }}
@@ -196,16 +196,16 @@
                                 {{ Form::select('end_year_experience', $years, null, ['class' => 'form-control col-sm-2', 'placeholder' => __('common.year')]) }}
                             </div>
                             <div class="form-group row">
-                                <label for="rank" class="label ">@lang('profile_home.text17')<span> *</span></label>
+                                <label for="job_description" class="label ">@lang('profile_home.text17')<span> *</span></label>
                                 {{ Form::textarea('job_description', null, ['class'=>'form-control col-sm-8', 'rows'=>3]) }}
                             </div>
                             <div class="form-group row">
-                                <label for="rank" class="label ">@lang('profile_home.text18')<span> *</span></label>
+                                <label for="achievement" class="label ">@lang('profile_home.text18')<span> *</span></label>
                                 {{ Form::textarea('achievement', null, ['class'=>'form-control col-sm-8', 'rows'=>3]) }}
                             </div>
-                            <button class="btn btn-success" id="btnExperienceSave">@lang('common.save')</button>
+                            <button type="submit" class="btn btn-success" id="btnExperienceSave">@lang('common.save')</button>
                             <button class="btn btn-secondary" id="btnExperienceCancel">@lang('common.cancel')</button>
-                        </form>
+                        {!! Form::close() !!}
                     </div>
                 </div>
                 <div class="section_submit_profile" id="languages">
@@ -213,52 +213,49 @@
                         <h2>@lang('profile_home.text20') <span>@lang('profile_home.required_false')</span></h2>
                     </div>
                     <div class="form_profile">
-                        <div class="form-group row">
-                            <label for="rank" class="label ">Ngoại ngữ<span> *</span></label>
-                            <select id="Select" class="form-control select col-sm-3">
-                                <option>Chọn loại Ngoại ngữ.</option>
-                                <option>Tiếng Anh</option>
-                                <option>Tiếng Nhật</option>
-                                <option>Tiếng Hàn</option>
-                            </select>
-                        </div>
-                        <div class="form-group row">
-                                <label for="rank" class="label">Ngoại ngữ</label>
-                                <span class="kind">Tốt</span>
-                                <span class="kind">Khá</span>
-                                <span class="kind">Trung Bình</span>
-                                <span class="kind">Kém</span>
-                        </div>
-                        <div class="form-group langue">
-                                <label for="rank" class="label">Nghe</label>
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option1">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option1">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option1">
-                        </div>
-                        <div class="form-group langue">
-                                <label for="rank" class="label">Nói</label>
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option1">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option1">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option1">
-                        </div>
-                        <div class="form-group langue">
-                                <label for="rank" class="label">Đọc</label>
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option1">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option1">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option1">
-                        </div>
-                        <div class="form-group langue">
-                                <label for="rank" class="label">Viết</label>
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option1">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option1">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option1">
-                        </div>
-                        <button class="btn btn-success" id="btnLanguageSave" >@lang('common.save')</button>
-                        <button class="btn btn-secondary" id="btnLanguageCancel">@lang('common.cancel')</button>
+                        {!! Form::open(['id'=>'formLanguages']) !!}
+                            <div class="form-group row">
+                                <label for="language_id" class="label ">@lang('profile_home.text26')<span> *</span></label>
+                                {{ Form::select('language_id', $languages, null, ['class'=>'form-control select col-sm-4', 'placeholder'=>__('profile_home.text26')]) }}
+                            </div>
+                            <div class="form-group row">
+                                    <label class="label">@lang('profile_home.text27')</label>
+                                    <span class="kind">@lang('profile_home.text28')</span>
+                                    <span class="kind">@lang('profile_home.text29')</span>
+                                    <span class="kind">@lang('profile_home.text30')</span>
+                                    <span class="kind">@lang('profile_home.text31')</span>
+                            </div>
+                            <div class="form-group langue">
+                                    <label class="label">@lang('profile_home.text32')</label>
+                                    {{ Form::radio('listening', 1, null, ['class' => 'form-check-input']) }}
+                                    {{ Form::radio('listening', 2, null, ['class' => 'form-check-input']) }}
+                                    {{ Form::radio('listening', 3, null, ['class' => 'form-check-input']) }}
+                                    {{ Form::radio('listening', 4, null, ['class' => 'form-check-input']) }}
+                            </div>
+                            <div class="form-group langue">
+                                    <label class="label">@lang('profile_home.text33')</label>
+                                    {{ Form::radio('speaking', 1, null, ['class' => 'form-check-input']) }}
+                                    {{ Form::radio('speaking', 2, null, ['class' => 'form-check-input']) }}
+                                    {{ Form::radio('speaking', 3, null, ['class' => 'form-check-input']) }}
+                                    {{ Form::radio('speaking', 4, null, ['class' => 'form-check-input']) }}
+                            </div>
+                            <div class="form-group langue">
+                                    <label class="label">@lang('profile_home.text34')</label>
+                                    {{ Form::radio('reading', 1, null, ['class' => 'form-check-input']) }}
+                                    {{ Form::radio('reading', 2, null, ['class' => 'form-check-input']) }}
+                                    {{ Form::radio('reading', 3, null, ['class' => 'form-check-input']) }}
+                                    {{ Form::radio('reading', 4, null, ['class' => 'form-check-input']) }}
+                            </div>
+                            <div class="form-group langue">
+                                    <label class="label">@lang('profile_home.text35')</label>
+                                    {{ Form::radio('writing', 1, null, ['class' => 'form-check-input']) }}
+                                    {{ Form::radio('writing', 2, null, ['class' => 'form-check-input']) }}
+                                    {{ Form::radio('writing', 3, null, ['class' => 'form-check-input']) }}
+                                    {{ Form::radio('writing', 4, null, ['class' => 'form-check-input']) }}
+                            </div>
+                            <button class="btn btn-success" id="btnLanguageSave" >@lang('common.save')</button>
+                            <button class="btn btn-secondary" id="btnLanguageCancel">@lang('common.cancel')</button>
+                        {!! Form::close() !!}
                     </div>
                 </div>
             </div>
@@ -295,8 +292,9 @@
 @endsection
 @section('script')
 <script>
-$('#btnCertificateSave').click(function() {
-    $('#certificates').find('')
+$('#formCertificates').submit(function(e) {
+    e.preventDefault();
+    console.log($(this).serializeArray());
 });
-<script>
+</script>
 @endsection

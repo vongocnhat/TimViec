@@ -1,6 +1,11 @@
 @extends('home.layouts.job_layout')
 @section('title', __('job_detail.text1'))
 @section('content')
+<style>
+.box_form li {
+    width: 277.5px;
+}
+    </style>
 <div class="seation_search container">
     {!! Form::open(['route' => ['jobList.searchAjax', $jobType], 'method' => 'post', 'class' => 'form_seach', 'id' => 'form_search']) !!}
         <ul class="box_form">

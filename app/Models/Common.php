@@ -26,7 +26,7 @@ class Common
 
 	public static function months()
 	{
-		$months = [1, 2, 3, 4, 5, 6, 7, 8 ,9 , 10, 11, 12];
+		$months = [1=>1, 2=>2, 3=>3, 4=>4, 5=>5, 6=>6, 7=>7, 8>8 , 9=>9 , 10=>10, 11=>11, 12=>12];
 		return $months;
 	}
 
@@ -34,7 +34,7 @@ class Common
 	{
 		$years = [];
 		for ($i=(int)date("Y"); $i >= 1950 ; $i--) {
-			array_push($years, [$i => $i]);
+			$years[$i] = $i;
 		}
 		return $years;
 	}
