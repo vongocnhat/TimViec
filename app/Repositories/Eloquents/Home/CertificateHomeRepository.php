@@ -22,16 +22,23 @@ class CertificateHomeRepository implements CertificateHomeRepositoryInterface
         foreach ($certificatesArray as $key => $item) {
             $certificate = new Certificate();
             $item->profile_id = 1;
+            $item->start_at = $item->start_month_certificate . '/' . $item->start_year_certificate;
+            $item->ended_at = $item->end_month_certificate . '/' . $item->end_year_certificate;
             $certificate->fill((array)$item);
             $certificate->save();
         }   
     }
 
     public function update($request, $id)
-    {
-        $certificate = Certificate::findOrFail($id);
-        $certificate->fill($request->all());
-        $certificate->save();
+    {   
+        foreach ($certificatesArray as $key => $item) {
+            $certificate = $this->findOrFail($id);
+            $item->profile_id = 1;
+            $item->start_at = $item->start_month_certificate . '/' . $item->start_year_certificate;
+            $item->ended_at = $item->end_month_certificate . '/' . $item->end_year_certificate;
+            $certificate->fill((array)$item);
+            $certificate->save();
+        }   
     }
 
     public function destroy($request)

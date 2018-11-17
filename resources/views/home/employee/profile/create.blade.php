@@ -126,7 +126,6 @@
                         </div>
                         <div class="form_profile text-right">
                             <button type="submit" class="btn btn-success" >@lang('common.finish')</button>
-                            <button type="submit" class="btn btn-secondary">@lang('common.cancel')</button>
                         </div>
                     </div>
                 {!! Form::close() !!}
@@ -136,22 +135,26 @@
                     </div>
                     <div class="form_profile">
                         {!! Form::open(['route'=>'employeeHome.certificate.store', 'id'=>'formCertificate']) !!}
-                            <table id="listCertificates" class="table table-bordered">
-                                <thead>
-                                    <th>@lang('certificate.graduate_id')</th>
-                                    <th>@lang('certificate.name')</th>
-                                    <th>@lang('certificate.school')</th>
-                                    <th>@lang('certificate.start_at')</th>
-                                    <th>@lang('certificate.ended_at')</th>
-                                    <th>@lang('certificate.major')</th>
-                                    <th>@lang('common.edit')</th>
-                                    <th>@lang('common.delete')</th>
-                                </thead>
-                                <tbody>
-                                    
-                                </tbody>
-                            </table>
-                            <hr>
+                            <div class="overflow-auto-n" id="listCertificates">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <th>@lang('certificate.graduate_id')</th>
+                                        <th>@lang('certificate.name')</th>
+                                        <th>@lang('certificate.school')</th>
+                                        <th>@lang('certificate.start_at')</th>
+                                        <th>@lang('certificate.ended_at')</th>
+                                        <th>@lang('certificate.major')</th>
+                                        <th>@lang('common.edit')</th>
+                                        <th>@lang('common.delete')</th>
+                                    </thead>
+                                    <tbody>
+                                        
+                                    </tbody>
+                                </table>
+                                <hr />
+                            </div>
+                            
+                            {{ Form::hidden('key') }}
                             <div class="form-group row">
                                 <label for="graduate_id" class="label">@lang('profile_home.graduate_id') <span>*</span></label>
                                 {{ Form::select('graduate_id', $graduates, null, ['class'=>'form-control col-sm-4', 'placeholder'=>__('profile_home.graduate_id')]) }}
@@ -180,7 +183,7 @@
                             </div>
                             <div class="text-right">
                                 <button type="submit" class="btn btn-success" id="btnCertificateSave">@lang('common.save')</button>
-                                <button class="btn btn-secondary" id="btnCertificateCancel">@lang('common.cancel')</button>
+                                <button type="reset" class="btn btn-secondary btn-cancel-n">@lang('common.cancel')</button>
                             </div>
                         {!! Form::close() !!}
                     </div>
@@ -219,7 +222,7 @@
                             </div>
                             <div class="text-right">
                                 <button type="submit" class="btn btn-success" id="btnExperienceSave">@lang('common.save')</button>
-                                <button class="btn btn-secondary" id="btnExperienceCancel">@lang('common.cancel')</button>
+                                <button type="reset" class="btn btn-secondary btn-cancel-n">@lang('common.cancel')</button>
                             </div>
                         {!! Form::close() !!}
                     </div>
@@ -271,7 +274,7 @@
                             </div>
                             <div class="text-right">
                                 <button class="btn btn-success" id="btnLanguageSave" >@lang('common.save')</button>
-                                <button class="btn btn-secondary" id="btnLanguageCancel">@lang('common.cancel')</button>
+                                <button type="reset" class="btn btn-secondary btn-cancel-n">@lang('common.cancel')</button>
                             </div>    
                         {!! Form::close() !!}
                     </div>
@@ -281,73 +284,10 @@
     </div>
 @endsection
 @section('script')
+<script src="js/certificate-ajax.js"></script>
 <script>
-(function() {
-    var certificates = [];
-    $('#formCertificate').submit(function(e) {
-        e.preventDefault();
-        var tempArr = {};
-        $.each($(this).serializeArray(), function() {
-            tempArr[this.name] = this.value;
-        });
-        certificates.push(tempArr);
-        
-        var certificateUrl = $('#formCertificate').prop('action');
-        var certificatesJSON = JSON.stringify(certificates);
-        console.log(JSON.stringify(tempArr));
-        $.ajax({
-            url: certificateUrl,
-            type: 'POST',
-            data: { "_token": "{{ csrf_token() }}",  certificatesJSON },
-            success: function(data) {
-                console.log(data);
-            }
-        });
-        $(this).trigger("reset");
-        $(this).find('select').trigger('change');
-        var $listCertificates = $('#listCertificates tbody');
-        var listHTML = '';
-        certificates.forEach(function(item, key) {
-            listHTML += '<tr>\n';
-            var element = item['graduate_id'];
-            listHTML += '<td>' + $('select[name=graduate_id]').find('option[value="' + element + '"]').text() + '</td>\n';
-            element = item['name'];
-            listHTML += '<td>' + element + '</td>\n';
-            element = item['school'];
-            listHTML += '<td>' + element + '</td>\n';
-            element = item['start_month_certificate'] + '/' + item['start_year_certificate'];
-            listHTML += '<td>' + element + '</td>\n';
-            element = item['end_month_certificate'] + '/' + item['end_year_certificate'];
-            listHTML += '<td>' + element + '</td>\n';
-            element = item['major'];
-            listHTML += '<td>' + element + '</td>\n';
-            listHTML += '<td class="edit" data-key="' + key + '"><i class="fas fa-edit"></i></td>\n';
-            listHTML += '<td class="delete" data-key="' + key + '"><i class="fas fa-trash-alt"></i></td>\n';
-            listHTML += '</tr>'
-        });
-        $listCertificates.html(listHTML);
-    });
-    $('#listCertificates tbody').on('click', '.edit', function() {
-        
-    });
-    $('#listCertificates tbody').on('click', '.delete', function() {
-        $(this).parent().remove();
-        certificates.pop($(this).data('key'));
-    });
-    $('#formProfile').submit(function(e) {
-        e.preventDefault();
-        var certificateUrl = $('#formCertificate').prop('action');
-        var data = $('#formCertificate').serialize();
-        $.ajax({
-            url: certificateUrl,
-            type: 'POST',
-            data: certificates,
-            success: function(data) {
-                console.log('sa');
-                console.log(data);
-            }
-        });
-    });
-})();
+$('.btn-cancel-n').click(function() {
+    $(this).parent().siblings().find('select').val(null).change();
+});
 </script>
 @endsection

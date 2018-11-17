@@ -60,3 +60,7 @@
     display: none;
     -moz-appearance: none;
 }
+
+.overflow-auto-n {
+    overflow: auto;
+}

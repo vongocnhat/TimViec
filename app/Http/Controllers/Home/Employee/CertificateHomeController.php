@@ -43,9 +43,6 @@ class CertificateHomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        // echo (implode('||||||', json_decode($request->certificatesJSON)));
-        // // echo json_decode($request->certificatesJSON);
         $certificatesArray = json_decode($request->certificatesJSON);
         $this->re->store($certificatesArray);
     }
