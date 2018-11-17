@@ -136,6 +136,14 @@
                     </div>
                     <div class="form_profile">
                         {!! Form::open(['id'=>'formCertificates']) !!}
+                            <table id="listCertificates">
+                                <tbody class="tbody">
+                                    <tr class="row">
+                                        <td>s<td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <hr>
                             <div class="form-group row">
                                 <label for="graduate_id" class="label">@lang('profile_home.graduate_id') <span>*</span></label>
                                 {{ Form::select('graduate_id', $graduates, null, ['class'=>'form-control col-sm-4', 'placeholder'=>__('profile_home.graduate_id')]) }}
@@ -291,6 +299,10 @@
 $('#formCertificates').submit(function(e) {
     e.preventDefault();
     console.log($(this).serializeArray());
+    $(this).trigger("reset");
+    $(this).find('select').trigger('change');
+    $()
+
 });
 </script>
 @endsection
