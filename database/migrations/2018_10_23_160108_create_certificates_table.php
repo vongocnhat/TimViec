@@ -19,7 +19,6 @@ class CreateCertificatesTable extends Migration
             $table->unsignedInteger('graduate_id');
             $table->string('name', 191);
             $table->string('school');
-            $table->string('type_of_school');
             $table->string('start_at', 10);
             $table->string('ended_at', 10);
             $table->string('major')->nullable();

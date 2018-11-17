@@ -32,7 +32,7 @@ return [
     'text32'                    => 'EMAIL',
     'text33'                    => 'SỐ ĐIỆN THOẠI',
     'text34'                    => 'Việc làm hấp dẫn',
-    'btn_offline'               => 'Nộp Trực Tiếp',
+    'btn_offline'               => 'Nộp Hồ Sơ Tại Công Ty',
     'profile_select'            => 'Chọn Hồ Sơ Để Nộp',
     'career_no'                 => 'Tất Cả Ngành Nghề',
     'profile_duplicate'         => 'Bạn Đã Nộp Hồ Sơ Rồi',

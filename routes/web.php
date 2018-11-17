@@ -38,6 +38,8 @@ Route::namespace('Home')->group(function() {
         Route::resource('profile-submitted', 'ProfileSubmittedHomeController');
         // /profile submitted
         // Route::get('job-profile', 'JobProfileHomeController@index')->name('jobProfile');
+        Route::resource('certificate', 'CertificateHomeController');
+
     });
 });
 
