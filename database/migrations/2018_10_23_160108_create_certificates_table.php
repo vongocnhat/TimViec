@@ -23,7 +23,6 @@ class CreateCertificatesTable extends Migration
             $table->string('start_at', 10);
             $table->string('ended_at', 10);
             $table->string('major')->nullable();
-            $table->text('certificate_img');
             $table->unique(['profile_id', 'name']);
             $table->foreign('profile_id')
                   ->references('id')->on('profiles')

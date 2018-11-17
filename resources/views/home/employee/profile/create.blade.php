@@ -162,10 +162,6 @@
                                 <label for="major" class="label " >@lang('profile_home.text24') <span>*</span></label>
                                 {{ Form::text('major', null, ['class'=>'form-control col-sm-7']) }}
                             </div>
-                            <div class="form-group row">
-                                <label for="certificate_img" class="label " >@lang('profile_home.certificate_img') <span>*</span></label>
-                                {{ Form::file('certificate_img', ['class' => 'form-control col-sm-4', 'accept'=>'image/*']) }}
-                            </div>
                             <button type="submit" class="btn btn-success" id="btnCertificateSave">@lang('common.save')</button>
                             <button class="btn btn-secondary" id="btnCertificateCancel">@lang('common.cancel')</button>
                         {!! Form::close() !!}

@@ -14,6 +14,5 @@ class Certificate extends Model
     	'start_at',
     	'ended_at',
     	'major',
-		'certificate_img'
     ];
 }
