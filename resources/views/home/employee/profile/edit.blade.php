@@ -6,7 +6,7 @@
                 <h1>@lang('profile_home.text1')</h1>
             </div>
             <div class="container-profile">
-                {!! Form::model($profile, ['route'=>'employeeHome.profile.store', 'method'=>'POST', 'id'=>'formProfile']) !!}
+                {!! Form::model($profile, ['route'=>['employeeHome.profile.update', $profile->id], 'method'=>'PUT', 'id'=>'formProfile']) !!}
                     <div class="section_submit_profile">
                         <div class="title_info">
                             <h2>@lang('profile_home.text2') <span>@lang('profile_home.required_true')</span></h2>
@@ -257,7 +257,6 @@
                                 <table class="table table-bordered">
                                     <thead>
                                         <th>@lang('language_profile.language_id')</th>
-                                        <th>@lang('language_profile.profile_id')</th>
                                         <th>@lang('language_profile.listening')</th>
                                         <th>@lang('language_profile.speaking')</th>
                                         <th>@lang('language_profile.reading')</th>
@@ -325,11 +324,32 @@
 @endsection
 @section('script')
 <script>
-    var certificatesPara = {!! $certificates !!};
-    var experienceOfProfilesPara = {!! $experienceOfProfiles !!}
+    var certificatesPara = {!! $profile->certificates !!};
+    var experienceOfProfilesPara = {!! $profile->experienceOfProfiles !!};
+    var language_profilePara = {!! $profile->languagesA !!};
     $('#formProfile').submit(function(e) {
-        formCertificateSubmit();
-        formExperienceOfProfileSubmit();
+        var tempArr = {};
+        $.each($(this).serializeArray(), function() {
+            tempArr[this.name] = this.value;
+        });
+        var profileData = $("<input>")
+                .attr("type", "hidden")
+                .attr("name", "profileData").val(JSON.stringify(tempArr));
+        $(this).append(profileData);
+        var languagesData = $("<input>")
+                .attr("type", "hidden")
+                .attr("name", "languagesData").val(formLanguageData());
+        $(this).append(languagesData);
+
+        var certificatesData = $("<input>")
+                .attr("type", "hidden")
+                .attr("name", "certificatesData").val(formCertificateData());
+        $(this).append(certificatesData);
+
+        var experienceOfProfilesData = $("<input>")
+                .attr("type", "hidden")
+                .attr("name", "experienceOfProfilesData").val(formExperienceOfProfileData());
+        $(this).append(experienceOfProfilesData);
     });
     $('.btn-cancel-n').click(function() {
         $(this).parent().siblings().find('select').val(null).change();

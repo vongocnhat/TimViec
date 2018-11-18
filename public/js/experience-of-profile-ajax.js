@@ -1,4 +1,4 @@
-var formExperienceOfProfileSubmit;
+var formExperienceOfProfileData;
 (function() {
     var experienceOfProfiles = typeof(experienceOfProfilesPara) == "undefined" ? [] : experienceOfProfilesPara;
     var $formExperienceOfProfile = $('#formExperienceOfProfile');
@@ -11,7 +11,10 @@ var formExperienceOfProfileSubmit;
         $.each($(this).serializeArray(), function() {
             tempArr[this.name] = this.value;
         });
+        tempArr['start_at'] = tempArr['start_month_experience'] + '/' + tempArr['start_year_experience'];
+        tempArr['ended_at'] = tempArr['end_month_experience'] + '/' + tempArr['end_year_experience'];
         if ($('[name=key]').val()) {
+            tempArr['id'] = experienceOfProfiles[$('[name=key]').val()]['id'];
             experienceOfProfiles[$('[name=key]').val()] = tempArr;
             $('[name=key]').val(null);
         } else {
@@ -30,14 +33,12 @@ var formExperienceOfProfileSubmit;
         $('[name=office_id]').val(element).change();
         element = item['school'];
         $('[name=school]').val(element);
-        element = item['start_month_experience'];
-        $('[name=start_month_experience]').val(element).change();
-        element = item['start_year_experience'];
-        $('[name=start_year_experience]').val(element).change();
-        element = item['end_month_experience']
-        $('[name=end_month_experience]').val(element).change();
-        element = item['end_year_experience'];
-        $('[name=end_year_experience]').val(element).change();
+        element = item['start_at'];
+        $('[name=start_month_experience]').val(element.substring(0, element.indexOf('/'))).change();
+        $('[name=start_year_experience]').val(element.substring(element.indexOf('/') + 1)).change();
+        element = item['ended_at']
+        $('[name=end_month_experience]').val(element.substring(0, element.indexOf('/'))).change();
+        $('[name=end_year_experience]').val(element.substring(element.indexOf('/') + 1)).change();
         element = item['job_description'];
         $('[name=job_description]').val(element);
         element = item['achievement'];

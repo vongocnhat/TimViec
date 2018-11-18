@@ -1,9 +1,10 @@
 var formLanguageData;
 (function() {
-    var languages = [];
+    var languages = typeof(language_profilePara) == "undefined" ? [] : Object.values(language_profilePara);
     var $formLanguage = $('#formLanguage');
     var $listLanguage = $('#listLanguage');
     hideListLanguage();
+    loadTable();
     $formLanguage.submit(function(e) {
         e.preventDefault();
         var tempArr = {};
@@ -18,29 +19,11 @@ var formLanguageData;
         }
         $(this).trigger("reset");
         $(this).find('select').trigger('change');
-        var listHTML = '';
-        languages.forEach(function(item, key) {
-            listHTML += '<tr>\n';
-            var element = item['language_id'];
-            listHTML += '<td>' + $('#formLanguage select[name=language_id]').find('option[value="' + element + '"]').text() + '</td>\n';
-            element = item['listening'];
-            listHTML += '<td>' + element + '</td>\n';
-            element = item['speaking'];
-            listHTML += '<td>' + element + '</td>\n';
-            element = item['reading'];
-            listHTML += '<td>' + element + '</td>\n';
-            element = item['writing'];
-            listHTML += '<td>' + element + '</td>\n';
-            listHTML += '<td class="edit" data-key="' + key + '"><i class="fas fa-edit"></i></td>\n';
-            listHTML += '<td class="delete" data-key="' + key + '"><i class="fas fa-trash-alt"></i></td>\n';
-            listHTML += '</tr>'
-        });
-        $listLanguage.find('tbody').html(listHTML);
+        loadTable();
         hideListLanguage();
     });
     $listLanguage.find('tbody').on('click', '.edit', function() {
         var item = languages[$(this).data('key')];
-        
         var element = item['language_id'];
         $('[name=language_id]').val(element).change();
         element = item['listening']
@@ -59,6 +42,27 @@ var formLanguageData;
         languages.pop($(this).data('key'));
         hideListLanguage();
     });
+
+    function loadTable() {
+        var listHTML = '';
+        languages.forEach(function(item, key) {
+            listHTML += '<tr>\n';
+            var element = item['language_id'];
+            listHTML += '<td>' + $('#formLanguage select[name=language_id]').find('option[value="' + element + '"]').text() + '</td>\n';
+            element = item['listening'];
+            listHTML += '<td>' + element + '</td>\n';
+            element = item['speaking'];
+            listHTML += '<td>' + element + '</td>\n';
+            element = item['reading'];
+            listHTML += '<td>' + element + '</td>\n';
+            element = item['writing'];
+            listHTML += '<td>' + element + '</td>\n';
+            listHTML += '<td class="edit" data-key="' + key + '"><i class="fas fa-edit"></i></td>\n';
+            listHTML += '<td class="delete" data-key="' + key + '"><i class="fas fa-trash-alt"></i></td>\n';
+            listHTML += '</tr>'
+        });
+        $listLanguage.find('tbody').html(listHTML);
+    }
 
     function hideListLanguage() {
         if (languages.length === 0) {

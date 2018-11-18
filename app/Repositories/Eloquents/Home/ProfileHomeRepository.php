@@ -11,6 +11,8 @@ use App\Models\Language;
 use App\Models\Province;
 use App\Models\Experience;
 use App\Models\TypeOfWork;
+use App\Models\Certificate;
+use App\Models\ExperienceOfProfile;
 use Illuminate\Support\Facades\Auth;
 use App\Repositories\Contracts\BaseRepositoryInterface;
 use App\Repositories\Eloquents\Home\CertificateHomeRepository;
@@ -26,14 +28,14 @@ class ProfileHomeRepository implements ProfileHomeRepositoryInterface, BaseRepos
 
     public function findOrFail($id)
     {
-        return Profile::with('certificates')->findOrFail($id);
+        return Profile::with(['certificates', 'experienceOfProfiles', 'languages'])->findOrFail($id);
     }
 
     public function store($request)
     {
         $languagesData = collect(json_decode($request->languagesData, true));
         $languagesData = $languagesData->mapWithKeys(function ($item) {
-            $array = collect($item)->except(['_token', 'key', 'language_id'])->toArray();
+            $array = collect($item)->only('listening', 'speaking', 'reading', 'writing')->toArray();
             return [$item['language_id'] => $array];
         });
         $profile = new Profile();
@@ -41,19 +43,55 @@ class ProfileHomeRepository implements ProfileHomeRepositoryInterface, BaseRepos
         $profile->fill(json_decode($request->profileData, true));
         $profile->profile_img = 'ten anh';
         $profile->save();
-        $cer = new CertificateHomeRepository();
-        $cer->store(json_decode($request->certificatesData, true), $profile->name);
-        $exp = new ExperienceOfProfileHomeRepository();
-        $exp->store(json_decode($request->experienceOfProfilesData, true), $profile->name);
+        $certificates = collect(json_decode($request->certificatesData, true))->map(function ($item) {
+            $m = new Certificate();
+            $m->fill($item);
+            return $m;
+        });
+        $profile->certificates()->saveMany($certificates);
+        $experienceOfProfiles = collect(json_decode($request->experienceOfProfilesData, true))->map(function ($item) {
+            $m = new ExperienceOfProfile();
+            $m->fill($item);
+            return $m;
+        });
+        $profile->experienceOfProfiles()->saveMany($experienceOfProfiles);
         $profile->provinces()->attach($request->provinces_id);
         $profile->languages()->attach($languagesData);
     }
 
     public function update($request, $id)
     {
+        $languagesData = collect(json_decode($request->languagesData, true));
+        $languagesData = $languagesData->mapWithKeys(function ($item) {
+            $array = collect($item)->only('listening', 'speaking', 'reading', 'writing')->toArray();
+            return [$item['language_id'] => $array];
+        });
         $profile = $this->findOrFail($id);
-        $profile->fill($request->all());
+        $profile->fill(json_decode($request->profileData, true));
+        $profile->profile_img = 'ten anh';
         $profile->save();
+        $certificates = collect(json_decode($request->certificatesData, true))->map(function ($item) {
+            return collect($item)->only(
+            'graduate_id',
+            'name',
+            'school',
+            'start_at',
+            'ended_at',
+            'major')->toArray();
+        })->toArray();
+        $profile->certificates()->sync($certificates);
+        $experienceOfProfiles = collect(json_decode($request->experienceOfProfilesData, true))->map(function ($item) {
+            return collect($item)->only(
+            'company_name',
+            'office_id',
+            'start_at',
+            'ended_at',
+            'job_description',
+            'achievement')->toArray();
+        })->toArray();
+        $profile->experienceOfProfiles()->sync($experienceOfProfiles);
+        $profile->provinces()->sync($request->provinces_id);
+        $profile->languages()->sync($languagesData);
     }
 
     public function destroy($request)

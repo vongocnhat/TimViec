@@ -92,8 +92,6 @@ class ProfileHomeController extends Controller
     public function edit($id)
     {
         $profile = $this->re->findOrFail($id);
-        $certificates = $profile->certificates;
-        $experienceOfProfiles = $profile->experienceOfProfiles;
         $careers = $this->re->careers();
         $degrees = $this->re->degrees();
         $typeOfWorks = $this->re->typeOfWorks();
@@ -107,8 +105,6 @@ class ProfileHomeController extends Controller
         $languages = $this->re->languages();
         return view('home.employee.profile.edit', compact(
         'profile',
-        'certificates',
-        'experienceOfProfiles',
         'careers',
         'degrees',
         'typeOfWorks',

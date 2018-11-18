@@ -1,4 +1,4 @@
-var formCertificateSubmit;
+var formCertificateData;
 (function() {
     var certificates = typeof(certificatesPara) == "undefined" ? [] : certificatesPara;
     var $formCertificate = $('#formCertificate');
@@ -11,7 +11,10 @@ var formCertificateSubmit;
         $.each($(this).serializeArray(), function() {
             tempArr[this.name] = this.value;
         });
+        tempArr['start_at'] = tempArr['start_month_certificate'] + '/' + tempArr['start_year_certificate'];
+        tempArr['ended_at'] = tempArr['end_month_certificate'] + '/' + tempArr['end_year_certificate'];
         if ($('[name=key]').val()) {
+            tempArr['id'] = certificates[$('[name=key]').val()]['id'];
             certificates[$('[name=key]').val()] = tempArr;
             $('[name=key]').val(null);
         } else {
@@ -30,14 +33,12 @@ var formCertificateSubmit;
         $('[name=name]').val(element);
         element = item['school'];
         $('[name=school]').val(element);
-        element = item['start_month_certificate'];
-        $('[name=start_month_certificate]').val(element).change();
-        element = item['start_year_certificate'];
-        $('[name=start_year_certificate]').val(element).change();
-        element = item['end_month_certificate']
-        $('[name=end_month_certificate]').val(element).change();
-        element = item['end_year_certificate'];
-        $('[name=end_year_certificate]').val(element).change();
+        element = item['start_at'];
+        $('[name=start_month_certificate]').val(element.substring(0, element.indexOf('/'))).change();
+        $('[name=start_year_certificate]').val(element.substring(element.indexOf('/') + 1)).change();
+        element = item['ended_at']
+        $('[name=end_month_certificate]').val(element.substring(0, element.indexOf('/'))).change();
+        $('[name=end_year_certificate]').val(element.substring(element.indexOf('/') + 1)).change();
         element = item['major'];
         $('[name=major]').val(element);
         // set edit

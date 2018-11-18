@@ -4,9 +4,52 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "11f3051089a621a78a288f5eaf673b6b",
-    "content-hash": "195db32f8111799aa94b1e59840d45f5",
+    "hash": "40997324f9af8017945fb4a20f256412",
+    "content-hash": "657003b836a0f0d5ae365f54f4ba6ddb",
     "packages": [
+        {
+            "name": "alfa6661/laravel-has-many-sync",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/alfa6661/laravel-hasmany-sync.git",
+                "reference": "16aac13f31050d47a8adff761fd5f6ae314476bb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/alfa6661/laravel-hasmany-sync/zipball/16aac13f31050d47a8adff761fd5f6ae314476bb",
+                "reference": "16aac13f31050d47a8adff761fd5f6ae314476bb",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.4"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Alfa6661\\EloquentHasManySync\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Alfa6661\\EloquentHasManySync\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alfa Adhitya",
+                    "email": "alfa2159@gmail.com"
+                }
+            ],
+            "description": "Laravel has many sync",
+            "time": "2018-08-13 09:35:37"
+        },
         {
             "name": "barryvdh/laravel-dompdf",
             "version": "v0.8.3",

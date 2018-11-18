@@ -37,6 +37,14 @@ class Profile extends Model
 		return $this->belongsToMany('App\Models\Language')->withPivot('listening', 'speaking', 'reading', 'writing')->withTimestamps();
 	}
 
+	public function getLanguagesAAttribute()
+	{
+		return $this->languages->map(function ($item) {
+            return collect($item['pivot'])->toArray();
+		});
+		
+	}
+
 	public function employee()
 	{
 		return $this->belongsTo('App\Models\Employee');
