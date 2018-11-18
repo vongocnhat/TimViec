@@ -24,7 +24,7 @@ class CreateExperienceOfProfilesTable extends Migration
             $table->text('achievement');
             $table->unique(['profile_id', 'company_name']);
             $table->foreign('profile_id')
-                  ->references('employee_id')->on('profiles')
+                  ->references('id')->on('profiles')
                   ->onDelete('cascade');
             $table->foreign('office_id')
                   ->references('id')->on('offices')

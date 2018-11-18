@@ -39,7 +39,7 @@ Route::namespace('Home')->group(function() {
         // /profile submitted
         // Route::get('job-profile', 'JobProfileHomeController@index')->name('jobProfile');
         Route::resource('certificate', 'CertificateHomeController');
-
+        Route::resource('experience-of-profile', 'ExperienceOfProfileHomeController');
     });
 });
 

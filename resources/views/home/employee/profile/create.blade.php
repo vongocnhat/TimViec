@@ -47,7 +47,7 @@
                             <div class="form-group row">
                                 <label for="desire_minimum_wage" class="label ">@lang('profile_home.desire_minimum_wage')<span> *</span></label>
                                 {{ Form::number('desire_minimum_wage', null, ['class' => 'form-control col-sm-4 no-spin mr-2']) }}
-                                {{ Form::select('currency', $currencies, null, ['class' => 'form-control col-sm-2']) }}
+                                {{ Form::select('currency', $currencies, null, ['class' => 'form-control col-sm-4']) }}
                             </div>
                             <div class="form-group row">
                                 <label for="career_goals" class="label ">@lang('profile_home.career_goals')<span> *</span></label>
@@ -135,7 +135,7 @@
                     </div>
                     <div class="form_profile">
                         {!! Form::open(['route'=>'employeeHome.certificate.store', 'id'=>'formCertificate']) !!}
-                            <div class="overflow-auto-n" id="listCertificates">
+                            <div class="overflow-auto-n" id="listCertificate">
                                 <table class="table table-bordered">
                                     <thead>
                                         <th>@lang('certificate.graduate_id')</th>
@@ -188,12 +188,32 @@
                         {!! Form::close() !!}
                     </div>
                 </div>
-                <div class="section_submit_profile" id="experiences">
+                <div class="section_submit_profile" id="experienceOfProfiles">
                     <div class="title_info">
                         <h2>@lang('profile_home.text12') <span>@lang('profile_home.required_false')</span></h2>
                     </div>
                     <div class="form_profile">
-                        {!! Form::open(['id'=>'formExperiences']) !!}
+                        {!! Form::open(['route'=>'employeeHome.experience-of-profile.store', 'id'=>'formExperienceOfProfile']) !!}
+                            <div class="overflow-auto-n" id="listExperienceOfProfile">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <th>@lang('experience_of_profile.company_name')</th>
+                                        <th>@lang('experience_of_profile.office_id')</th>
+                                        <th>@lang('experience_of_profile.start_at')</th>
+                                        <th>@lang('experience_of_profile.ended_at')</th>
+                                        <th>@lang('experience_of_profile.job_description')</th>
+                                        <th>@lang('experience_of_profile.achievement')</th>
+                                        <th>@lang('common.edit')</th>
+                                        <th>@lang('common.delete')</th>
+                                    </thead>
+                                    <tbody>
+                                        
+                                    </tbody>
+                                </table>
+                                <hr />
+                            </div>
+                            
+                            {{ Form::hidden('key') }}
                             <div class="form-group row">
                                 <label for="company_name" class="label" >@lang('profile_home.text13')<span>*</span></label>
                                 {{ Form::text('company_name', null, ['class'=>'form-control col-sm-7']) }}
@@ -232,7 +252,26 @@
                         <h2>@lang('profile_home.text20') <span>@lang('profile_home.required_false')</span></h2>
                     </div>
                     <div class="form_profile">
-                        {!! Form::open(['id'=>'formLanguages']) !!}
+                        {!! Form::open(['id'=>'formLanguage']) !!}
+                            <div class="overflow-auto-n" id="listLanguage">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <th>@lang('language_profile.language_id')</th>
+                                        <th>@lang('language_profile.listening')</th>
+                                        <th>@lang('language_profile.speaking')</th>
+                                        <th>@lang('language_profile.reading')</th>
+                                        <th>@lang('language_profile.writing')</th>
+                                        <th>@lang('common.edit')</th>
+                                        <th>@lang('common.delete')</th>
+                                    </thead>
+                                    <tbody>
+                                        
+                                    </tbody>
+                                </table>
+                                <hr />
+                            </div>
+                            
+                            {{ Form::hidden('key') }}
                             <div class="form-group row">
                                 <label for="language_id" class="label ">@lang('profile_home.text26')<span> *</span></label>
                                 {{ Form::select('language_id', $languages, null, ['class'=>'form-control select col-sm-4', 'placeholder'=>__('profile_home.text26')]) }}
@@ -285,7 +324,34 @@
 @endsection
 @section('script')
 <script src="js/certificate-ajax.js"></script>
+<script src="js/experience-of-profile-ajax.js"></script>
+<script src="js/language-ajax.js"></script>
+<script src="js/test.js"></script>
 <script>
+$('#formProfile').submit(function(e) {
+    var tempArr = {};
+    $.each($(this).serializeArray(), function() {
+        tempArr[this.name] = this.value;
+    });
+    var profileData = $("<input>")
+               .attr("type", "hidden")
+               .attr("name", "profileData").val(JSON.stringify(tempArr));
+    $(this).append(profileData);
+    var languagesData = $("<input>")
+               .attr("type", "hidden")
+               .attr("name", "languagesData").val(formLanguageData());
+    $(this).append(languagesData);
+
+    var certificatesData = $("<input>")
+               .attr("type", "hidden")
+               .attr("name", "certificatesData").val(formCertificateData());
+    $(this).append(certificatesData);
+
+    var experienceOfProfilesData = $("<input>")
+               .attr("type", "hidden")
+               .attr("name", "experienceOfProfilesData").val(formExperienceOfProfileData());
+    $(this).append(experienceOfProfilesData);
+});
 $('.btn-cancel-n').click(function() {
     $(this).parent().siblings().find('select').val(null).change();
 });

@@ -1,8 +1,10 @@
+var formCertificateSubmit;
 (function() {
-    var certificates = [];
+    var certificates = typeof(certificatesPara) == "undefined" ? [] : certificatesPara;
     var $formCertificate = $('#formCertificate');
-    var $listCertificates = $('#listCertificates');
-    hideListCertificates();
+    var $listCertificate = $('#listCertificate');
+    loadTable();
+    hideListCertificate();
     $formCertificate.submit(function(e) {
         e.preventDefault();
         var tempArr = {};
@@ -17,29 +19,10 @@
         }
         $(this).trigger("reset");
         $(this).find('select').trigger('change');
-        var listHTML = '';
-        certificates.forEach(function(item, key) {
-            listHTML += '<tr>\n';
-            var element = item['graduate_id'];
-            listHTML += '<td>' + $('select[name=graduate_id]').find('option[value="' + element + '"]').text() + '</td>\n';
-            element = item['name'];
-            listHTML += '<td>' + element + '</td>\n';
-            element = item['school'];
-            listHTML += '<td>' + element + '</td>\n';
-            element = item['start_month_certificate'] + '/' + item['start_year_certificate'];
-            listHTML += '<td>' + element + '</td>\n';
-            element = item['end_month_certificate'] + '/' + item['end_year_certificate'];
-            listHTML += '<td>' + element + '</td>\n';
-            element = item['major'];
-            listHTML += '<td>' + element + '</td>\n';
-            listHTML += '<td class="edit" data-key="' + key + '"><i class="fas fa-edit"></i></td>\n';
-            listHTML += '<td class="delete" data-key="' + key + '"><i class="fas fa-trash-alt"></i></td>\n';
-            listHTML += '</tr>'
-        });
-        $listCertificates.find('tbody').html(listHTML);
-        hideListCertificates();
+        loadTable();
+        hideListCertificate();
     });
-    $listCertificates.find('tbody').on('click', '.edit', function() {
+    $listCertificate.find('tbody').on('click', '.edit', function() {
         var item = certificates[$(this).data('key')];
         var element = item['graduate_id'];
         $('[name=graduate_id]').val(element).change();
@@ -60,28 +43,53 @@
         // set edit
         $('[name=key]').val($(this).data('key'));
     });
-    $listCertificates.find('tbody').on('click', '.delete', function() {
+    $listCertificate.find('tbody').on('click', '.delete', function() {
         $(this).parent().remove();
         certificates.pop($(this).data('key'));
-        hideListCertificates();
-    });
-    $('#formProfile').submit(function(e) {
-        e.preventDefault();
-        var certificateUrl = $formCertificate.prop('action');
-        var certificatesJSON = JSON.stringify(certificates);
-        var _token = $formCertificate.find('input[name=_token]').val();
-        $.ajax({
-            url: certificateUrl,
-            type: 'POST',
-            data: { _token, certificatesJSON },
-        });
+        hideListCertificate();
     });
 
-    function hideListCertificates() {
+    function hideListCertificate() {
         if (certificates.length === 0) {
-            $listCertificates.hide();
+            $listCertificate.hide();
         } else {
-            $listCertificates.show();
+            $listCertificate.show();
         }
+    }
+
+    function loadTable() {
+        var listHTML = '';
+        certificates.forEach(function(item, key) {
+            listHTML += '<tr>\n';
+            var element = item['graduate_id'];
+            listHTML += '<td>' + $('#formCertificate select[name=graduate_id]').find('option[value="' + element + '"]').text() + '</td>\n';
+            element = item['name'];
+            listHTML += '<td>' + element + '</td>\n';
+            element = item['school'];
+            listHTML += '<td>' + element + '</td>\n';
+            if(item['start_at']) {
+                element = item['start_at'];
+            } else {
+                element = item['start_month_certificate'] + '/' + item['start_year_certificate'];
+            }
+            listHTML += '<td>' + element + '</td>\n';
+            if(item['ended_at']) {
+                element = item['ended_at'];
+            } else {
+                element = item['end_month_certificate'] + '/' + item['end_year_certificate'];
+            }
+            listHTML += '<td>' + element + '</td>\n';
+            element = item['major'];
+            listHTML += '<td>' + element + '</td>\n';
+            listHTML += '<td class="edit" data-key="' + key + '"><i class="fas fa-edit"></i></td>\n';
+            listHTML += '<td class="delete" data-key="' + key + '"><i class="fas fa-trash-alt"></i></td>\n';
+            listHTML += '</tr>'
+        });
+        $listCertificate.find('tbody').html(listHTML);
+    }
+
+    formCertificateData = function () {
+        var certificatesJSON = JSON.stringify(certificates);
+        return certificatesJSON;
     }
 })();

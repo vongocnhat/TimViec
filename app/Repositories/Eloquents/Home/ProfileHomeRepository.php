@@ -13,7 +13,9 @@ use App\Models\Experience;
 use App\Models\TypeOfWork;
 use Illuminate\Support\Facades\Auth;
 use App\Repositories\Contracts\BaseRepositoryInterface;
+use App\Repositories\Eloquents\Home\CertificateHomeRepository;
 use App\Repositories\Contracts\Home\ProfileHomeRepositoryInterface;
+use App\Repositories\Eloquents\Home\ExperienceOfProfileHomeRepository;
 
 class ProfileHomeRepository implements ProfileHomeRepositoryInterface, BaseRepositoryInterface
 {
@@ -24,17 +26,27 @@ class ProfileHomeRepository implements ProfileHomeRepositoryInterface, BaseRepos
 
     public function findOrFail($id)
     {
-        return Profile::findOrFail($id);
+        return Profile::with('certificates')->findOrFail($id);
     }
 
     public function store($request)
     {
+        $languagesData = collect(json_decode($request->languagesData, true));
+        $languagesData = $languagesData->mapWithKeys(function ($item) {
+            $array = collect($item)->except(['_token', 'key', 'language_id'])->toArray();
+            return [$item['language_id'] => $array];
+        });
         $profile = new Profile();
         $profile->employee_id = Auth::guard('employee')->user()->id;
-        $profile->fill($request->except('profile_img'));
+        $profile->fill(json_decode($request->profileData, true));
         $profile->profile_img = 'ten anh';
         $profile->save();
-        $profile->provinces()->attach($request->provinces_id);        
+        $cer = new CertificateHomeRepository();
+        $cer->store(json_decode($request->certificatesData, true), $profile->name);
+        $exp = new ExperienceOfProfileHomeRepository();
+        $exp->store(json_decode($request->experienceOfProfilesData, true), $profile->name);
+        $profile->provinces()->attach($request->provinces_id);
+        $profile->languages()->attach($languagesData);
     }
 
     public function update($request, $id)

@@ -34,7 +34,7 @@ class Profile extends Model
 
 	public function languages()
 	{
-		return $this->belongsToMany('App\Models\Language')->withPivot('listenning', 'speaking', 'reading', 'writing')->withTimestamps();
+		return $this->belongsToMany('App\Models\Language')->withPivot('listening', 'speaking', 'reading', 'writing')->withTimestamps();
 	}
 
 	public function employee()
@@ -60,6 +60,16 @@ class Profile extends Model
 	public function provinces()
 	{
 		return $this->belongsToMany('App\Models\Province');
+	}
+
+	public function certificates()
+	{
+		return $this->hasMany('App\Models\Certificate');
+	}
+
+	public function experienceOfProfiles()
+	{
+		return $this->hasMany('App\Models\ExperienceOfProfile');
 	}
 
 	public function getDesireMinimumWageAAttribute() {

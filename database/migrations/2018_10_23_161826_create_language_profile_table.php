@@ -16,7 +16,7 @@ class CreateLanguageProfileTable extends Migration
         Schema::create('language_profile', function (Blueprint $table) {
             $table->unsignedInteger('language_id');
             $table->unsignedInteger('profile_id');
-            $table->tinyInteger('listenning');
+            $table->tinyInteger('listening');
             $table->tinyInteger('speaking');
             $table->tinyInteger('reading');
             $table->tinyInteger('writing');

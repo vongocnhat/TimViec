@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Contracts\Home;
 
-interface CertificateHomeRepositoryInterface
+interface ExperienceOfProfileHomeRepositoryInterface
 {
     
 }

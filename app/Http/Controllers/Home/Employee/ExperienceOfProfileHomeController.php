@@ -4,17 +4,18 @@ namespace App\Http\Controllers\Home\Employee;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\Contracts\Home\CertificateHomeRepositoryInterface;
+use App\Repositories\Contracts\Home\ExperienceOfProfileHomeRepositoryInterface;
 
-class CertificateHomeController extends Controller
+class ExperienceOfProfileHomeController extends Controller
 {
     // repository
     private $re;
 
-    public function __construct(CertificateHomeRepositoryInterface $re)
+    public function __construct(ExperienceOfProfileHomeRepositoryInterface $re)
     {
         $this->re = $re;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -43,8 +44,8 @@ class CertificateHomeController extends Controller
      */
     public function store(Request $request)
     {
-        $certificatesArray = json_decode($request->certificatesJSON, true);
-        $this->re->store($certificatesArray, $request->profileName);
+        $experienceOfProfilesArray = json_decode($request->experienceOfProfilesJSON, true);
+        $this->re->store($experienceOfProfilesArray, $request->profileName);
     }
 
     /**

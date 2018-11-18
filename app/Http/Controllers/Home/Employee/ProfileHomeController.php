@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Home\Employee;
 use App\Models\Common;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Common\DestroyRequest;
 use App\Repositories\Contracts\Home\ProfileHomeRepositoryInterface;
 
 class ProfileHomeController extends Controller
@@ -45,7 +46,18 @@ class ProfileHomeController extends Controller
         $currencies = Common::currencies();
         $graduates = $this->re->graduates();
         $languages = $this->re->languages();
-        return view('home.employee.profile.create', compact('careers', 'degrees', 'typeOfWorks', 'offices', 'experiences', 'provinces', 'months', 'years', 'currencies', 'graduates', 'languages'));
+        return view('home.employee.profile.create', compact(
+        'careers',
+        'degrees',
+        'typeOfWorks',
+        'offices',
+        'experiences',
+        'provinces',
+        'months',
+        'years',
+        'currencies',
+        'graduates',
+        'languages'));
     }
 
     /**
@@ -80,10 +92,34 @@ class ProfileHomeController extends Controller
     public function edit($id)
     {
         $profile = $this->re->findOrFail($id);
+        $certificates = $profile->certificates;
+        $experienceOfProfiles = $profile->experienceOfProfiles;
         $careers = $this->re->careers();
         $degrees = $this->re->degrees();
         $typeOfWorks = $this->re->typeOfWorks();
-        return view('home.employee.profile.edit', compact('profile', 'careers', 'degrees', 'typeOfWorks'));
+        $offices = $this->re->offices();
+        $experiences = $this->re->experiences();
+        $provinces = $this->re->provinces();
+        $months = Common::months();
+        $years = Common::years();
+        $currencies = Common::currencies();
+        $graduates = $this->re->graduates();
+        $languages = $this->re->languages();
+        return view('home.employee.profile.edit', compact(
+        'profile',
+        'certificates',
+        'experienceOfProfiles',
+        'careers',
+        'degrees',
+        'typeOfWorks',
+        'offices',
+        'experiences',
+        'provinces',
+        'months',
+        'years',
+        'currencies',
+        'graduates',
+        'languages'));
     }
 
     /**
@@ -107,7 +143,7 @@ class ProfileHomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(DestroyRequest $request)
     {
         $this->re->destroy($request);
         return back();

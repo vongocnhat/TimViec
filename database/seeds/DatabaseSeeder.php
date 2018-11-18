@@ -132,18 +132,18 @@ class DatabaseSeeder extends Seeder
             if ($i < 20) {
                 $profile->jobs()->attach([$i , $i+1, $i+2]);
                 $profile->languages()->attach([$i => 
-                ['listenning' => rand(1, 3),
-                'speaking' => rand(1, 3),
-                'reading' => rand(1, 3),
-                'writing' => rand(1, 3)], $i+1 => 
-                ['listenning' => rand(1, 3),
-                'speaking' => rand(1, 3),
-                'reading' => rand(1, 3),
-                'writing' => rand(1, 3)], $i+2 => 
-                ['listenning' => rand(1, 3),
-                'speaking' => rand(1, 3),
-                'reading' => rand(1, 3),
-                'writing' => rand(1, 3)]]);
+                ['listening' => rand(1, 4),
+                'speaking' => rand(1, 4),
+                'reading' => rand(1, 4),
+                'writing' => rand(1, 4)], $i+1 => 
+                ['listening' => rand(1, 4),
+                'speaking' => rand(1, 4),
+                'reading' => rand(1, 4),
+                'writing' => rand(1, 4)], $i+2 => 
+                ['listening' => rand(1, 4),
+                'speaking' => rand(1, 4),
+                'reading' => rand(1, 4),
+                'writing' => rand(1, 4)]]);
             }
         }
     }

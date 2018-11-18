@@ -3,6 +3,7 @@
 namespace App\Repositories\Eloquents\Home;
 
 use App\Models\Certificate;
+use Illuminate\Support\Facades\Auth;
 use App\Repositories\Contracts\Home\CertificateHomeRepositoryInterface;
 
 class CertificateHomeRepository implements CertificateHomeRepositoryInterface
@@ -17,14 +18,14 @@ class CertificateHomeRepository implements CertificateHomeRepositoryInterface
         return Certificate::findOrFail($id);
     }
 
-    public function store($certificatesArray)
+    public function store($certificatesArray, $profileName)
     {
         foreach ($certificatesArray as $key => $item) {
             $certificate = new Certificate();
-            $item->profile_id = 1;
-            $item->start_at = $item->start_month_certificate . '/' . $item->start_year_certificate;
-            $item->ended_at = $item->end_month_certificate . '/' . $item->end_year_certificate;
-            $certificate->fill((array)$item);
+            $certificate->fill($item);
+            $certificate->profile_id = Auth::guard('employee')->user()->profiles()->where('name', $profileName)->first()->id;
+            $certificate->start_at = $item['start_month_certificate'] . '/' . $item['start_year_certificate'];
+            $certificate->ended_at = $item['end_month_certificate'] . '/' . $item['end_year_certificate'];
             $certificate->save();
         }   
     }
@@ -33,10 +34,10 @@ class CertificateHomeRepository implements CertificateHomeRepositoryInterface
     {   
         foreach ($certificatesArray as $key => $item) {
             $certificate = $this->findOrFail($id);
-            $item->profile_id = 1;
-            $item->start_at = $item->start_month_certificate . '/' . $item->start_year_certificate;
-            $item->ended_at = $item->end_month_certificate . '/' . $item->end_year_certificate;
-            $certificate->fill((array)$item);
+            $certificate->fill($item);
+            $certificate->profile_id = Auth::guard('employee')->user()->profiles()->where('name', $profileName)->first()->id;
+            $certificate->start_at = $item['start_month_certificate'] . '/' . $item['start_year_certificate'];
+            $certificate->ended_at = $item['end_month_certificate'] . '/' . $item['end_year_certificate'];
             $certificate->save();
         }   
     }
