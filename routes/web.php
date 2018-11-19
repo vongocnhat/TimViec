@@ -32,6 +32,8 @@ Route::namespace('Home')->group(function() {
         Route::post('sign-in', 'EmployeeHomeController@signInCheck')->name('signInCheck');
         Route::get('sign-out', 'EmployeeHomeController@signOut')->name('signOut');
         // profile
+        Route::get('profile/profile', 'ProfileHomeController@profile');
+        Route::get('profile/to-pdf', 'ProfileHomeController@profileToPDF')->name('profile.to-pdf');
         Route::resource('profile', 'ProfileHomeController');
         // /profile
         // profile submitted

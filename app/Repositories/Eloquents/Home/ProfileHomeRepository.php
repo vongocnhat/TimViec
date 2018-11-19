@@ -14,7 +14,11 @@ use App\Models\TypeOfWork;
 use App\Models\Certificate;
 use App\Models\ExperienceOfProfile;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\ImageManagerStatic as Image;
 use App\Repositories\Contracts\BaseRepositoryInterface;
+
 use App\Repositories\Eloquents\Home\CertificateHomeRepository;
 use App\Repositories\Contracts\Home\ProfileHomeRepositoryInterface;
 use App\Repositories\Eloquents\Home\ExperienceOfProfileHomeRepository;
@@ -41,7 +45,9 @@ class ProfileHomeRepository implements ProfileHomeRepositoryInterface, BaseRepos
         $profile = new Profile();
         $profile->employee_id = Auth::guard('employee')->user()->id;
         $profile->fill(json_decode($request->profileData, true));
-        $profile->profile_img = 'ten anh';
+        $profile->profile_img = '';
+        $profile->save();
+        $profile->profile_img = $this->saveImg($request->profile_img, $profile->id);
         $profile->save();
         $certificates = collect(json_decode($request->certificatesData, true))->map(function ($item) {
             $m = new Certificate();
@@ -68,7 +74,10 @@ class ProfileHomeRepository implements ProfileHomeRepositoryInterface, BaseRepos
         });
         $profile = $this->findOrFail($id);
         $profile->fill(json_decode($request->profileData, true));
-        $profile->profile_img = 'ten anh';
+        if($request->hasFile('profile_img')) {
+            Storage::disk('uploads')->delete('img/profiles/' . $profile->profile_img);
+            $profile->profile_img = $this->saveImg($request->profile_img, $id);
+        }
         $profile->save();
         $certificates = collect(json_decode($request->certificatesData, true))->map(function ($item) {
             return collect($item)->only(
@@ -99,6 +108,7 @@ class ProfileHomeRepository implements ProfileHomeRepositoryInterface, BaseRepos
         $deleted = 0;
         if ($request->delete_id) {
             // delete one
+            Storage::disk('uploads')->delete('img/profiles/' . Profile::findOrFail($request->delete_id)->profile_img);
             $deleted = Profile::destroy($request->delete_id);
             if ($deleted > 0) {
                 session()->flash('notify_success', __('common.delete_success'));
@@ -107,6 +117,10 @@ class ProfileHomeRepository implements ProfileHomeRepositoryInterface, BaseRepos
             }
         } else {
             // delete multiple
+            foreach ($request->ids as $id)
+            {
+                Storage::disk('uploads')->delete('img/profiles/' . Profile::findOrFail($id)->profile_img);
+            }
             $deleted = Profile::destroy($request->ids);
             if ($deleted === count($request->ids)) {
                 session()->flash('notify_success', __('common.delete_success'));
@@ -114,6 +128,16 @@ class ProfileHomeRepository implements ProfileHomeRepositoryInterface, BaseRepos
                 session()->flash('notify_error', __('common.deletes_fail'));
             }
         }
+    }
+
+    public function saveImg($image, $profileID)
+    {
+        $extension = File::extension($image->getClientOriginalName());
+        $fileName = $profileID . '.' . $extension;
+        $imageMedium = Image::make($image->getRealPath());
+        $imageMedium->resize(170, 170);
+        $imageMedium->save(public_path('img/profiles/' . $fileName));
+        return $fileName;
     }
 
     public function careers()

@@ -6,7 +6,7 @@
                 <h1>@lang('profile_home.text1')</h1>
             </div>
             <div class="container-profile">
-                {!! Form::open(['route'=>'employeeHome.profile.store', 'method'=>'POST', 'id'=>'formProfile']) !!}
+                {!! Form::open(['route'=>'employeeHome.profile.store', 'method'=>'POST', 'id'=>'formProfile', 'files' => true]) !!}
                     <div class="section_submit_profile">
                         <div class="title_info">
                             <h2>@lang('profile_home.text2') <span>@lang('profile_home.required_true')</span></h2>

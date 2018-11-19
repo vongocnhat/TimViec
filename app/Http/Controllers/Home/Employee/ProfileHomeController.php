@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Home\Employee;
 
 use App\Models\Common;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Common\DestroyRequest;
 use App\Repositories\Contracts\Home\ProfileHomeRepositoryInterface;
@@ -17,6 +19,21 @@ class ProfileHomeController extends Controller
      {
          $this->re = $re;
      }
+
+    public function profileToPDF()
+    {
+        // $profile = $this->re->findOrFail(102);
+        $pdf = PDF::loadView('home.employee.profile.pdf.template1')->setPaper('a4');
+        return $pdf->stream();
+        
+        // return view('home.employee.profile.pdf.template1', compact('profile'));
+    }
+
+    public function profile()
+    {
+        // $profile = $this->re->findOrFail(102);
+        return view('home.employee.profile.pdf.template1');
+    }
     /**
      * Display a listing of the resource.
      *
