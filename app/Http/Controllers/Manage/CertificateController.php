@@ -1,0 +1,106 @@
+<?php
+
+namespace App\Http\Controllers\Manage;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Common\DestroyRequest;
+use App\Http\Requests\Certificate\CertificateUpdateRequest;
+use App\Http\Requests\Certificate\CertificateStoreRequest;
+use App\Repositories\Contracts\CertificateRepositoryInterface;
+
+class CertificateController extends Controller
+{
+     protected $re;
+
+    public function __construct(CertificateRepositoryInterface $re)
+    {
+        $this->re = $re;
+    }
+   
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $certificates = $this->re->paginate(10);
+        // dd($certificates);
+        return view('manage.certificate.index', compact('certificates'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('manage.certificate.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(CertificateStoreRequest $request)
+    {
+        // dd($request);
+        $this->re->store($request);
+        $request->session()->flash('notify_success', __('common.create_success'));
+        return redirect()->route('certificate.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $certificate = $this->re->findOrFail($id);
+        return view('manage.certificate.detail', compact('certificate'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $certificate = $this->re->findOrFail($id);
+        return view('manage.certificate.edit', compact('certificate'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(CertificateUpdateRequest $request, $id)
+    {
+        $this->re->update($request, $id);
+        $request->session()->flash('notify_success', __('common.update_success'));
+        return redirect()->route('certificate.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(DestroyRequest $request)
+    {
+        $this->re->destroy($request);
+        return back();
+    }
+}

@@ -48,4 +48,15 @@ Route::namespace('Home')->group(function() {
 Route::prefix('manage')->middleware(['AdminMiddleware'])->namespace('Manage')->group(function () {
     Route::resource('employer', 'EmployerController');
     Route::resource('employee', 'EmployeeController');
+    Route::resource('degree', 'DegreeController');
+    Route::resource('typeofwork', 'TypeofworkController');
+    Route::resource('career', 'CareerController');
+    Route::resource('office', 'OfficeController');
+    Route::resource('language', 'LanguageController');
+    Route::resource('experience', 'ExperienceController');
+    Route::resource('salary', 'SalaryController');
+    Route::resource('profile', 'ProfileController');
+    Route::resource('certificate', 'CertificateController');
+    Route::resource('graduate', 'GraduateController');
+    Route::resource('job', 'JobController');
 });

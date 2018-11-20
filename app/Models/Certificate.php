@@ -15,4 +15,13 @@ class Certificate extends Model
     	'ended_at',
     	'major',
     ];
+
+public function profile()
+	{
+		return $this->belongsTo('App\Models\Profile');
+	}
+public function graduate()
+	{
+		return $this->belongsTo('App\Models\Graduate');
+	}
 }

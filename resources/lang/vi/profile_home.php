@@ -7,6 +7,8 @@ return [
     'id' =>  'Mã Hồ Sơ',
     'employee_id' => 'Tên Người Dùng',
     'currency' => 'Loại Tiền',
+    'created_at' => __('common.created_at'),
+    'updated_at' => __('common.updated_at'),
     'type_of_work_id' => 'Loại Công Việc',
     'experience_id' => 'Tổng số năm kinh nghiệm',
     'office_id' => 'Chức Danh Mong Muốn',

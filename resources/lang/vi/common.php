@@ -11,6 +11,8 @@ return [
     'edit' => 'Sửa',
     'update' => 'Cập Nhật',
     'edit_title' => 'Chỉnh Sửa: :name',
+    'detail' => 'Chi Tiết',
+    'show_detail' => 'Xem Chi Tiết:name ',
     'update_success' => 'Cập nhật thành công!',
     'delete_success' => 'Xóa thành công!',
     'deletes_fail' => 'Một vài mục không được xóa!',
@@ -30,4 +32,6 @@ return [
     'select' => 'Chọn',
     'error' => 'Xảy ra lỗi vui lòng thử lại sau',
     'not_updated' => 'Chưa cập nhật',
+    'created_at' => 'Thêm Lúc',
+    'updated_at' => 'Cập Nhật Lúc',
 ];

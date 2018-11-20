@@ -34,7 +34,7 @@ class Profile extends Model
 
 	public function languages()
 	{
-		return $this->belongsToMany('App\Models\Language')->withPivot('listening', 'speaking', 'reading', 'writing')->withTimestamps();
+		return $this->belongsToMany('App\Models\Language')->withPivot('listenning', 'speaking', 'reading', 'writing')->withTimestamps();
 	}
 
 	public function getLanguagesAAttribute()
@@ -42,7 +42,6 @@ class Profile extends Model
 		return $this->languages->map(function ($item) {
             return collect($item['pivot'])->toArray();
 		});
-		
 	}
 
 	public function employee()
@@ -63,6 +62,16 @@ class Profile extends Model
 	public function degree()
 	{
 		return $this->belongsTo('App\Models\Degree');
+	}
+
+	public function office()
+	{
+		return $this->belongsTo('App\Models\Office');
+	}
+
+	public function experience()
+	{
+		return $this->belongsTo('App\Models\Experience');
 	}
 
 	public function provinces()
@@ -98,5 +107,54 @@ class Profile extends Model
 		} else {
 			return __('common.no');
 		}
+	}
+	
+	public function getWordAAttribute() {
+        switch ($this->word) {
+        	case 1:
+        		return __('profile.1');
+        		break;
+    		case 2:
+    			return __('profile.2');
+    			break;
+    		case 3:
+    			return __('profile.3');
+    			break;
+        	default:
+        		return __('profile.4');
+    			break;
+        }
+	}
+	public function getExcelAAttribute() {
+        switch ($this->excel) {
+        	case 1:
+        		return __('profile.1');
+        		break;
+    		case 2:
+    			return __('profile.2');
+    			break;
+    		case 3:
+    			return __('profile.3');
+    			break;
+        	default:
+        		return __('profile.4');
+    			break;
+        }
+	}
+	public function getpowerpointAAttribute() {
+        switch ($this->power_point) {
+        	case 1:
+        		return __('profile.1');
+        		break;
+    		case 2:
+    			return __('profile.2');
+    			break;
+    		case 3:
+    			return __('profile.3');
+    			break;
+        	default:
+        		return __('profile.4');
+    			break;
+        }
 	}
 }
