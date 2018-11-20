@@ -34,7 +34,7 @@
                             </div>
                             <div class="form-group row">
                                 <label for="provinces_id[]" class="label ">@lang('profile_home.provinces->name')<span> *</span></label>
-                                {{ Form::select('provinces_id[]', $provinces, null, ['class' => 'form-control col-sm-4', 'multiple']) }}
+                                {{ Form::select('provinces_id[]', $provinces, $profile->provinces, ['class' => 'form-control col-sm-4', 'multiple']) }}
                             </div>
                             <div class="form-group row">
                                 <label for="experience_id" class="label ">@lang('profile_home.experience_id')<span> *</span></label>

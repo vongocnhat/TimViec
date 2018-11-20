@@ -34,7 +34,7 @@ class Profile extends Model
 
 	public function languages()
 	{
-		return $this->belongsToMany('App\Models\Language')->withPivot('listenning', 'speaking', 'reading', 'writing')->withTimestamps();
+		return $this->belongsToMany('App\Models\Language')->withPivot('listening', 'speaking', 'reading', 'writing')->withTimestamps();
 	}
 
 	public function getLanguagesAAttribute()

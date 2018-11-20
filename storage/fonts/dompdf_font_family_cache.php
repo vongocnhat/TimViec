@@ -96,4 +96,10 @@
   'roboto slab' => array(
     'normal' => $fontDir . '\c75e88bb904d681e4dba4426637f9e60',
   ),
+  'font awesome\\ 5 brands' => array(
+    'normal' => $fontDir . '\18b3f3036c087d3a5f54b9aab661d4a3',
+  ),
+  'font awesome\\ 5 free' => array(
+    'normal' => $fontDir . '\c6afe7d6dd7ca864468f26e2528dc759',
+  ),
 ) ?>

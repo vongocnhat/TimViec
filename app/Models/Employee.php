@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -42,12 +43,23 @@ class Employee extends Authenticatable
 		return $this->belongsTo('App\Models\Ward');
 	}
 
+	public function profiles()
+	{
+		return $this->hasMany('App\Models\Profile');
+	}
+
 	public function getNameAttribute() {
         return $this->attributes['first_name'] . ' ' . $this->attributes['last_name'];
 	}
 
-	public function profiles()
-	{
-		return $this->hasMany('App\Models\Profile');
+	public function getBirthdayAAttribute() {
+        return Carbon::parse($this->attributes['updated_at'])->format('d/m/Y');
+	}
+
+	public function getAddressAAttribute() {
+		return $this->address . 
+		' - ' . $this->ward->name . 
+		' - ' . $this->district->name . 
+		' - ' . $this->province->name;
 	}
 }

@@ -14,5 +14,9 @@ class ExperienceOfProfile extends Model
     	'ended_at',
     	'job_description',
     	'achievement'
-    ];
+	];
+	
+	public function office() {
+		return $this->belongsTo('App\Models\Office');
+	}
 }
