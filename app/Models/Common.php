@@ -43,4 +43,18 @@ class Common
 	{
 		return ['VND'=>'VND', 'USD'=>'USD'];
 	}
+
+	public static function numberToEvaluate($value)
+	{
+		switch ($value) {
+			case 1:
+				return __('language_profile.good');
+			case 2:
+				return __('language_profile.rather');
+			case 3:
+				return __('language_profile.medium');
+			default:
+				return __('language_profile.least');
+		}
+	}
 }

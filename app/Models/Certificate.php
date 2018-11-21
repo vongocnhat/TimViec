@@ -16,11 +16,12 @@ class Certificate extends Model
     	'major',
     ];
 
-public function profile()
+	public function profile()
 	{
 		return $this->belongsTo('App\Models\Profile');
 	}
-public function graduate()
+
+	public function graduate()
 	{
 		return $this->belongsTo('App\Models\Graduate');
 	}
