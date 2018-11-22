@@ -2,23 +2,37 @@
 
 namespace App\Http\Controllers\Home\Employee;
 
-use App\Models\Common;
 use PDF;
+use App\Models\Common;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Common\DestroyRequest;
 use App\Repositories\Contracts\Home\ProfileHomeRepositoryInterface;
 
 class ProfileHomeController extends Controller
 {
-     // repository
-     private $re;
+    // repository
+    private $re;
 
-     public function __construct(ProfileHomeRepositoryInterface $re)
-     {
+    public function __construct(ProfileHomeRepositoryInterface $re)
+    {
          $this->re = $re;
-     }
+    }
+
+    public function pdfDynamic()
+    {
+        // $pdf = PDF::loadView('home.employee.profile.pdf.template-dynamic')->setPaper('a4');
+        // return $pdf->stream();
+        return view('home.employee.profile.pdf.template-dynamic');
+    }
+
+    public function pdfDynamicSave(Request $request)
+    {
+        Storage::disk('uploads')->put('htmlProfiles/file.html', $request->html);
+        
+    }
 
     public function profileToPDF($id)
     {

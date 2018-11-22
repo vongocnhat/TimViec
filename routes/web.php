@@ -34,6 +34,8 @@ Route::namespace('Home')->group(function() {
         // profile
         Route::get('profile/profile/{id}', 'ProfileHomeController@profile');
         Route::get('profile/to-pdf/{id}', 'ProfileHomeController@profileToPDF')->name('profile.to-pdf');
+        Route::get('profile/pdf-dynamic', 'ProfileHomeController@pdfDynamic');
+        Route::get('profile/pdf-dynamic/save', 'ProfileHomeController@pdfDynamicSave')->name('profile.pdfDynamicSave');
         Route::resource('profile', 'ProfileHomeController');
         // /profile
         // profile submitted
