@@ -132,12 +132,16 @@ class ProfileHomeRepository implements ProfileHomeRepositoryInterface, BaseRepos
 
     public function saveImg($image, $profileID)
     {
-        $extension = File::extension($image->getClientOriginalName());
-        $fileName = $profileID . '.' . $extension;
-        $imageMedium = Image::make($image->getRealPath());
-        $imageMedium->resize(170, 170);
-        $imageMedium->save(public_path('img/profiles/' . $fileName));
-        return $fileName;
+        if ($image) {
+            $extension = File::extension($image->getClientOriginalName());
+            $fileName = $profileID . '.' . $extension;
+            $imageMedium = Image::make($image->getRealPath());
+            $imageMedium->resize(170, 170);
+            $imageMedium->save(public_path('img/profiles/' . $fileName));
+            return $fileName;
+        } else {
+            return $profileID;
+        }
     }
 
     public function careers()

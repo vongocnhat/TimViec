@@ -69,6 +69,12 @@ return [
             'root'   => public_path(),
         ],
 
+        'dynamic_profile' => [
+            'driver' => 'local',
+            'root'   => resource_path('views/home/employee/profile/dynamic'),
+        ],
+
+
     ],
 
 ];

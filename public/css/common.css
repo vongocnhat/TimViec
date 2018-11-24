@@ -6,6 +6,13 @@
     cursor: pointer;
 }
 
+.width-200px {
+    width: 187px;
+}
+.width-200px-padding {
+    padding: 0.25rem 18px;
+}
+
 .max-width-500 {
     max-width: 500px;
 }

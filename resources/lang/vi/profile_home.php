@@ -26,6 +26,7 @@ return [
     'graduation_type' => 'Loại Tốt Nghiệp',
     'word' => 'Word',
     'excel' => 'Excel',
+    'pdf' => 'Xuất File PDF',
     'power_point' => 'Power Point',
     'profile_img' => 'Ảnh Hồ Sơ',
     'public' => 'Công Khai Hồ Sơ',

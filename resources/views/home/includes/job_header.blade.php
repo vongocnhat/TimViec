@@ -40,10 +40,11 @@
                         <a class="dropdown-toggle rounded-0 list_user text-white c-pointer" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ Auth::guard('employee')->user()->last_name }}
                         </a>
-                        <div class="dropdown-menu w-100 rounded-0">
-                            <a href="{{ route('employeeHome.edit') }}" class="dropdown-item">@lang('home.account_manage')</a>
-                            <a href="{{ route('employeeHome.profile.index') }}" class="dropdown-item">@lang('home.profiles_manage')</a>
-                            <a href="{{ route('employeeHome.signOut') }}" class="dropdown-item">@lang('home.sign_out')</a>
+                        <div class="dropdown-menu width-200px rounded-0">
+                            <a href="{{ route('employeeHome.edit') }}" class="dropdown-item width-200px-padding">@lang('home.account_manage')</a>
+                            <a href="{{ route('employeeHome.profile.index') }}" class="dropdown-item width-200px-padding">@lang('home.profiles_manage')</a>
+                            <a href="{{ route('employeeHome.profile-dynamic.index') }}" class="dropdown-item width-200px-padding">@lang('home.profiles_dynamic')</a>
+                            <a href="{{ route('employeeHome.signOut') }}" class="dropdown-item width-200px-padding">@lang('home.sign_out')</a>
                         </div>
                     </div>
                 </li>

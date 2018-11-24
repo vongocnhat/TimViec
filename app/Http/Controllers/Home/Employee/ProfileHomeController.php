@@ -7,6 +7,7 @@ use App\Models\Common;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Common\DestroyRequest;
 use App\Repositories\Contracts\Home\ProfileHomeRepositoryInterface;
@@ -21,17 +22,9 @@ class ProfileHomeController extends Controller
          $this->re = $re;
     }
 
-    public function pdfDynamic()
+    public function pdfDynamicPreview()
     {
-        // $pdf = PDF::loadView('home.employee.profile.pdf.template-dynamic')->setPaper('a4');
-        // return $pdf->stream();
-        return view('home.employee.profile.pdf.template-dynamic');
-    }
-
-    public function pdfDynamicSave(Request $request)
-    {
-        Storage::disk('uploads')->put('htmlProfiles/file.html', $request->html);
-        
+        return view('home.employee.profile.pdfs.file');
     }
 
     public function profileToPDF($id)
