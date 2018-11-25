@@ -19,6 +19,7 @@ return [
     'delete_fail' => 'Xóa thất bại!',
     'delete_required' => 'Xóa Không Thành Công: Vui lòng chọn ít nhất 1 checkbox (hộp kiểm)!',
     'cancel_message' => 'Hủy bỏ việc thêm mới?',
+    'cancel_message_edit' => 'Hủy bỏ việc sửa?',
     'create_success' => 'Thêm thành công!',
     'million' => 'Triệu',
     'year' => 'Năm',

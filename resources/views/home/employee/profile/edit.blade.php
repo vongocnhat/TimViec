@@ -327,33 +327,121 @@
     var certificatesPara = {!! $profile->certificates !!};
     var experienceOfProfilesPara = {!! $profile->experienceOfProfiles !!};
     var language_profilePara = {!! $profile->languagesA !!};
-    $('#formProfile').submit(function(e) {
-        var tempArr = {};
-        $.each($(this).serializeArray(), function() {
-            tempArr[this.name] = this.value;
+$('#formProfile').submit(function(e) {
+    e.preventDefault();
+    var tempArr = {};
+    $.each($(this).serializeArray(), function() {
+        tempArr[this.name] = this.value;
+    });
+    var profileData = $("<input>")
+               .attr("type", "hidden")
+               .attr("name", "profileData").val(JSON.stringify(tempArr));
+    $(this).append(profileData);
+    var languagesData = $("<input>")
+               .attr("type", "hidden")
+               .attr("name", "languagesData").val(formLanguageData());
+    $(this).append(languagesData);
+    
+    var certificatesData = $("<input>")
+               .attr("type", "hidden")
+               .attr("name", "certificatesData").val(formCertificateData());
+    $(this).append(certificatesData);
+
+    var experienceOfProfilesData = $("<input>")
+               .attr("type", "hidden")
+               .attr("name", "experienceOfProfilesData").val(formExperienceOfProfileData());
+    $(this).append(experienceOfProfilesData);
+    var url = $(this).prop('action');
+    var _token = '{{ csrf_token() }}';
+    var _method = $('[name=_method]').val();
+    //
+    if($('[name=profile_img]').prop('files')[0] !== undefined) {
+        var fileReader = new FileReader();
+        fileReader.readAsDataURL($('[name=profile_img]').prop('files')[0]);
+        
+        fileReader.onload = function () {
+            var profile_img_base64;
+            profile_img_base64 = fileReader.result;
+            $.ajax({
+            url: url,
+            type: 'POST',
+            data: {
+                _token: _token,
+                _method: _method,
+                profile_img: profile_img_base64,
+                profileData: profileData.val(),
+                languagesData: languagesData.val(),
+                certificatesData: certificatesData.val(),
+                experienceOfProfilesData: experienceOfProfilesData.val()
+                },
+                success: function(data) {
+                    try
+                    {
+                        var jsonData = JSON.parse(data);
+                        $('.validate-message-n').remove();
+                        $('.is-invalid').removeClass('is-invalid');
+                        for (var key in jsonData){
+                            if (jsonData.hasOwnProperty(key)) {
+                                $('#validate' + key).remove();
+                                $('[name=' + key + ']').eq(0).addClass('is-invalid');
+                                $('[name=' + key + ']').eq(0).after(
+                                    '<div id="validate' + key + '" class="invalid-feedback validate-message-n">'
+                                    +   '<span class="label"></span>'
+                                    +   '<span>' + jsonData[key] + '</span>'
+                                    + '</div>'
+                                );
+                            }
+                        }
+                    }
+                    catch(e)
+                    {
+                        window.location = data;
+                    }
+                },
+            });
+        };
+    } else {
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: {
+                _token: _token,
+                _method: _method,
+                profileData: profileData.val(),
+                languagesData: languagesData.val(),
+                certificatesData: certificatesData.val(),
+                experienceOfProfilesData: experienceOfProfilesData.val(),
+                },
+            success: function(data) {
+                try
+                {
+                    var jsonData = JSON.parse(data);
+                    $('.validate-message-n').remove();
+                    $('.is-invalid').removeClass('is-invalid');
+                    for (var key in jsonData){
+                        if (jsonData.hasOwnProperty(key)) {
+                            $('#validate' + key).remove();
+                            $('[name=' + key + ']').eq(0).addClass('is-invalid');
+                            $('[name=' + key + ']').eq(0).after(
+                                '<div id="validate' + key + '" class="invalid-feedback validate-message-n">'
+                                +   '<span class="label"></span>'
+                                +   '<span>' + jsonData[key] + '</span>'
+                                + '</div>'
+                            );
+                        }
+                    }
+                }
+                catch(e)
+                {
+                    window.location = data;
+                }
+            },
         });
-        var profileData = $("<input>")
-                .attr("type", "hidden")
-                .attr("name", "profileData").val(JSON.stringify(tempArr));
-        $(this).append(profileData);
-        var languagesData = $("<input>")
-                .attr("type", "hidden")
-                .attr("name", "languagesData").val(formLanguageData());
-        $(this).append(languagesData);
-
-        var certificatesData = $("<input>")
-                .attr("type", "hidden")
-                .attr("name", "certificatesData").val(formCertificateData());
-        $(this).append(certificatesData);
-
-        var experienceOfProfilesData = $("<input>")
-                .attr("type", "hidden")
-                .attr("name", "experienceOfProfilesData").val(formExperienceOfProfileData());
-        $(this).append(experienceOfProfilesData);
-    });
-    $('.btn-cancel-n').click(function() {
-        $(this).parent().siblings().find('select').val(null).change();
-    });
+    }
+});
+$('.btn-cancel-n').click(function() {
+    $(this).parent().siblings().find('select').val(null).change();
+});
 </script>
 <script src="js/certificate-ajax.js"></script>
 <script src="js/experience-of-profile-ajax.js"></script>

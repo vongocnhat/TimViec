@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Common\DestroyRequest;
-use Barryvdh\Snappy\Facades\SnappyPdf AS PDF;
+use PDF;
 
 class ProfileDynamicHomeController extends Controller
 {

@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@lang('job_list.text1')</title>
-    {{-- <base href="file:///D:/NhatVN1/DoAn/TimViecCongTy/public/" /> --}}
     <base href="{{ asset('/') }}">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
@@ -18,13 +17,25 @@
     <link href="manage/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
     @yield('css')
 </head>
-<style>
-
-</style>
 <body class="format_index1">
     <!-- header include -->
     @include('home.includes.job_header')
     <!-- /header include -->
+    @if(Session::has('notify_success'))
+        <div class="col-12">
+            <div class="alert alert-success">
+                <span class="alert-success">{{ Session::get('notify_success') }}</span>
+            </div>
+        </div>
+    @else
+        @if(Session::has('notify_error'))
+        <div class="col-12">
+            <div class="alert alert-danger">
+                <span class="alert-danger">{{ Session::get('notify_error') }}</span>
+            </div>
+        </div>
+        @endif
+    @endif
     @yield('content')
     <!-- include footer -->
     @include('home.includes.job_footer')

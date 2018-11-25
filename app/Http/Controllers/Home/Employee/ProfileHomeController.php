@@ -8,8 +8,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Validator;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Common\DestroyRequest;
+use App\Http\Requests\Home\ProfileHomeStoreRequest;
 use App\Repositories\Contracts\Home\ProfileHomeRepositoryInterface;
 
 class ProfileHomeController extends Controller
@@ -22,16 +24,16 @@ class ProfileHomeController extends Controller
          $this->re = $re;
     }
 
-    public function pdfDynamicPreview()
-    {
-        return view('home.employee.profile.pdfs.file');
-    }
-
-    public function profileToPDF($id)
+    public function profileToPDF($id, $template)
     {
         $profile = $this->re->findOrFail($id);
-        $pdf = PDF::loadView('home.employee.profile.pdf.template1', compact('profile'))->setPaper('a4');
-        return $pdf->stream();
+        $pdf = PDF::loadView('home.employee.profile.pdf.' . $template, compact('profile'))
+        ->setPaper('a4')
+        ->setOption('margin-top', 0)
+        ->setOption('margin-bottom', 0)
+        ->setOption('margin-left', 0)
+        ->setOption('margin-right', 0);
+        return $pdf->inline();
     }
 
     public function profile($id)
@@ -46,8 +48,14 @@ class ProfileHomeController extends Controller
      */
     public function index()
     {
+        $templates = Storage::disk('profile_templates')->files('pdf');
+        $templates = array_map(function($profile) {
+            $firstName = substr($profile, 4);
+            $name = substr($firstName, 0, strlen($firstName) - 10);
+            return $name;
+        }, $templates);
         $profiles = $this->re->paginate(10);
-        return view('home.employee.profile.index', compact('profiles'));
+        return view('home.employee.profile.index', compact('profiles', 'templates'));
     }
 
     /**
@@ -90,8 +98,28 @@ class ProfileHomeController extends Controller
      */
     public function store(Request $request)
     {
-        $this->re->store($request);
-        return redirect()->route('employeeHome.profile.index');
+        $validator = Validator::make(json_decode($request->profileData, true), [
+            'name' => 'required|max:191',
+            'career_id' => 'required|numeric|max:10',
+            'degree_id' => 'required|numeric|max:10',
+            'type_of_work_id' => 'required|numeric|max:10',
+            'experience_id' => 'required|numeric|max:10',
+            'office_id' => 'required|numeric|max:10',
+            'desired_job' => 'max:255',
+            'desire_minimum_wage' => 'required|numeric|max:4294967295',
+            'currency' => 'max:255',
+            'career_goals' => 'max:255',
+            'word' => 'required|numeric|max:4',
+            'excel' => 'required|numeric|max:4',
+            'power_point' => 'required|numeric|max:4',
+        ]);
+        if ($validator->fails()) {
+            return json_encode($validator->errors()->getMessages());
+        } else {
+            $this->re->store($request);
+            session()->flash('notify_success', __('common.create_success'));
+            return route('employeeHome.profile.index');
+        }
     }
 
     /**
@@ -150,9 +178,28 @@ class ProfileHomeController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $this->re->update($request, $id);
-        $request->session()->flash('notify_success', __('common.update_success'));
-        return redirect()->route('employeeHome.profile.index');
+        $validator = Validator::make(json_decode($request->profileData, true), [
+            'name' => 'required|max:191',
+            'career_id' => 'required|numeric|max:10',
+            'degree_id' => 'required|numeric|max:10',
+            'type_of_work_id' => 'required|numeric|max:10',
+            'experience_id' => 'required|numeric|max:10',
+            'office_id' => 'required|numeric|max:10',
+            'desired_job' => 'max:255',
+            'desire_minimum_wage' => 'required|numeric|max:4294967295',
+            'currency' => 'max:255',
+            'career_goals' => 'max:255',
+            'word' => 'required|numeric|max:4',
+            'excel' => 'required|numeric|max:4',
+            'power_point' => 'required|numeric|max:4',
+        ]);
+        if ($validator->fails()) {
+            return json_encode($validator->errors()->getMessages());
+        } else {
+            $this->re->update($request, $id);
+            session()->flash('notify_success', __('common.update_success'));
+            return route('employeeHome.profile.index');
+        }
     }
 
     /**

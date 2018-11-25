@@ -37,6 +37,7 @@ class ProfileHomeRepository implements ProfileHomeRepositoryInterface, BaseRepos
 
     public function store($request)
     {
+        // dd(json_decode($request->profileData, true));
         $languagesData = collect(json_decode($request->languagesData, true));
         $languagesData = $languagesData->mapWithKeys(function ($item) {
             $array = collect($item)->only('listening', 'speaking', 'reading', 'writing')->toArray();
@@ -74,7 +75,7 @@ class ProfileHomeRepository implements ProfileHomeRepositoryInterface, BaseRepos
         });
         $profile = $this->findOrFail($id);
         $profile->fill(json_decode($request->profileData, true));
-        if($request->hasFile('profile_img')) {
+        if($request->profile_img) {
             Storage::disk('uploads')->delete('img/profiles/' . $profile->profile_img);
             $profile->profile_img = $this->saveImg($request->profile_img, $id);
         }
@@ -133,14 +134,15 @@ class ProfileHomeRepository implements ProfileHomeRepositoryInterface, BaseRepos
     public function saveImg($image, $profileID)
     {
         if ($image) {
-            $extension = File::extension($image->getClientOriginalName());
+            // $extension = File::extension($image->getClientOriginalName());
+            $extension = '.jpg';
             $fileName = $profileID . '.' . $extension;
-            $imageMedium = Image::make($image->getRealPath());
-            $imageMedium->resize(170, 170);
+            $imageMedium = Image::make($image);
+            $imageMedium->resize(270, 270);
             $imageMedium->save(public_path('img/profiles/' . $fileName));
             return $fileName;
         } else {
-            return $profileID;
+            return 'default.png';
         }
     }
 

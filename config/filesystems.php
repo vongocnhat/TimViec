@@ -74,6 +74,10 @@ return [
             'root'   => resource_path('views/home/employee/profile/dynamic'),
         ],
 
+        'profile_templates' => [
+            'driver' => 'local',
+            'root'   => resource_path('views/home/employee/profile'),
+        ],
 
     ],
 

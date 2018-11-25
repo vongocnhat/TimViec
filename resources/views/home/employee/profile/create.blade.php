@@ -17,7 +17,7 @@
                                 {{ Form::text('name', null, ['class' => 'form-control col-sm-4']) }}
                             </div>
                             <div class="form-group row">
-                                <label for="desired_job" class="label " >@lang('profile_home.desired_job') <span>*</span></label>
+                                <label for="desired_job" class="label " >@lang('profile_home.desired_job') </label>
                                 {{ Form::text('desired_job', null, ['class' => 'form-control col-sm-8', 'placeholder'=>__('profile_home.desired_job_placeholder')]) }}
                             </div>
                             <div class="form-group row">
@@ -45,7 +45,7 @@
                                 {{ Form::select('type_of_work_id', $typeOfWorks, null, ['class' => 'form-control col-sm-4', 'placeholder' => __('profile_home.type_of_work_id')]) }}
                             </div>
                             <div class="form-group row">
-                                <label for="desire_minimum_wage" class="label ">@lang('profile_home.desire_minimum_wage')<span> *</span></label>
+                                <label for="desire_minimum_wage" class="label ">@lang('profile_home.desire_minimum_wage') </label>
                                 {{ Form::number('desire_minimum_wage', null, ['class' => 'form-control col-sm-4 no-spin mr-2']) }}
                                 {{ Form::select('currency', $currencies, null, ['class' => 'form-control col-sm-4']) }}
                             </div>
@@ -55,7 +55,7 @@
                             </div>
                             <div class="form-group row">
                                 <label for="profile_img" class="label ">@lang('profile_home.profile_img')<span> *</span></label>
-                                {{ Form::file('profile_img', ['class' => 'form-control col-sm-4', 'accept'=>'image/*']) }}
+                                {{ Form::file('profile_img', ['class' => 'form-control col-sm-4', 'accept'=>'image/*', 'required']) }}
                             </div>
                             <div class="form-group">
                                 <label for="public" class="label ">@lang('profile_home.public')<span> *</span></label>
@@ -329,6 +329,7 @@
 <script src="js/test.js"></script>
 <script>
 $('#formProfile').submit(function(e) {
+    e.preventDefault();
     var tempArr = {};
     $.each($(this).serializeArray(), function() {
         tempArr[this.name] = this.value;
@@ -341,7 +342,7 @@ $('#formProfile').submit(function(e) {
                .attr("type", "hidden")
                .attr("name", "languagesData").val(formLanguageData());
     $(this).append(languagesData);
-
+    
     var certificatesData = $("<input>")
                .attr("type", "hidden")
                .attr("name", "certificatesData").val(formCertificateData());
@@ -351,6 +352,53 @@ $('#formProfile').submit(function(e) {
                .attr("type", "hidden")
                .attr("name", "experienceOfProfilesData").val(formExperienceOfProfileData());
     $(this).append(experienceOfProfilesData);
+    var url = $(this).prop('action');
+    var _token = '{{ csrf_token() }}';
+    //
+    if($('[name=profile_img]').prop('files')[0] !== undefined) {
+        var fileReader = new FileReader();
+        fileReader.readAsDataURL($('[name=profile_img]').prop('files')[0]);
+        fileReader.onload = function () {
+            var profile_img_base64;
+            profile_img_base64 = fileReader.result;
+            $.ajax({
+            url: url,
+            type: 'POST',
+            data: {
+                _token: _token,
+                profile_img: profile_img_base64,
+                profileData: profileData.val(),
+                languagesData: languagesData.val(),
+                certificatesData: certificatesData.val(),
+                experienceOfProfilesData: experienceOfProfilesData.val()
+                },
+                success: function(data) {
+                    try
+                    {
+                        var jsonData = JSON.parse(data);
+                        $('.validate-message-n').remove();
+                        $('.is-invalid').removeClass('is-invalid');
+                        for (var key in jsonData){
+                            if (jsonData.hasOwnProperty(key)) {
+                                $('#validate' + key).remove();
+                                $('[name=' + key + ']').eq(0).addClass('is-invalid');
+                                $('[name=' + key + ']').eq(0).after(
+                                    '<div id="validate' + key + '" class="invalid-feedback validate-message-n">'
+                                    +   '<span class="label"></span>'
+                                    +   '<span>' + jsonData[key] + '</span>'
+                                    + '</div>'
+                                );
+                            }
+                        }
+                    }
+                    catch(e)
+                    {
+                        window.location = data;
+                    }
+                },
+            });
+        };
+    }
 });
 $('.btn-cancel-n').click(function() {
     $(this).parent().siblings().find('select').val(null).change();

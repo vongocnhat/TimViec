@@ -81,11 +81,11 @@
                 <button type="submit" class="btn btn-primary btn-sm">
                     <i class="fas fa-save"></i> @lang('common.update')
                 </button>
-                <a href="javascript: history.back()" 
+                {{-- <a href="javascript: history.back()" 
                     class="btn btn-danger btn-sm btnCancel" 
-                    data-message-confirm="@lang('common.cancel_message')">
+                    data-message-confirm="@lang('common.cancel_message_edit')">
                     <i class="fa fa-ban"></i> @lang('common.cancel')
-                </a>
+                </a> --}}
             </div>
         {!! Form::close() !!}
     </div>

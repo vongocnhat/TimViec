@@ -2,12 +2,12 @@
 @section('title', __('job_detail.text1'))
 @section('content')
 <style>
-.box_form li {
-    width: 277.5px;
-}
-    </style>
+    .box_form li {
+        width: 277.5px;
+    }
+</style>
 <div class="seation_search container">
-    {!! Form::open(['route' => ['jobList.searchAjax', $jobType], 'method' => 'post', 'class' => 'form_seach', 'id' => 'form_search']) !!}
+    {{-- {!! Form::open(['route' => ['jobList.searchAjax', $jobType], 'method' => 'post', 'class' => 'form_seach', 'id' => 'form_search']) !!}
         <ul class="box_form">
             <li class="list_occupation">
                 {{ Form::select('career_id', $careers, null, ['class' => 'select_input', 'placeholder' => __('job_list.text19')]) }}
@@ -24,7 +24,7 @@
         </ul>
         {{ Form::text('inp_search', null, ['class' => 'inp_search', 'placeholder' => __('job_list.text23')]) }}
         {{ Form::submit(__('job_list.text24'), ['class' => 'btn_seach c-pointer' . $backgroundColor]) }}
-    {!! Form::close() !!}
+    {!! Form::close() !!} --}}
 </div>
 <div class="content">
     <div class="container">
@@ -81,8 +81,7 @@
                 </ul>
             </div>
         </div>
-        <!--
-        <div class="follow_industry">
+        {{-- <div class="follow_industry">
             <div class="title">
                 <h2 class="title_h2">@lang('job_list.text34')</h2>
             </div>
@@ -110,8 +109,7 @@
                     </li>
                 </ul>
             </div>
-        </div>
-        -->
+        </div> --}}
     </div>
 </div>
 @endsection

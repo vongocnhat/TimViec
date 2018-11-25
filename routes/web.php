@@ -39,19 +39,19 @@ Route::namespace('Home')->group(function() {
             Route::get('profile-dynamic/to-pdf/{name}', 'ProfileDynamicHomeController@toPDF')->name('profile-dynamic.toPDF');
             Route::resource('profile-dynamic', 'ProfileDynamicHomeController');
             Route::get('profile/profile/{id}', 'ProfileHomeController@profile');
-            Route::get('profile/to-pdf/{id}', 'ProfileHomeController@profileToPDF')->name('profile.to-pdf');
+            Route::get('profile/to-pdf/{id}/{template}', 'ProfileHomeController@profileToPDF')->name('profile.to-pdf');
             Route::get('profile/pdf-dynamic', 'ProfileHomeController@pdfDynamic');
             Route::get('profile/pdf-dynamic/save', 'ProfileHomeController@pdfDynamicSave')->name('profile.pdfDynamicSave');
             Route::get('profile/pdf-dynamic-to-pdf', 'ProfileHomeController@pdfDynamicToPDF');
-            Route::get('profile/pdf-dynamic-preview', 'ProfileHomeController@pdfDynamicPreview');
             Route::resource('profile', 'ProfileHomeController');
             // /profile
             // profile submitted
             Route::resource('profile-submitted', 'ProfileSubmittedHomeController');
             // /profile submitted
-            // Route::get('job-profile', 'JobProfileHomeController@index')->name('jobProfile');
-            Route::resource('certificate', 'CertificateHomeController');
-            Route::resource('experience-of-profile', 'ExperienceOfProfileHomeController');
+            Route::get('job-profile', 'JobProfileHomeController@index')->name('jobProfile');
+
+            // Route::resource('certificate', 'CertificateHomeController');
+            // Route::resource('experience-of-profile', 'ExperienceOfProfileHomeController');
         });
     });
 });

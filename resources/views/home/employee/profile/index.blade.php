@@ -2,6 +2,10 @@
 @section('content')
 <div class="container">
     <div class="box_cnt">
+        <div class="col-12 mb-3 row">
+            {{ Form::label('template', __('profile_home.template'), ['class' => 'col-4']) }}
+            {{ Form::select('template', $templates, null, ['class' => 'form-control col-7']) }}
+        </div>
         <div class="col-12 mb-3">
             <a href="{{ route('employeeHome.profile.create') }}" class="btn btn-success">@lang('common.create')</a>
         </div>
@@ -36,7 +40,7 @@
                                 <td>{{ $profile->career->name }}</td>
                                 <td>{{ $profile->publicA }}</td>
                                 <td>{{ $profile->receive_emailA }}</td>
-                                <td class="text-center"><a href="{{ route('employeeHome.profile.to-pdf', $profile->id) }}" target="_blank"><i class="fas fa-file-pdf"></i></a></td>
+                                <td class="text-center"><a href="{{ route('employeeHome.profile.to-pdf', [$profile->id, null]) }}" class="to-pdf-n" target="_blank"><i class="fas fa-file-pdf"></i></a></td>
                                 <td class="text-center">
                                     <a href="{{ route('employeeHome.profile.edit', $profile->id) }}" 
                                     class="fas fa-edit" 
@@ -70,4 +74,12 @@
         </div>
     </div>
 </div>
+@endsection
+@section('script')
+<script>
+    $('.to-pdf-n').click(function(e) {
+        e.preventDefault();
+        window.open($(this).prop('href') + '/' + $('[name="template"] :selected').text());
+    });
+</script>
 @endsection

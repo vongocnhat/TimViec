@@ -48,6 +48,7 @@ class EmployeeHomeController extends Controller
     public function update(EmployeeUpdateRequest $request)
     {
         $this->re->update($request);
+        $request->session()->flash('notify_success', __('common.update_success'));
         return back();
     }
 

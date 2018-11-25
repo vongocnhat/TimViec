@@ -9,6 +9,10 @@ body {
     /* height: 1416px; */
 }
 
+.padding-4-0 {
+    padding: 4px 0
+}
+
 .top-left-0 {
     top: 0;
     left: 0;
@@ -29,7 +33,7 @@ body {
 .header-n {
     background-color:#3d9678;
     width: 100%;
-    height: 70px;
+    height: 80px;
 }
 
 .content-left {

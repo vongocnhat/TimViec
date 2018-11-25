@@ -2,6 +2,15 @@
     margin-bottom: 40px !important;
 }
 
+.validate-message-n {
+    position: absolute;
+    bottom: -20px;
+}
+
+#formProfile .form-group.row, #formProfile .form-group.langue {
+    position: relative;
+}
+
 .c-pointer {
     cursor: pointer;
 }

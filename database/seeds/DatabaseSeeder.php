@@ -122,7 +122,7 @@ class DatabaseSeeder extends Seeder
                 'excel' => rand(1, 4),
                 'power_point' => rand(1, 4),
                 'other_soft' => $i,
-                'profile_img' => 'profile_img' . $i,
+                'profile_img' => 'profile_img' . $i . '.jpg',
                 'public' => $this->initNull(rand(0, 1)),
                 'receive_email' => $this->initNull(rand(0, 1)),
                 'created_at' => Carbon::now(),

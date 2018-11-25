@@ -1,0 +1,73 @@
+.content{
+    width: 1000px;
+    margin: 0 auto;
+    box-shadow: 0 0 1px #cfcbcb;
+    margin-top: 50px;
+    padding: 20px 100px 20px;
+    font-size: 16px;
+}
+.box_cv_ttl{
+    display: block;
+    text-align: center;
+    padding: 20px;
+}
+.profile_cnt{
+    width: 79%;
+    float: left;
+}
+.profile_img{
+    width: 30%;
+    float: left;
+}
+.profile_img{
+    width: 21%;
+}
+.profile_img img{
+    display: block;
+    margin: 0 auto;
+    width: 150px;   
+}
+.cnt_info{
+    list-style: none;
+}
+.profile_cnt ul li{
+    display: block;
+}
+.profile_cnt ul li .info_ttl{
+    width: 150px;
+    float: left;
+}
+.profile_cnt ul li .box_des_info{
+    margin: 0;
+}
+.col_profile{
+    width: 100%;
+}
+.col_profile::after{
+    content: "";
+    clear: both;
+    visibility: hidden;
+    display: block;
+}
+.technical{
+    display: block;
+    clear: left;
+    padding: 10px 0;
+}
+.cnt_info .des_day{
+    font-style: italic;
+}
+.cnt_info .name_cty{
+    display: block;
+    font-weight: bold;
+    margin: 0;
+}
+.cnt_info .box_in{
+    margin-left: 50px;
+}
+.cnt_info .box_in li{
+    list-style-type: circle;
+}
+.cnt_info .box_in li span{
+    margin-left: 10px;
+}
