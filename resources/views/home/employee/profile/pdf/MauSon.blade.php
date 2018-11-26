@@ -21,6 +21,10 @@
                 <h4 class="text-uppercase">@lang('mau_son.text2')</h4>
                 <ul class="cnt_info">
                     <li>
+                        <span class="info_ttl">@lang('employee.career'):</span>
+                        <p class="box_des_info">{{ $profile->career->name }}</p>
+                    </li>
+                    <li>
                         <span class="info_ttl">@lang('mau_son.text3')</span>
                         <p class="box_des_info">{{ $profile->employee->name }}</p>
                     </li>
@@ -52,7 +56,7 @@
         </div>
         <div class="technical">
             <h4 class="text-uppercase">@lang('profile_home.career_goals')</h4>
-            <p class="txt_des">{{ $profile->career->name }}</p>
+            <p class="txt_des">{{ $profile->career_goals }}</p>
         </div>
         <div class="technical">
             <h4 class="text-uppercase">@lang('profile_home.experience_id')</h4>

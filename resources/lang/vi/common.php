@@ -35,4 +35,5 @@ return [
     'not_updated' => 'Chưa cập nhật',
     'created_at' => 'Thêm Lúc',
     'updated_at' => 'Cập Nhật Lúc',
+    'login_fail' => 'Sai tài khoản hoặc mật khẩu',
 ];

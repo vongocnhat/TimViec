@@ -47,4 +47,8 @@ class Employer extends Authenticatable
 	public function getNameAttribute() {
         return $this->attributes['first_name'] . ' ' . $this->attributes['last_name'];
 	}
+
+	public function jobs() {
+		return $this->hasMany('App\Models\Job');
+	}
 }

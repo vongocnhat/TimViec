@@ -55,6 +55,9 @@ class EmployeeHomeController extends Controller
     public function signInView()
     {
         $urlPrevious = url()->previous();
+        if (Auth::guard('employee')->check()) {
+            return redirect()->route('home');
+        }
         return view('home.employee.sign_in', compact('urlPrevious'));
     }
 
@@ -74,8 +77,12 @@ class EmployeeHomeController extends Controller
             'phone' => $account,
             'password' => $password,
         ], $remember)) {
+            if (Auth::guard('employer')->check()) {
+                Auth::guard('employer')->logout();
+            }
             return redirect($urlPrevious);
         } else {
+            session()->flash('notify_error', __('common.login_fail'));
             return back()->withInput($request->all());
         }
     }

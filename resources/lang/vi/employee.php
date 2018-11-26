@@ -21,4 +21,5 @@ return [
     'ward_select' => 'Chọn Phường',
     'male' => 'Nam',
     'female' => 'Nữ',
+    'career' => 'Ngành Nghề',
 ];

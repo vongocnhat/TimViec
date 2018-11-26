@@ -1,6 +1,6 @@
 <aside class="menu-sidebar d-none d-lg-block">
     <div class="logo">
-        <a href="#">
+        <a >
             <img src="manage/images/icon/logo.png" alt="Cool Admin" />
         </a>
     </div>
@@ -8,7 +8,7 @@
         <nav class="navbar-sidebar">
             <ul class="list-unstyled navbar__list">
                 <li class="active has-sub">
-                    <a class="js-arrow" href="#">
+                    <a class="js-arrow" >
                         <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                     <ul class="list-unstyled navbar__sub-list js-sub-list">
                         <li>
@@ -38,7 +38,7 @@
                         <i class="far fa-check-square"></i>Forms</a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a >
                         <i class="fas fa-calendar-alt"></i>Calendar</a>
                 </li>
                 <li>
@@ -46,7 +46,7 @@
                         <i class="fas fa-map-marker-alt"></i>Maps</a>
                 </li>
                 <li class="has-sub">
-                    <a class="js-arrow" href="#">
+                    <a class="js-arrow" >
                         <i class="fas fa-copy"></i>Pages</a>
                     <ul class="list-unstyled navbar__sub-list js-sub-list">
                         <li>
@@ -61,7 +61,7 @@
                     </ul>
                 </li>
                 <li class="has-sub">
-                    <a class="js-arrow" href="#">
+                    <a class="js-arrow" >
                         <i class="fas fa-desktop"></i>UI Elements</a>
                     <ul class="list-unstyled navbar__sub-list js-sub-list">
                         <li>

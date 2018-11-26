@@ -3,14 +3,22 @@
 namespace App\Repositories\Eloquents\Home;
 
 use App\Models\Job;
+use App\Models\Degree;
+use App\Models\Office;
+use App\Models\Salary;
+use App\Models\Experience;
+use App\Models\TypeOfWork;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Repositories\Eloquents\Home\JobBaseRepository;
 use App\Repositories\Contracts\Home\JobHomeRepositoryInterface;
 
 class JobHomeRepository implements JobHomeRepositoryInterface
 {
 	public function paginate($numberRows)
     {
-        return Job::with('employer','salary:id,name')->paginate($numberRows);
+        $employer_id = Auth::guard('employer')->user()->id;
+        return Job::where('employer_id', $employer_id)->paginate($numberRows);
     }
 
     public function findOrFail($id)
@@ -20,12 +28,17 @@ class JobHomeRepository implements JobHomeRepositoryInterface
 
     public function store($request)
     {
-        
+        $job = new Job();
+        $job->fill($request->except('employer_id'));
+        $job->employer_id = Auth::guard('employer')->user()->id;
+        $job->save();
     }
 
     public function update($request, $id)
     {
-        
+        $job = $this->findOrFail($id);
+        $job->fill($request->except('employer_id'));
+        $job->save();
     }
 
     public function destroy($request)
@@ -48,5 +61,30 @@ class JobHomeRepository implements JobHomeRepositoryInterface
                 session()->flash('notify_error', __('common.deletes_fail'));
             }
         }
+    }
+
+    public function offices()
+    {
+        return Office::orderBy('id')->pluck('name', 'id')->sortKeys();
+    }
+
+    public function type_of_works()
+    {
+        return TypeOfWork::orderBy('id')->pluck('name', 'id')->sortKeys();
+    }
+
+    public function degrees()
+    {
+        return Degree::orderBy('id')->pluck('name', 'id')->sortKeys();
+    }
+
+    public function salaries()
+    {
+        return Salary::orderBy('id')->pluck('name', 'id')->sortKeys();
+    }
+
+    public function experiences()
+    {
+        return Experience::orderBy('id')->pluck('name', 'id')->sortKeys();
     }
 }

@@ -168,7 +168,7 @@
                     </li>
                 </ul>
                 <div class="part_link">
-                    <a class="box_link" href="">@lang('home.text36')</a>
+                    <a class="box_link">@lang('home.text36')</a>
                 </div>
             </div>
         </div>
@@ -181,10 +181,10 @@
                 </div>
                 <ul class="advisory_cnt">
                     <li>
-                        <a class="item_mane" href="#">@lang('home.text38')</a>
+                        <a class="item_mane" >@lang('home.text38')</a>
                     </li>
                     <li>
-                        <a class="item_seeker" href="#">@lang('home.text39')</a>
+                        <a class="item_seeker" >@lang('home.text39')</a>
                     </li>
                 </ul>
             </div>
@@ -207,7 +207,7 @@
     <footer id="tmp_footer">
         <div class="container">
             <div class="footer_title">
-                <a href="">
+                <a>
                     <p>@lang('home.text44')</p>
                 </a>
             </div>
@@ -236,7 +236,7 @@
         </div>
     </footer>
     <div class="pagetop">
-        <a class="page_top" href="#"></a>
+        <a class="page_top" ></a>
     </div>
     <script type="text/javascript " src="js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="js/jquery.js"></script>

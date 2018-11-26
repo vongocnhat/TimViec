@@ -2,6 +2,9 @@
 @section('content')
 <div class="container">
     <div class="box_cnt">
+        <div class="col-12 mb-3">
+            <a href="{{ route('employer-home.job.create') }}" class="btn btn-success">@lang('common.create')</a>
+        </div>
         <div class="col-12">
             {!! Form::open(['route' => ['employer-home.job.destroy', 0], 'method' => 'DELETE']) !!}
                 <button type="submit"
@@ -44,7 +47,7 @@
                                             'name' => 'delete_id',
                                             'type' => 'submit',
                                             'value' => $job->id,
-                                            'class' => 'fas fa-trash-alt text-danger text-danger-hover',
+                                            'class' => 'fas fa-trash-alt text-danger text-danger-hover btn-to-link',
                                             'title' => __('common.delete_message', ['name' => __('job.job')]),
                                             'onclick' => "return confirm('".__('common.delete_message',
                                             [

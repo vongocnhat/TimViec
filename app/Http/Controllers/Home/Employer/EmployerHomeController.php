@@ -10,6 +10,9 @@ class EmployerHomeController extends Controller
 {
     public function signInView()
     {
+        if (Auth::guard('employer')->check()) {
+            return redirect()->route('employer-home.job.index');
+        }
         return view('home.employer.sign_in');
     }
 
@@ -24,12 +27,17 @@ class EmployerHomeController extends Controller
         if (Auth::guard('employer')->attempt([
             'email' => $account,
             'password' => $password,
-        ], $remember) || Auth::guard('employer')->attempt([
+        ], $remember) 
+        || Auth::guard('employer')->attempt([
             'phone' => $account,
             'password' => $password,
         ], $remember)) {
-            return redirect()->route('employer-home.jobs.index');
+            if (Auth::guard('employee')->check()) {
+                Auth::guard('employee')->logout();
+            }
+            return redirect()->route('employer-home.job.index');
         } else {
+            session()->flash('notify_error', __('common.login_fail'));
             return back()->withInput($request->all());
         }
     }
@@ -37,6 +45,6 @@ class EmployerHomeController extends Controller
     public function signOut()
     {
         Auth::guard('employer')->logout();
-        return back();
+        return redirect()->route('home');
     }
 }

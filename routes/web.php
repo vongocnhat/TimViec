@@ -27,15 +27,19 @@ Route::namespace('Home')->group(function() {
     Route::namespace('employer')->prefix('employer-home')->name('employer-home.')->group(function () {
         Route::get('create', 'EmployerHomeController@create')->name('create');
         Route::post('store', 'EmployerHomeController@store')->name('store');
+        Route::middleware(['EmployerMiddleware'])->group(function() {
+            Route::get('edit', 'EmployerHomeController@edit')->name('edit');
+            Route::put('update', 'EmployerHomeController@update')->name('update');
+            Route::resource('job', 'JobHomeController');
+        });
         Route::get('sign-in', 'EmployerHomeController@signInView')->name('signInView');
         Route::post('sign-in', 'EmployerHomeController@signInCheck')->name('signInCheck');
         Route::get('sign-out', 'EmployerHomeController@signOut')->name('signOut');
 
-        Route::resource('job', 'JobHomeController');
+        
     });
 
     Route::namespace('Employee')->prefix('employee-home')->name('employeeHome.')->group(function () {
-        
         Route::get('create', 'EmployeeHomeController@create')->name('create');
         Route::post('store', 'EmployeeHomeController@store')->name('store');
         Route::get('sign-in', 'EmployeeHomeController@signInView')->name('signInView');
@@ -57,8 +61,10 @@ Route::namespace('Home')->group(function() {
             // profile submitted
             Route::resource('profile-submitted', 'ProfileSubmittedHomeController');
             // /profile submitted
-            Route::get('job-profile', 'JobProfileHomeController@index')->name('jobProfile');
-
+            
+            
+            
+            // Route::get('job-profile', 'JobProfileHomeController@index')->name('jobProfile');
             // Route::resource('certificate', 'CertificateHomeController');
             // Route::resource('experience-of-profile', 'ExperienceOfProfileHomeController');
         });

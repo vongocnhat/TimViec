@@ -381,6 +381,7 @@ $('#formProfile').submit(function(e) {
                         for (var key in jsonData){
                             if (jsonData.hasOwnProperty(key)) {
                                 $('#validate' + key).remove();
+                                $('[name=' + key + ']').eq(0).focus();
                                 $('[name=' + key + ']').eq(0).addClass('is-invalid');
                                 $('[name=' + key + ']').eq(0).after(
                                     '<div id="validate' + key + '" class="invalid-feedback validate-message-n">'

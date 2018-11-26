@@ -37,7 +37,12 @@ class JobHomeController extends Controller
      */
     public function create()
     {
-        return view('manage.job.create');
+        $offices = $this->re->offices();
+		$type_of_works = $this->re->type_of_works();
+		$degrees = $this->re->degrees();
+		$experiences = $this->re->experiences();
+		$salaries = $this->re->salaries();
+        return view('home.employer.job.create', compact('offices', 'type_of_works', 'degrees', 'experiences', 'salaries'));
     }
 
     /**
@@ -48,10 +53,9 @@ class JobHomeController extends Controller
      */
     public function store(JobStoreRequest $request)
     {
-        // dd($request);
         $this->re->store($request);
         $request->session()->flash('notify_success', __('common.create_success'));
-        return redirect()->route('job.index');
+        return redirect()->route('employer-home.job.index');
     }
 
     /**
@@ -62,8 +66,6 @@ class JobHomeController extends Controller
      */
     public function show($id)
     {
-        $job = $this->re->findOrFail($id);
-        return view('manage.job.detail', compact('job'));
     }
 
     /**
@@ -74,7 +76,13 @@ class JobHomeController extends Controller
      */
     public function edit($id)
     {
-       
+        $offices = $this->re->offices();
+		$type_of_works = $this->re->type_of_works();
+		$degrees = $this->re->degrees();
+		$experiences = $this->re->experiences();
+		$salaries = $this->re->salaries();
+        $job = $this->re->findOrFail($id);
+        return view('home.employer.job.edit', compact('job', 'offices', 'type_of_works', 'degrees', 'experiences', 'salaries'));
     }
 
     /**
@@ -88,7 +96,7 @@ class JobHomeController extends Controller
     {
         $this->re->update($request, $id);
         $request->session()->flash('notify_success', __('common.update_success'));
-        return redirect()->route('job.index');
+        return redirect()->route('employer-home.job.index');
     }
 
     /**

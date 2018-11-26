@@ -491,6 +491,7 @@
 .index1 .menu_list .list_user{
     min-width: 80px;
     text-indent: 0;
+    text-align: center;
 }
 .index1 .menu_list .list_notification{
     border-right: 1px solid #333;
@@ -1194,4 +1195,8 @@ a.btn_profile_disable {
 
 #languages {
     margin-bottom: 180px;
+}
+
+.index1 .menu_list > .remove-icon-n::before {
+    content: unset;
 }

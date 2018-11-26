@@ -25,6 +25,8 @@ class DatabaseSeeder extends Seeder
             SalariesTableSeeder::class,
             LanguagesTableSeeder::class,
             GraduatesTableSeeder::class,
+            EmployeeTableSeeder::class,
+            ProfileTableSeeder::class,
         ]);
         $max = 50;
         $genderArr = [__('employee.male'), __('employee.female')];
@@ -37,8 +39,8 @@ class DatabaseSeeder extends Seeder
                 'last_name'     => 'last_name'  .  $i,
                 'email'      => 'email'   .  $i .'@gmail.com',
                 'phone'      => 'phone'   .  $i,
-                                // empty
-                'password'      => '$2y$12$OSK5OycQkM3SJyC/YuPh0u.Z99bwyMRh4m6YC4YUGvxOZoaxim5by',
+                                // 123
+                'password'      => '$2y$12$UCJNuDiKaUxxPnHFaxIJde2VKwQNoQtR8n.up3LmTBhuKL7hlWOju',
                 'birthday'      =>  $this->randomDate(),
                 'province_id'  => $i,
                 'district_id'  => $i,
@@ -55,8 +57,8 @@ class DatabaseSeeder extends Seeder
                 'last_name' => 'last_name' .$i,
                 'email' => 'email' .$i.'@gmail.com',
                 'phone' => 'phone' .$i,
-                                // empty
-                'password'      => '$2y$12$OSK5OycQkM3SJyC/YuPh0u.Z99bwyMRh4m6YC4YUGvxOZoaxim5by',
+                                // 123
+                'password'      => '$2y$12$UCJNuDiKaUxxPnHFaxIJde2VKwQNoQtR8n.up3LmTBhuKL7hlWOju',
                 'company_name' => 'company_name' .$i,
                 'company_size' => $this->initNull('company_size' .$i),
                 'landline_phone' => $this->initNull('landline_phone' .$i),
@@ -88,7 +90,7 @@ class DatabaseSeeder extends Seeder
                 'job_description' => 'job_description' .$i,
                 'benefit' => $this->initNull('benefit' .$i),
                 'other_requirements' => $this->initNull('other_requirements' .$i),
-                'apply_online' => $this->initNull(1),
+                'apply_online' => 1,
                 'contact_person' => 'contact_person' .$i,
                 'email' => 'email' .$i.'@gmail.com',
                 'phone' => 'phone' .$i,
@@ -122,7 +124,7 @@ class DatabaseSeeder extends Seeder
                 'excel' => rand(1, 4),
                 'power_point' => rand(1, 4),
                 'other_soft' => $i,
-                'profile_img' => 'profile_img' . $i . '.jpg',
+                'profile_img' => 'default_img.png',
                 'public' => $this->initNull(rand(0, 1)),
                 'receive_email' => $this->initNull(rand(0, 1)),
                 'created_at' => Carbon::now(),

@@ -20,22 +20,23 @@
                 <a class="list_employer" href="{{ route('employer-home.signInView') }}" title="@lang('job_list.text10')">@lang('job_list.text11')</a>
             </li>
             <li class="menu_list">
-                <a class="list_home" href="#index1" title="@lang('job_list.text12')"></a>
+                <a class="list_home" title="@lang('job_list.text12')"></a>
             </li>
             <li class="menu_list">
-                <a class="list_save" href="#index1" title="@lang('job_list.text13')"></a>
+                <a class="list_save" title="@lang('job_list.text13')"></a>
             </li>
             <li class="menu_list">
-                <a class="list_seach" href="#index1" title="@lang('job_list.text14')"></a>
+                <a class="list_seach" title="@lang('job_list.text14')"></a>
             </li>
             <li class="menu_list">
-                <a class="list_notification" href="#index1" title="@lang('job_list.text15')"></a>
+                <a class="list_notification" title="@lang('job_list.text15')"></a>
             </li>
             <li class="menu_list">
-                @if(!Auth::guard('employee')->check())
-                    <a class="login" href="{{ route('employeeHome.signInView') }}">@lang('home.text2')</a>
-                    <a class="registration" href="{{ route('employeeHome.create') }}">@lang('home.text3')</a>
+                @if(!Auth::guard('employee')->check() && !Auth::guard('employer')->check())
+                    <a class="login remove-icon-n" href="{{ route('employeeHome.signInView') }}">@lang('home.text2')</a>
+                    <a class="registration remove-icon-n" href="{{ route('employeeHome.create') }}">@lang('home.text3')</a>
                 @else
+                @if (Auth::guard('employee')->check())
                     <div class="btn-group">
                         <a class="dropdown-toggle rounded-0 list_user text-white c-pointer" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ Auth::guard('employee')->user()->last_name }}
@@ -50,13 +51,26 @@
                     </div>
                 </li>
                 @endif
+                @endif
+                @if(Auth::guard('employer')->check())
+                    <div class="btn-group">
+                        <a class="dropdown-toggle rounded-0 list_user text-white c-pointer" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ Auth::guard('employer')->user()->last_name }}
+                        </a>
+                        <div class="dropdown-menu width-200px rounded-0">
+                            <a href="{{ route('employer-home.job.index') }}" class="dropdown-item width-200px-padding">@lang('job.title')</a>
+                            <a href="{{ route('employer-home.signOut') }}" class="dropdown-item width-200px-padding">@lang('home.sign_out')</a>
+                        </div>
+                    </div>
+                </li>
+                @endif
             </li>
         </ul>
     </div>
 </header>
 <div class="box_pakuzu">
     <div class="container">
-        <a class="paku_maner" href="">@lang('job_list.text17')</a>
-        <span>@lang('job_list.text18')</span>
+        {{-- <a class="paku_maner">@lang('job_list.text17')</a>
+        <span>@lang('job_list.text18')</span> --}}
     </div>
 </div>

@@ -17,7 +17,7 @@
         <div class="container-fluid">
             <ul class="navbar-mobile__list list-unstyled">
                 <li class="has-sub">
-                    <a class="js-arrow" href="#">
+                    <a class="js-arrow" >
                         <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                     <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                         <li>
@@ -47,7 +47,7 @@
                         <i class="far fa-check-square"></i>Forms</a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a >
                         <i class="fas fa-calendar-alt"></i>Calendar</a>
                 </li>
                 <li>
@@ -55,7 +55,7 @@
                         <i class="fas fa-map-marker-alt"></i>Maps</a>
                 </li>
                 <li class="has-sub">
-                    <a class="js-arrow" href="#">
+                    <a class="js-arrow" >
                         <i class="fas fa-copy"></i>Pages</a>
                     <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                         <li>
@@ -70,7 +70,7 @@
                     </ul>
                 </li>
                 <li class="has-sub">
-                    <a class="js-arrow" href="#">
+                    <a class="js-arrow" >
                         <i class="fas fa-desktop"></i>UI Elements</a>
                     <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                         <li>

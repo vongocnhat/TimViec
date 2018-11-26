@@ -21,21 +21,23 @@
     <!-- header include -->
     @include('home.includes.job_header')
     <!-- /header include -->
+    <div class="container">
     @if(Session::has('notify_success'))
-        <div class="col-12">
+        <div class="col-12 p-0">
             <div class="alert alert-success">
                 <span class="alert-success">{{ Session::get('notify_success') }}</span>
             </div>
         </div>
     @else
         @if(Session::has('notify_error'))
-        <div class="col-12">
+        <div class="col-12 p-0">
             <div class="alert alert-danger">
                 <span class="alert-danger">{{ Session::get('notify_error') }}</span>
             </div>
         </div>
         @endif
     @endif
+    </div>
     @yield('content')
     <!-- include footer -->
     @include('home.includes.job_footer')

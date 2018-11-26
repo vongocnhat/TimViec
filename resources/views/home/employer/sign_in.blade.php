@@ -62,9 +62,16 @@
                                         {{ Form::checkbox('remember') }}@lang('employee_home.remember')
                                     </label>
                                     <label>
-                                        <a href="#">Forgotten Password?</a>
+                                        <a >Forgotten Password?</a>
                                     </label>
                                 </div>
+                                @if(Session::has('notify_error'))
+                                <div class="col-12">
+                                    <div class="alert alert-danger">
+                                        <span class="alert-danger">{{ Session::get('notify_error') }}</span>
+                                    </div>
+                                </div>
+                                @endif
                                 {{ Form::submit(__('employee_home.sign_in'), ['class' => 'au-btn au-btn--block au-btn--green m-b-20']) }}
                                 <div class="social-login-content">
                                     <div class="social-button">
@@ -73,13 +80,13 @@
                                     </div>
                                 </div>
                             {!! Form::close() !!}
-                            <div class="register-link">
+                            {{-- <div class="register-link">
                                 <p>
                                     Don't you have account?
-                                    <a href="#">Sign Up Here</a>
+                                    <a >Sign Up Here</a>
                                 </p>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

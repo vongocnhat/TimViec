@@ -8,13 +8,13 @@
                 <div class="title_des clearfix">
                     <h2>{{ $job->name }}</h2>
                     <p>
-                        <a class="name_cty" href="">
+                        <a class="name_cty" >
                             {{ $job->employer->company_name }}
                         </a>
                     </p>
                     <div class="title_left">
-                        <a class="save_job" href="#">@lang('job_detail.text2')</a>
-                        <a class="share" href="">@lang('job_detail.text3')</a>
+                        <a class="save_job">@lang('job_detail.text2')</a>
+                        <a class="share" >@lang('job_detail.text3')</a>
                         <p class="deadline_submission">@lang('job_detail.text4')
                             <span>{{ $job->deadlineA }}</span>
                         </p>
@@ -181,29 +181,29 @@
                 <ul class="box_list_items">
                     <li class="list_items">
                         <div class="item_ttl_man">
-                            <a class="items_name" href="">Đối Tác Quản Lý Kinh Doanh Độc Lập Công Ty Hanwha Life
+                            <a class="items_name" >Đối Tác Quản Lý Kinh Doanh Độc Lập Công Ty Hanwha Life
                                 Việt Nam</a>
-                            <a class="items_cty" href="">Công Ty Cổ Phần Gió Nhẹ Miền Nam</a>
+                            <a class="items_cty" >Công Ty Cổ Phần Gió Nhẹ Miền Nam</a>
                         </div>
                     </li>
                     <li class="list_items">
                         <div class="item_ttl_man">
-                            <a class="items_name" href="">Sale Kiêm Marketing Leader</a>
-                            <a class="items_cty" href="">Chi Nhánh Thành Phố Hồ Chí Minh - Công Ty TNHH Dios
+                            <a class="items_name" >Sale Kiêm Marketing Leader</a>
+                            <a class="items_cty" >Chi Nhánh Thành Phố Hồ Chí Minh - Công Ty TNHH Dios
                                 Investment Vina</a>
                         </div>
                     </li>
                     <li class="list_items">
                         <div class="item_ttl_man">
-                            <a class="items_name" href="">Đối Tác Quản Lý Kinh Doanh Độc Lập Công Ty Hanwha Life
+                            <a class="items_name" >Đối Tác Quản Lý Kinh Doanh Độc Lập Công Ty Hanwha Life
                                 Việt Nam</a>
-                            <a class="items_cty" href="">Công Ty Cổ Phần Gió Nhẹ Miền Nam</a>
+                            <a class="items_cty" >Công Ty Cổ Phần Gió Nhẹ Miền Nam</a>
                         </div>
                     </li>
                     <li class="list_items">
                         <div class="item_ttl_man">
-                            <a class="items_name" href="">Sale Kiêm Marketing Leader</a>
-                            <a class="items_cty" href="">Chi Nhánh Thành Phố Hồ Chí Minh - Công Ty TNHH Dios
+                            <a class="items_name" >Sale Kiêm Marketing Leader</a>
+                            <a class="items_cty" >Chi Nhánh Thành Phố Hồ Chí Minh - Công Ty TNHH Dios
                                 Investment Vina</a>
                         </div>
                     </li>

@@ -71,7 +71,7 @@ class Job extends Model
 		if ($this->apply_online === 1)
 			return '<a href="' . route('jobDetail.profileSelect') . '" data-job-id="' . $this->id . '" class="btn_profile_click">' . __('job_detail.btn_online') . '</a>';
 		else
-			return '<a href="" class="btn_profile_disable">' . __('job_detail.btn_offline') . '</a>';
+			return '<a class="btn_profile_disable">' . __('job_detail.btn_offline') . '</a>';
 	}
 
 	public function getAddressAAttribute() {

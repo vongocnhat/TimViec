@@ -179,7 +179,7 @@ class ProfileHomeController extends Controller
     {
         //
         $validator = Validator::make(json_decode($request->profileData, true), [
-            'name' => 'required|unique:profiles|max:191',
+            'name' => 'required|max:191|unique:profiles,name,' . $id,
             'career_id' => 'required|numeric|max:4294967295',
             'degree_id' => 'required|numeric|max:4294967295',
             'type_of_work_id' => 'required|numeric|max:4294967295',

@@ -201,7 +201,7 @@ class LanguagesTableSeeder extends Seeder
                 ['name' =>'Ukraine','created_at' => Carbon::now(), 'updated_at' => Carbon::now(), ],
                 ['name' =>'United Arab Emirates','created_at' => Carbon::now(), 'updated_at' => Carbon::now(), ],
                 ['name' =>'United Kingdom','created_at' => Carbon::now(), 'updated_at' => Carbon::now(), ],
-                ['name' =>'United States','created_at' => Carbon::now(), 'updated_at' => Carbon::now(), ],
+                ['name' =>'English ( United States )','created_at' => Carbon::now(), 'updated_at' => Carbon::now(), ],
                 ['name' =>'Uruguay','created_at' => Carbon::now(), 'updated_at' => Carbon::now(), ],
                 ['name' =>'Uzbekistan','created_at' => Carbon::now(), 'updated_at' => Carbon::now(), ],
                 ['name' =>'Vanuatu','created_at' => Carbon::now(), 'updated_at' => Carbon::now(), ],

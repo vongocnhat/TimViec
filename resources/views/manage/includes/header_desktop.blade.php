@@ -38,7 +38,7 @@
                                     </div>
                                 </div>
                                 <div class="mess__footer">
-                                    <a href="#">View all messages</a>
+                                    <a >View all messages</a>
                                 </div>
                             </div>
                         </div>
@@ -77,7 +77,7 @@
                                     </div>
                                 </div>
                                 <div class="email__footer">
-                                    <a href="#">See all emails</a>
+                                    <a >See all emails</a>
                                 </div>
                             </div>
                         </div>
@@ -116,7 +116,7 @@
                                     </div>
                                 </div>
                                 <div class="notifi__footer">
-                                    <a href="#">All notifications</a>
+                                    <a >All notifications</a>
                                 </div>
                             </div>
                         </div>
@@ -127,38 +127,38 @@
                                 <img src="manage/images/icon/avatar-01.jpg" alt="John Doe" />
                             </div>
                             <div class="content">
-                                <a class="js-acc-btn" href="#">john doe</a>
+                                <a class="js-acc-btn" >john doe</a>
                             </div>
                             <div class="account-dropdown js-dropdown">
                                 <div class="info clearfix">
                                     <div class="image">
-                                        <a href="#">
+                                        <a >
                                             <img src="manage/images/icon/avatar-01.jpg" alt="John Doe" />
                                         </a>
                                     </div>
                                     <div class="content">
                                         <h5 class="name">
-                                            <a href="#">john doe</a>
+                                            <a >john doe</a>
                                         </h5>
                                         <span class="email">johndoe@example.com</span>
                                     </div>
                                 </div>
                                 <div class="account-dropdown__body">
                                     <div class="account-dropdown__item">
-                                        <a href="#">
+                                        <a >
                                             <i class="zmdi zmdi-account"></i>Account</a>
                                     </div>
                                     <div class="account-dropdown__item">
-                                        <a href="#">
+                                        <a >
                                             <i class="zmdi zmdi-settings"></i>Setting</a>
                                     </div>
                                     <div class="account-dropdown__item">
-                                        <a href="#">
+                                        <a >
                                             <i class="zmdi zmdi-money-box"></i>Billing</a>
                                     </div>
                                 </div>
                                 <div class="account-dropdown__footer">
-                                    <a href="#">
+                                    <a >
                                         <i class="zmdi zmdi-power"></i>Logout</a>
                                 </div>
                             </div>
