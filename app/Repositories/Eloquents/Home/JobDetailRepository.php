@@ -17,6 +17,10 @@ class JobDetailRepository extends JobBaseRepository implements JobDetailReposito
 
     public function profilesById()
     {
-        return Auth::guard('employee')->user()->profiles()->pluck('name', 'employee_id');
+        $profiles = [];
+        foreach (Auth::guard('employee')->user()->profiles as $profile) {
+            $profiles[$profile->id] = $profile->name;
+        }
+        return $profiles;
     }
 }

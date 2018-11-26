@@ -1,5 +1,6 @@
 <?php
 return [
+    'profile_submitted'         => 'Nộp Hồ Sơ Thành Công',
     'text1'                     => 'Chi Tiết Công Việc',
     'text2'                     => 'Lưu việc làm',
     'text3'                     => 'Chia sẽ',
@@ -42,4 +43,5 @@ return [
     'profile_duplicate'         => 'Bạn Đã Nộp Hồ Sơ Rồi',
     'profile_no'                => 'Bạn chưa có hồ sơ nào',
     'profile_create'            => 'Thêm Hồ Sơ',
+    'profile_dynamic_create'    => 'Thêm Hồ Sơ Động',
 ];

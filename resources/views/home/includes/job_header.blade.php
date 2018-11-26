@@ -44,6 +44,7 @@
                             <a href="{{ route('employeeHome.edit') }}" class="dropdown-item width-200px-padding">@lang('home.account_manage')</a>
                             <a href="{{ route('employeeHome.profile.index') }}" class="dropdown-item width-200px-padding">@lang('home.profiles_manage')</a>
                             <a href="{{ route('employeeHome.profile-dynamic.index') }}" class="dropdown-item width-200px-padding">@lang('home.profiles_dynamic')</a>
+                            <a href="{{ route('employeeHome.profile-submitted.index') }}" class="dropdown-item width-200px-padding">@lang('home.profiles_manage_submitted')</a>
                             <a href="{{ route('employeeHome.signOut') }}" class="dropdown-item width-200px-padding">@lang('home.sign_out')</a>
                         </div>
                     </div>

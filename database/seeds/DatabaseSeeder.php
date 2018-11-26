@@ -88,7 +88,7 @@ class DatabaseSeeder extends Seeder
                 'job_description' => 'job_description' .$i,
                 'benefit' => $this->initNull('benefit' .$i),
                 'other_requirements' => $this->initNull('other_requirements' .$i),
-                'apply_online' => $this->initNull(rand(0, 1)),
+                'apply_online' => $this->initNull(1),
                 'contact_person' => 'contact_person' .$i,
                 'email' => 'email' .$i.'@gmail.com',
                 'phone' => 'phone' .$i,

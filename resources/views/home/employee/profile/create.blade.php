@@ -134,7 +134,7 @@
                         <h2>@lang('profile_home.text19') <span>@lang('profile_home.required_false')</span></h2>
                     </div>
                     <div class="form_profile">
-                        {!! Form::open(['route'=>'employeeHome.certificate.store', 'id'=>'formCertificate']) !!}
+                        {!! Form::open(['route'=>null, 'id'=>'formCertificate']) !!}
                             <div class="overflow-auto-n" id="listCertificate">
                                 <table class="table table-bordered">
                                     <thead>
@@ -193,7 +193,7 @@
                         <h2>@lang('profile_home.text12') <span>@lang('profile_home.required_false')</span></h2>
                     </div>
                     <div class="form_profile">
-                        {!! Form::open(['route'=>'employeeHome.experience-of-profile.store', 'id'=>'formExperienceOfProfile']) !!}
+                        {!! Form::open(['route'=>null, 'id'=>'formExperienceOfProfile']) !!}
                             <div class="overflow-auto-n" id="listExperienceOfProfile">
                                 <table class="table table-bordered">
                                     <thead>
@@ -326,7 +326,7 @@
 <script src="js/certificate-ajax.js"></script>
 <script src="js/experience-of-profile-ajax.js"></script>
 <script src="js/language-ajax.js"></script>
-<script src="js/test.js"></script>
+{{-- <script src="js/test.js"></script> --}}
 <script>
 $('#formProfile').submit(function(e) {
     e.preventDefault();

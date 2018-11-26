@@ -11,7 +11,7 @@ return [
     'text9'           => 'Dành cho nhà tuyển dụng',
     'text10'          => 'Nhà tuyển dụng',
     'text11'          => 'Website tự hào làm cầu nối cho hơn 15 triệu lượt tuyển dụng và tìm việc thành công',
-    'text12'          => 'Việc Làm 24h đang có <span>:para1</span> Việc làm đang tuyển dụng và <span>:para2</span> Hồ sơ người tìm việc',
+    'text12'          => 'Việc Làm 360 đang có <span>:para1</span> Việc làm đang tuyển dụng và <span>:para2</span> Hồ sơ người tìm việc',
     'text13'          => 'Tính năng nổi bật',
     'text14'          => 'Cổng việc làm Quản lý',
     'text15'          => 'Cấp bậc: Quản lý cấp cao/ Quản lý cấp trung/ Quản lý nhóm/ Giám sát....',

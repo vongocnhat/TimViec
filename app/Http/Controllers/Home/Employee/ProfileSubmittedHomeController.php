@@ -4,14 +4,15 @@ namespace App\Http\Controllers\Home\Employee;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\Contracts\Home\ProfileHomeRepositoryInterface;
+use Illuminate\Support\Facades\Auth;
+use App\Repositories\Contracts\Home\ProfileSubmittedHomeRepositoryInterface;
 
 class ProfileSubmittedHomeController extends Controller
 {
      // repository
      private $re;
 
-     public function __construct(ProfileHomeRepositoryInterface $re)
+     public function __construct(ProfileSubmittedHomeRepositoryInterface $re)
      {
          $this->re = $re;
      }
@@ -22,8 +23,8 @@ class ProfileSubmittedHomeController extends Controller
      */
     public function index()
     {
-        $profiles = $this->re->paginate(10);
-        return view('home.employee.profile_submitted.index', compact('profiles'));
+        $jobProfiles = $this->re->paginate(10);
+        return view('home.employee.profile_submitted.index', compact('jobProfiles'));
     }
 
     /**
@@ -33,10 +34,6 @@ class ProfileSubmittedHomeController extends Controller
      */
     public function create()
     {
-        $careers = $this->re->careers();
-        $degrees = $this->re->degrees();
-        $typeOfWorks = $this->re->typeOfWorks();
-        return view('home.employee.profile_submitted.create', compact('careers', 'degrees', 'typeOfWorks'));
     }
 
     /**
@@ -47,8 +44,7 @@ class ProfileSubmittedHomeController extends Controller
      */
     public function store(Request $request)
     {
-        $this->re->store($request);
-        return redirect()->route('employeeHome.profile-submitted.index');
+
     }
 
     /**
@@ -70,8 +66,7 @@ class ProfileSubmittedHomeController extends Controller
      */
     public function edit($id)
     {
-        $profile = $this->re->findOrFail($id);
-        return view('home.employee.profile_submitted.edit', compact('profile'));
+
     }
 
     /**
@@ -84,9 +79,6 @@ class ProfileSubmittedHomeController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $this->re->update($request, $id);
-        $request->session()->flash('notify_success', __('common.update_success'));
-        return redirect()->route('employeeHome.profile-submitted.index');
     }
 
     /**
@@ -95,7 +87,7 @@ class ProfileSubmittedHomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
         $this->re->destroy($request);
         return back();

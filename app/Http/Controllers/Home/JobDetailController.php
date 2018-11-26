@@ -51,13 +51,16 @@ class JobDetailController extends Controller
                 $profile_id = $request->profile_id;
                 $job = $this->re->job($jobID);
                 $job->profiles()->attach($profile_id);
+                session()->flash('notify_success', __('job_detail.profile_submitted'));
+                return back();
             }
         } catch(Exception $e) {
             if (strpos($e->getMessage(), 'Duplicate entry')) {
-                echo __('job_detail.profile_duplicate');
+                session()->flash('notify_error', __('job_detail.profile_duplicate'));
             } else {
-                echo __('common.error');
+                session()->flash('notify_error', __('common.error'));
             }
+            return back();
         }
     }
 }

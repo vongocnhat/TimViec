@@ -7,6 +7,7 @@
         <div class="dialog-content box-ajax">
             
         </div>
-        <a href="#" class="btn btn-success">@lang('job_detail.profile_create')</a>
+        <a href="{{ route('employeeHome.profile.create') }}" class="btn btn-success m-3">@lang('job_detail.profile_create')</a>
+        <a href="{{ route('employeeHome.profile-dynamic.create') }}" class="btn btn-primary m-3">@lang('job_detail.profile_dynamic_create')</a>
     </div>
 </div>

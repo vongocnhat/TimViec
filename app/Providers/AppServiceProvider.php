@@ -123,5 +123,9 @@ class AppServiceProvider extends ServiceProvider
             'App\Repositories\Contracts\TypeofworkRepositoryInterface',
             'App\Repositories\Eloquents\TypeofworkRepository'
         );
+        $this->app->bind(
+            'App\Repositories\Contracts\Home\ProfileSubmittedHomeRepositoryInterface',
+            'App\Repositories\Eloquents\Home\ProfileSubmittedHomeRepository'
+        );
     }
 }
