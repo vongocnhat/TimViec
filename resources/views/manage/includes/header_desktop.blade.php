@@ -158,15 +158,15 @@
                                     </div>
                                 </div>
                                 <div class="account-dropdown__footer">
-                                     <div style="text-align: center">
-                            <a href="{{ url('/logout') }}" onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
-                                                Đăng xuất
-                                                </a>
-                            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                {{ csrf_field() }}
-                            </form>
-                        </div>
+                                    <div style="text-align: center">
+                                        <a href="{{ url('/logout') }}" onclick="event.preventDefault();
+                                                                    document.getElementById('logout-form').submit();">
+                                                            Đăng xuất
+                                                            </a>
+                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>

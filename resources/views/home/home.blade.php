@@ -19,7 +19,7 @@
     <header class="tmp_header">
         <div class="container clearfix">
             <div class="box_logo">
-                <a class="logo" href="{{ route('home') }}"></a>
+                <a class="logo" href="{{ route('homePage') }}"></a>
             </div>
             <div class="box_login_re">
                 <ul class="box_item">

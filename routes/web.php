@@ -11,7 +11,7 @@
 */
 
 Route::namespace('Home')->group(function() {
-    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/', 'HomeController@index')->name('homePage');
     Route::get('manager', 'JobListController@manager')->name('jobList.manager');
     Route::get('specialize', 'JobListController@specialize')->name('jobList.specialize');
     Route::get('labor', 'JobListController@labor')->name('jobList.labor');

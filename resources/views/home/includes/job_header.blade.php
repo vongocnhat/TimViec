@@ -1,7 +1,7 @@
 <header class="tmp_header index1{{ isset($backgroundColor) ? $backgroundColor : null }}">
     <div class="container clearfix">
         <div class="box_logo">
-            <a class="logo" href="{{ route('home') }}"></a>
+            <a class="logo" href="{{ route('homePage') }}"></a>
         </div>
         <ul class="box_menu">
             <li class="menu_list">

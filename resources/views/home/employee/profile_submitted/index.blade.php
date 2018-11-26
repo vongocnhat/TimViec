@@ -2,9 +2,6 @@
 @section('content')
 <div class="container">
     <div class="box_cnt">
-        <div class="col-12 mb-3">
-            <a href="{{ route('employeeHome.profile.create') }}" class="btn btn-success">@lang('common.create')</a>
-        </div>
         <div class="col-12">
             {!! Form::open(['route' => ['employeeHome.profile-submitted.destroy', 0], 'method' => 'DELETE']) !!}
                 <button type="submit"
@@ -31,7 +28,7 @@
                             <tr>
                                 <td class="width-42">{{ Form::checkbox('ids[]', $job['id'], null, ['class' => 'checkbox-delete']) }}</td>
                                 <td>{{ $profileName }}</td>
-                                <td>{{ $job['name'] }}</td>
+                            <td><a href="{{ route('jobDetail.show', ['jobType'=>'specialize', 'jobID'=>$job['id']]) }}">{{ $job['name'] }}</a></td>
                                 <td class="text-center">
                                     {{ Form::hidden('job_id', $job['id']) }}
                                     {{ Form::hidden('profile_name', $profileName) }}

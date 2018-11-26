@@ -29,7 +29,11 @@ class EmployeeHomeController extends Controller
     public function store(Request $request)
     {
         $this->re->store($request);
-        return redirect()->route('home');
+        Auth::guard('employee')->attempt([
+            'email' => $request->email,
+            'password' => $request->password,
+        ]);
+        return redirect()->route('homePage');
     }
 
     public function edit()
@@ -56,7 +60,7 @@ class EmployeeHomeController extends Controller
     {
         $urlPrevious = url()->previous();
         if (Auth::guard('employee')->check()) {
-            return redirect()->route('home');
+            return redirect()->route('homePage');
         }
         return view('home.employee.sign_in', compact('urlPrevious'));
     }

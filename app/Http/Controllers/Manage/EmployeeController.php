@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Manage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Common\DestroyRequest;
-use App\Http\Requests\Employer\EmployeeStoreRequest;
-use App\Http\Requests\Employer\EmployeeUpdateRequest;
+use App\Http\Requests\Employee\EmployeeStoreRequest;
+use App\Http\Requests\Employee\EmployeeUpdateRequest;
 use App\Repositories\Contracts\EmployeeRepositoryInterface;
 
 class EmployeeController extends Controller
@@ -60,7 +60,8 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        
+        $employee = $this->re->findOrFail($id);
+        return view('manage.employee.detail', compact('employee'));
     }
 
     /**
@@ -71,8 +72,6 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        $employee = $this->re->findOrFail($id);
-        return view('manage.employee.edit', compact('employee'));
     }
 
     /**

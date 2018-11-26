@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Manage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Common\DestroyRequest;
+use App\Http\Requests\Employer\EmployerStoreRequest;
+use App\Http\Requests\Employer\EmployerUpdateRequest;
 use App\Repositories\Contracts\EmployerRepositoryInterface;
 
 class EmployerController extends Controller
@@ -56,7 +58,8 @@ class EmployerController extends Controller
      */
     public function show($id)
     {
-        //
+        $employer = $this->re->findOrFail($id);
+        return view('manage.employer.detail', compact('employer'));
     }
 
     /**
@@ -90,24 +93,7 @@ class EmployerController extends Controller
      */
     public function destroy(DestroyRequest $request)
     {
-        $deleted = 0;
-        if ($request->delete_id) {
-            // delete one
-            $deleted = $this->re->destroy($request->delete_id);
-            if ($deleted > 0) {
-                session()->flash('notify_success', __('common.update_success'));
-            } else {
-                session()->flash('notify_error', __('common.update_fail'));
-            }
-        } else {
-            // delete multiple
-            $deleted = $this->re->destroy($request->ids);
-            if ($deleted === count($request->ids)) {
-                session()->flash('notify_success', __('common.update_success'));
-            } else {
-                session()->flash('notify_error', __('common.updates_fail'));
-            }
-        }
+        $this->re->destroy($request);
         return back();
     }
 }

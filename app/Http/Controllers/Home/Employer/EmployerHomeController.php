@@ -45,6 +45,6 @@ class EmployerHomeController extends Controller
     public function signOut()
     {
         Auth::guard('employer')->logout();
-        return redirect()->route('home');
+        return redirect()->route('homePage');
     }
 }

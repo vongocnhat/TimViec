@@ -326,7 +326,7 @@
 <script src="js/certificate-ajax.js"></script>
 <script src="js/experience-of-profile-ajax.js"></script>
 <script src="js/language-ajax.js"></script>
-{{-- <script src="js/test.js"></script> --}}
+<script src="js/test.js"></script>
 <script>
 $('#formProfile').submit(function(e) {
     e.preventDefault();

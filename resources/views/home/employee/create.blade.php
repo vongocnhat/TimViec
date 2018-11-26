@@ -43,7 +43,7 @@
                 <div class="login-wrap">
                     <div class="login-content">
                         <div class="login-logo">
-                            <a href="{{ route('home') }}">
+                            <a href="{{ route('homePage') }}">
                                 <img src="img/logo_img.png">
                             </a>
                         </div>
@@ -128,12 +128,12 @@
                                     </div>
                                 </div>
                             {!! Form::close() !!}
-                            <div class="register-link">
+                            {{-- <div class="register-link">
                                 <p>
                                     Already have account?
                                     <a >Sign In</a>
                                 </p>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

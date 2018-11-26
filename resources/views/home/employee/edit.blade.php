@@ -91,3 +91,9 @@
     </div>
 </div>
 @endsection
+@section('css')
+    @include('manage.includes.datepicker_css')
+@stop
+@section('script')
+    @include('manage.includes.datepicker_js')
+@stop

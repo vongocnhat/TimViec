@@ -1,9 +1,7 @@
 @extends('manage.layout')
 @section('title', __('employee.title'))
 @section('content')
-<div class="col-12 m-b-10">
-    <a href="{{ route('employee.create') }}" class="btn btn-success">@lang('common.create')</a>
-</div>
+
 <div class="col-12">
     {!! Form::open(['route' => ['employee.destroy', 0], 'method' => 'DELETE']) !!}
         <button type="submit"
@@ -29,7 +27,7 @@
                         <th>@lang('employee.address')</th>
                         <th>@lang('employee.gender')</th>
                         <th>@lang('employee.married')</th>
-                        <th>@lang('common.edit')</th>
+                        <th>@lang('common.detail')</th>
                         <th>@lang('common.delete')</th>
                     </tr>
                 </thead>
@@ -49,9 +47,9 @@
                         <td>{{ $employee->gender }}</td>
                         <td>{{ $employee->married === 0 ? __('employee.married_false') : __('employee.married_true') }}</td>
                         <td class="text-center">
-                            <a href="{{ route('employee.edit', $employee->id) }}" 
+                            <a href="{{ route('employee.show', $employee->id) }}" 
                             class="fas fa-edit" 
-                            title="{{ __('common.edit_title', 
+                            title="{{ __('common.show_detail', 
                                         ['name' => $employee->first_name . ' ' . $employee->last_name]) }}"></a>
                         </td>
                         <td class="text-center">
