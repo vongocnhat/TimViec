@@ -17,7 +17,7 @@
                 <a class="list_student active_menu" href="{{ route('jobList.student') }}" title="@lang('job_list.text8')">@lang('job_list.text9')</a>
             </li>
             <li class="menu_list">
-                <a class="list_employer" href="#index1" title="@lang('job_list.text10')">@lang('job_list.text11')</a>
+                <a class="list_employer" href="{{ route('employer-home.signInView') }}" title="@lang('job_list.text10')">@lang('job_list.text11')</a>
             </li>
             <li class="menu_list">
                 <a class="list_home" href="#index1" title="@lang('job_list.text12')"></a>

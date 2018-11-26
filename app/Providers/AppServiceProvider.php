@@ -127,5 +127,9 @@ class AppServiceProvider extends ServiceProvider
             'App\Repositories\Contracts\Home\ProfileSubmittedHomeRepositoryInterface',
             'App\Repositories\Eloquents\Home\ProfileSubmittedHomeRepository'
         );
+        $this->app->bind(
+            'App\Repositories\Contracts\Home\JobHomeRepositoryInterface',
+            'App\Repositories\Eloquents\Home\JobHomeRepository'
+        );
     }
 }

@@ -24,7 +24,16 @@ Route::namespace('Home')->group(function() {
     Route::get('job-detail-ajax/profile-select', 'JobDetailController@profilesSelect')->name('jobDetail.profileSelect');
     Route::post('job-detail-ajax/send-profile-to-employer', 'JobDetailController@storeSendProfileToEmployer')->name('jobDetail.storeSendProfileToEmployer');
     
-    
+    Route::namespace('employer')->prefix('employer-home')->name('employer-home.')->group(function () {
+        Route::get('create', 'EmployerHomeController@create')->name('create');
+        Route::post('store', 'EmployerHomeController@store')->name('store');
+        Route::get('sign-in', 'EmployerHomeController@signInView')->name('signInView');
+        Route::post('sign-in', 'EmployerHomeController@signInCheck')->name('signInCheck');
+        Route::get('sign-out', 'EmployerHomeController@signOut')->name('signOut');
+
+        Route::resource('job', 'JobHomeController');
+    });
+
     Route::namespace('Employee')->prefix('employee-home')->name('employeeHome.')->group(function () {
         
         Route::get('create', 'EmployeeHomeController@create')->name('create');

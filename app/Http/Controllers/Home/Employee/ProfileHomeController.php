@@ -100,11 +100,11 @@ class ProfileHomeController extends Controller
     {
         $validator = Validator::make(json_decode($request->profileData, true), [
             'name' => 'required|unique:profiles|max:191',
-            'career_id' => 'required|numeric|max:10',
-            'degree_id' => 'required|numeric|max:10',
-            'type_of_work_id' => 'required|numeric|max:10',
-            'experience_id' => 'required|numeric|max:10',
-            'office_id' => 'required|numeric|max:10',
+            'career_id' => 'required|numeric|max:4294967295',
+            'degree_id' => 'required|numeric|max:4294967295',
+            'type_of_work_id' => 'required|numeric|max:4294967295',
+            'experience_id' => 'required|numeric|max:4294967295',
+            'office_id' => 'required|numeric|max:4294967295',
             'desired_job' => 'max:255',
             'desire_minimum_wage' => 'required|numeric|max:4294967295',
             'currency' => 'max:255',
@@ -180,11 +180,11 @@ class ProfileHomeController extends Controller
         //
         $validator = Validator::make(json_decode($request->profileData, true), [
             'name' => 'required|unique:profiles|max:191',
-            'career_id' => 'required|numeric|max:10',
-            'degree_id' => 'required|numeric|max:10',
-            'type_of_work_id' => 'required|numeric|max:10',
-            'experience_id' => 'required|numeric|max:10',
-            'office_id' => 'required|numeric|max:10',
+            'career_id' => 'required|numeric|max:4294967295',
+            'degree_id' => 'required|numeric|max:4294967295',
+            'type_of_work_id' => 'required|numeric|max:4294967295',
+            'experience_id' => 'required|numeric|max:4294967295',
+            'office_id' => 'required|numeric|max:4294967295',
             'desired_job' => 'max:255',
             'desire_minimum_wage' => 'required|numeric|max:4294967295',
             'currency' => 'max:255',

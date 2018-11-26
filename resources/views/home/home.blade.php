@@ -77,7 +77,7 @@
                 </div>
                 <ul class="list_item">
                     <li class="item">
-                        <a class="employer" href="#">@lang('home.text10')</a>
+                        <a class="employer" href="{{ route('employer-home.signInView') }}">@lang('home.text10')</a>
                     </li>
                 </ul>
             </div>
