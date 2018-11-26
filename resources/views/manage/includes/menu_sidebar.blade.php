@@ -1,104 +1,53 @@
 <aside class="menu-sidebar d-none d-lg-block">
     <div class="logo">
-        <a >
-            <img src="manage/images/icon/logo.png" alt="Cool Admin" />
+        <a href="#">
+            Admin
         </a>
     </div>
     <div class="menu-sidebar__content js-scrollbar1">
         <nav class="navbar-sidebar">
             <ul class="list-unstyled navbar__list">
-                <li class="active has-sub">
-                    <a class="js-arrow" >
-                        <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                    <ul class="list-unstyled navbar__sub-list js-sub-list">
                         <li>
-                            <a href="index.html">Dashboard 1</a>
+                            <a class="js-arrow" href="{{ route('employer.index') }}">Nhà Tuyển Dụng</a>
                         </li>
                         <li>
-                            <a href="index2.html">Dashboard 2</a>
+                            <a href="{{ route('employee.index') }}">Nhân Viên</a>
                         </li>
                         <li>
-                            <a href="index3.html">Dashboard 3</a>
+                            <a href="{{ route('typeofwork.index') }}">Loại Công Việc</a>
                         </li>
                         <li>
-                            <a href="index4.html">Dashboard 4</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="chart.html">
-                        <i class="fas fa-chart-bar"></i>Charts</a>
-                </li>
-                <li>
-                    <a href="table.html">
-                        <i class="fas fa-table"></i>Tables</a>
-                </li>
-                <li>
-                    <a href="form.html">
-                        <i class="far fa-check-square"></i>Forms</a>
-                </li>
-                <li>
-                    <a >
-                        <i class="fas fa-calendar-alt"></i>Calendar</a>
-                </li>
-                <li>
-                    <a href="map.html">
-                        <i class="fas fa-map-marker-alt"></i>Maps</a>
-                </li>
-                <li class="has-sub">
-                    <a class="js-arrow" >
-                        <i class="fas fa-copy"></i>Pages</a>
-                    <ul class="list-unstyled navbar__sub-list js-sub-list">
-                        <li>
-                            <a href="login.html">Login</a>
+                            <a href="{{ route('career.index') }}">Loại Ngành Nghề</a>
                         </li>
                         <li>
-                            <a href="register.html">Register</a>
+                            <a href="{{ route('office.index') }}">Chức Vụ</a>
                         </li>
                         <li>
-                            <a href="forget-pass.html">Forget Password</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="has-sub">
-                    <a class="js-arrow" >
-                        <i class="fas fa-desktop"></i>UI Elements</a>
-                    <ul class="list-unstyled navbar__sub-list js-sub-list">
-                        <li>
-                            <a href="button.html">Button</a>
+                            <a href="{{ route('language.index') }}">Ngoại Ngữ</a>
                         </li>
                         <li>
-                            <a href="badge.html">Badges</a>
+                            <a href="{{ route('degree.index') }}">Bằng Cấp</a>
                         </li>
                         <li>
-                            <a href="tab.html">Tabs</a>
+                            <a href="{{ route('experience.index') }}">Năm Kinh Nghiệm</a>
                         </li>
                         <li>
-                            <a href="card.html">Cards</a>
+                            <a href="{{ route('salary.index') }}">Mức Lương</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('graduate.index') }}">Loại Tốt Nghiệp</a>
                         </li>
                         <li>
-                            <a href="alert.html">Alerts</a>
+                            <a href="{{ route('profile.index') }}">Hồ Sơ</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('job.index') }}">Công Việc Hiện Có</a>
                         </li>
                         <li>
-                            <a href="progress-bar.html">Progress Bars</a>
+                            <a href="{{ route('certificate.index') }}">Giấy Chứng Nhận</a>
                         </li>
-                        <li>
-                            <a href="modal.html">Modals</a>
-                        </li>
-                        <li>
-                            <a href="switch.html">Switchs</a>
-                        </li>
-                        <li>
-                            <a href="grid.html">Grids</a>
-                        </li>
-                        <li>
-                            <a href="fontawesome.html">Fontawesome Icon</a>
-                        </li>
-                        <li>
-                            <a href="typo.html">Typography</a>
-                        </li>
-                    </ul>
-                </li>
             </ul>
         </nav>
     </div>

@@ -86,3 +86,6 @@ Route::prefix('manage')->middleware(['AdminMiddleware'])->namespace('Manage')->g
     Route::resource('graduate', 'GraduateController');
     Route::resource('job', 'JobController');
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

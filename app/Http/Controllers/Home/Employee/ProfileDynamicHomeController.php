@@ -124,24 +124,14 @@ class ProfileDynamicHomeController extends Controller
             // delete one
             $name = Auth::guard('employee')->user()->id . '/' . $name . '.blade.php';
             Storage::disk('dynamic_profile')->delete($name);
-            if ($deleted > 0) {
-                session()->flash('notify_success', __('common.delete_success'));
-            } else {
-                session()->flash('notify_error', __('common.delete_fail'));
-            }
         } else {
             // delete multiple
-            
             foreach ($request->ids as $name) {
                 $name = Auth::guard('employee')->user()->id . '/' . $name . '.blade.php';
                 Storage::disk('dynamic_profile')->delete($name);
             }
-            if ($deleted === count($request->ids)) {
-                session()->flash('notify_success', __('common.delete_success'));
-            } else {
-                session()->flash('notify_error', __('common.deletes_fail'));
-            }
         }
+        session()->flash('notify_success', __('common.delete_success'));
         return back();
     }
 }

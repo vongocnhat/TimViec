@@ -141,8 +141,8 @@ class Job extends Model
 		return $this->belongsToMany('App\Models\Province');
 	}
 	
-	public function getstatusAAttribute() {
-        switch ($this->word) {
+	public function getstAtusAAttribute() {
+        switch ($this->status) {
         	case 1:
         		return __('job.1');
         		break;
@@ -151,7 +151,7 @@ class Job extends Model
     			break;
         }
 	}
-	public function getapplyAAttribute() {
+	public function getApplyAAttribute() {
         switch ($this->apply_online) {
         	case 1:
         		return __('job.app1');

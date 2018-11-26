@@ -38,7 +38,7 @@
                                     </div>
                                 </div>
                                 <div class="mess__footer">
-                                    <a >View all messages</a>
+                                    <a href="#">View all messages</a>
                                 </div>
                             </div>
                         </div>
@@ -77,7 +77,7 @@
                                     </div>
                                 </div>
                                 <div class="email__footer">
-                                    <a >See all emails</a>
+                                    <a href="#">See all emails</a>
                                 </div>
                             </div>
                         </div>
@@ -116,7 +116,7 @@
                                     </div>
                                 </div>
                                 <div class="notifi__footer">
-                                    <a >All notifications</a>
+                                    <a href="#">All notifications</a>
                                 </div>
                             </div>
                         </div>
@@ -127,39 +127,46 @@
                                 <img src="manage/images/icon/avatar-01.jpg" alt="John Doe" />
                             </div>
                             <div class="content">
-                                <a class="js-acc-btn" >john doe</a>
+                                <a class="js-acc-btn" href="#">john doe</a>
                             </div>
                             <div class="account-dropdown js-dropdown">
                                 <div class="info clearfix">
                                     <div class="image">
-                                        <a >
+                                        <a href="#">
                                             <img src="manage/images/icon/avatar-01.jpg" alt="John Doe" />
                                         </a>
                                     </div>
                                     <div class="content">
                                         <h5 class="name">
-                                            <a >john doe</a>
+                                            <a href="#">john doe</a>
                                         </h5>
                                         <span class="email">johndoe@example.com</span>
                                     </div>
                                 </div>
                                 <div class="account-dropdown__body">
                                     <div class="account-dropdown__item">
-                                        <a >
+                                        <a href="#">
                                             <i class="zmdi zmdi-account"></i>Account</a>
                                     </div>
                                     <div class="account-dropdown__item">
-                                        <a >
+                                        <a href="#">
                                             <i class="zmdi zmdi-settings"></i>Setting</a>
                                     </div>
                                     <div class="account-dropdown__item">
-                                        <a >
+                                        <a href="#">
                                             <i class="zmdi zmdi-money-box"></i>Billing</a>
                                     </div>
                                 </div>
                                 <div class="account-dropdown__footer">
-                                    <a >
-                                        <i class="zmdi zmdi-power"></i>Logout</a>
+                                     <div style="text-align: center">
+                            <a href="{{ url('/logout') }}" onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                                                Đăng xuất
+                                                </a>
+                            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </div>
                                 </div>
                             </div>
                         </div>

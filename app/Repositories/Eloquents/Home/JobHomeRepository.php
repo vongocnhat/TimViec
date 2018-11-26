@@ -31,6 +31,9 @@ class JobHomeRepository implements JobHomeRepositoryInterface
         $job = new Job();
         $job->fill($request->except('employer_id'));
         $job->employer_id = Auth::guard('employer')->user()->id;
+
+        $job->status = 1;
+
         $job->save();
     }
 

@@ -16,4 +16,8 @@ return [
     'ward' => 'Phường',
     'address' => 'Địa Chỉ',
     'website' => 'Website',
+    'province_id' => 'Thành Phố',
+    'district_id' => 'Quận',
+    'ward_id' => 'Phường',
+    'id'=> 'Mã Nhà Tuyển Dụng',
 ];
